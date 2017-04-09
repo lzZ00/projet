@@ -31,6 +31,7 @@
 <p>TESTESTESTSETEST</p>
 <p>TESTESTESTSETEST</p>
 <p>TESTESTESTSETEST</p>
+<p>真是只animal</p>
 <button>点击淡入 div 元素。</button>
 <br><br>
 <div id="div1" style="width:80px;height:80px;display:none;background-color:red;"></div><br>
