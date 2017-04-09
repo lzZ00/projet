@@ -95,7 +95,7 @@
                 <h4 class="modal-title" id="myModalLabel">登录</h4>
             </div>
             <div class="modal-body">
-                <p>n'import quoi</p>
+                <p>n'import quoio</p>
                 <input type="text" class="form-control" placeholder="邮箱或登录名">
                 </br>
                 <input type="text" class="form-control" placeholder="密码">
