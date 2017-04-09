@@ -1,7 +1,6 @@
 <h2><?php echo $title; ?></h2>
 
 <?php foreach ($client as $unclient): ?>
-
     <h3><?php echo $unclient['nom'].' '.$unclient['prenom'] ?></h3>
 
     <div class="main">
@@ -10,12 +9,9 @@
               echo 'tel: '. $unclient['tel'];
               echo "</br>";
               echo 'email: '. $unclient['email'];
-
         ?>
     </div>
-
     </br>
-
 <?php endforeach; ?>
 <script>
     $(document).ready(function(){

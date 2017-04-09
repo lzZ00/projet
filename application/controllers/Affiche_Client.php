@@ -32,6 +32,4 @@ class Affiche_Client extends CI_Controller {
         $this->load->view('Affiche_Client/view', $data);
         $this->load->view('templates/footer');
     }
-
-
 }
