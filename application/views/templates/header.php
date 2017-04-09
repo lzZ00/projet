@@ -20,45 +20,92 @@
 
 </head>
 <body>
-<nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-        <div class="navbar-header">
+<nav class="navbar navbar-default">
+    <div class="container-fluid row">
+        <div class="navbar-header col-md-2 col-md-offset-3">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="#">Brand</a>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Link</a></li>
+                <li><a href="#">首页 <span class="sr-only">(current)</span></a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">商品分类 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
+                        <li><a href="#">主食</a></li>
+                        <li><a href="#">休闲食品</a></li>
+                        <li><a href="#">方便面</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
+                        <li><a href="#">调料</a></li>
+                        <li><a href="#">即食品</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
+                        <li><a href="#">干货</a></li>
+                        <li><a href="#">蔬菜</a></li>
                     </ul>
                 </li>
+                <li><a href="#">新品上架</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="商品搜索">
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default glyphicon glyphicon-search"></button>
             </form>
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#">Link</a></li>
+
+            <div class=" col-md-2 col-md-offset-0.5">
+            </div>
+            <ul class="nav navbar-nav">
+                <li><a href="#" type="button" data-toggle="modal" data-target="#signup" >注册</a></li>
+                <li><a href="#" type="button" data-toggle="modal" data-target="#signin" >登录</a></li>
             </ul>
         </div>
     </div>
 </nav>
+
+<!-- Modal 注册-->
+<div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">注册</h4>
+            </div>
+            <div class="modal-body">
+                <p>n'import quoi</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal 登录-->
+<div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-sm" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">登录</h4>
+            </div>
+            <div class="modal-body">
+                <p>n'import quoi</p>
+                <input type="text" class="form-control" placeholder="邮箱或登录名">
+                </br>
+                <input type="text" class="form-control" placeholder="密码">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
 
