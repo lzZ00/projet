@@ -63,5 +63,9 @@ $route['news'] = 'news';
 $route['Affiche_Client/(:any)'] = 'Affiche_Client/view/$1';
 $route['Affiche_Client']='Affiche_Client';
 
+
+$route['Affiche_Client/(:any)'] = 'Affiche_Client/view/$1';
+$route['Affiche_Client']='Affiche_Client';
+
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
