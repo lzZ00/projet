@@ -27,6 +27,10 @@
     });
 </script>
 <p>以下实例演示了 fadeIn() 使用了不同参数的效果。</p>
+<p>TESTESTESTSETEST</p>
+<p>TESTESTESTSETEST</p>
+<p>TESTESTESTSETEST</p>
+<p>TESTESTESTSETEST</p>
 <button>点击淡入 div 元素。</button>
 <br><br>
 <div id="div1" style="width:80px;height:80px;display:none;background-color:red;"></div><br>
