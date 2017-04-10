@@ -53,7 +53,7 @@ class Affiche_Produit extends CI_Controller {
     function deleteProduit(){//删除数据的操作
         $id = $this->input->get('id');//这里是取得get传过来的值
         $this->db->where('id',$id);//这里是做where条件这个相当重要，如果没有这个你有可能把这个表数据都清空了
-        $this->db->delete('user');//删除指定id数据
+        $this->db->delete('produits');//删除指定id数据
 
     }
 
