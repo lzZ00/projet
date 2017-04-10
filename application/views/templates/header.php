@@ -7,9 +7,9 @@
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
     <title>Chez Lei</title>
     <!-- jquery -->
-    <script src="../assets/jquery-3.2.0.min.js"></script>
+    <script src="http://localhost/projet/assets/jquery-3.2.0.min.js"></script>
     <!-- Bootstrap -->
-    <link href="../assets/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://localhost/projet/assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
