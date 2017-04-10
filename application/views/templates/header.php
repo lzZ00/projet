@@ -69,22 +69,39 @@
 
 <!-- Modal 注册-->
 <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">注册</h4>
+                <h4 class="modal-title" id="myModalLabel" align="center">加入磊家</h4>
+                <h6 class="modal-title" id="myModalLabel" align="center">梅斯最实惠的中超</h6>
             </div>
             <div class="modal-body">
-                <p>n'import quoi</p>
+                <input type="text" class="form-control" placeholder="姓名">
+                </br>
+                <input type="text" class="form-control" placeholder="邮箱">
+                </br>
+                <input type="text" class="form-control" placeholder="密码(不少于6位)">
+                </br>
+
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <form name="signup" methode="post" action="#">
+                <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block">注册</button>
+                    <input type="submit" name="test" value="test">
+                </form>
             </div>
         </div>
     </div>
 </div>
+<?php
+echo 'worinima';
+?>
+<?php
+if(isset($_POST['test'])){
+echo 'signup clicke';
+}
+?>
 
 <!-- Modal 登录-->
 <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -96,16 +113,18 @@
             </div>
             <div class="modal-body">
                 <p>n'import quoio</p>
-                <input type="text" class="form-control" placeholder="邮箱或登录名">
+                <input type="text" class="form-control" placeholder="邮箱">
                 </br>
-                <input type="text" class="form-control" placeholder="密码">
+                <input type="password" class="form-control" placeholder="密码">
 
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
             </div>
         </div>
     </div>
 </div>
+
+
+
 
