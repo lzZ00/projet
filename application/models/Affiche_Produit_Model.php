@@ -22,5 +22,21 @@ class Affiche_Produit_Model extends CI_Model {
         $query = $this->db->get_where('produits', array('slug' => $slug));
         return $query->row_array();
     }
+    public function set_produits()
+    {
+        $this->load->helper('url');
 
+        $data = array(
+            'nom' => $this->input->post('nom'),
+          //  'type' => $this->input->post('type'),
+            'prix' => $this->input->post('prix'),
+            'photo' => $this->input->post('photo')
+        );
+
+        return $this->db->insert('produits', $data);
+    }
+
+    public function delete_produits($id)
+    {
+    }
 }
