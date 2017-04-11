@@ -1,9 +1,12 @@
 
+<?php echo form_open('Affiche_Produit/createProduit'); ?>
+<?php echo validation_errors(); ?>
+<input type="submit" value="add" name="add" class="bg-primary">
+<br/><br/>
 <table class="table table-hover">
     <tr><th>nom</th><th>prix</th><th>operation</th>
     </tr>
     </thead>
-
 <?php foreach ($produits as $donnes): ?>
     <tr>
   <td> <?php echo $donnes['nom']?> </td>
@@ -19,7 +22,7 @@
             </form>
         </td>
         </tr>
-
+    </form>
 <?php endforeach; ?>
+</table>
 
-    </table>
