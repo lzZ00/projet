@@ -11,9 +11,15 @@
         <td>
             <a href=" ">modifier</a>
             <a href=>supprimer</a>
+            <form id="delete" methode="post" action="#">
+            <input type="submit" value="Sup" name="Sup">
+            <?php echo $donnes['id']; ?>
+            </form>
         </td>
         </tr>
 
 <?php endforeach; ?>
 
     </table>
+
+

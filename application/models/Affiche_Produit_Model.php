@@ -38,7 +38,7 @@ class Affiche_Produit_Model extends CI_Model {
 
     public function get_unProduits($id)
     {
-        $query = $this->db->query('SELECT id,nom FROM produits);
+        //$query = $this->db->query('SELECT id,nom FROM produits);
 
     }
 }
