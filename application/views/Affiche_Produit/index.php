@@ -1,7 +1,7 @@
 
-<?php echo form_open('Affiche_Produit/createProduit'); ?>
-<?php echo validation_errors(); ?>
-<input type="submit" value="add" name="add" class="bg-primary">
+<a href="<?php echo base_url('/index.php/Affiche_Produit/createProduit')?>" class="bg-primary">
+   Ajouter
+</a>
 <br/><br/>
 <table class="table table-hover">
     <tr><th>nom</th><th>prix</th><th>operation</th>
