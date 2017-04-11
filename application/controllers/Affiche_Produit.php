@@ -20,20 +20,29 @@ class Affiche_Produit extends CI_Controller {
         $this->load->helper('form');
         $this->load->library('form_validation');
         $data['produits'] = $this->Affiche_Produit_Model->get_produit();
+
+        //$this->form_validation->set_rules('title', 'Title', 'required');
+
         if (empty($data['produits']))
         {
             show_404();
         }
-        if ($this->form_validation->run() === FALSE) {
-            $data['title'] = 'Information de Client';
+        if (isset($_POST['Sup'])){
+            echo'success';
+            echo $_POST['idS'];
+            $this->Affiche_Produit_Model->supprimer_unProduits($_POST['idS']);
             $this->load->view('templates/header', $data);
             $this->load->view('Affiche_Produit/index', $data);
             $this->load->view('templates/footer');
         }
         else
         {
-            echo'hou a';
+            $data['title'] = 'Information de Client';
+            $this->load->view('templates/header', $data);
+            $this->load->view('Affiche_Produit/index', $data);
+            $this->load->view('templates/footer');
         }
+
     }
 
     public function createProduit()
