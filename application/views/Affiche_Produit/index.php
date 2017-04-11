@@ -11,12 +11,12 @@
         <td>
             <a href=" ">modifier</a>
             <a href=>supprimer</a>
-            <h2><?php echo $title; ?></h2>
+
             <?php echo form_open('Affiche_Produit'); ?>
-            <?php echo validation_errors(); ?>
-            <input type="submit" value="Sup" name="Sup">
-            <?php $idS=$donnes['id']; ?>
-            <input type="hidden" name="idS" value=<?php echo $idS;?>>
+                <?php echo validation_errors(); ?>
+                <input type="submit" value="Sup" name="Sup">
+                <?php $idS=$donnes['id']; ?>
+                <input type="hidden" name="idS" value=<?php echo $idS;?>>
             </form>
         </td>
         </tr>

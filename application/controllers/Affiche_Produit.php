@@ -17,15 +17,23 @@ class Affiche_Produit extends CI_Controller {
 
     public function index()
     {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
         $data['produits'] = $this->Affiche_Produit_Model->get_produit();
         if (empty($data['produits']))
         {
             show_404();
         }
-        $data['title'] = 'Information de Client';
-        $this->load->view('templates/header', $data);
-        $this->load->view('Affiche_Produit/index', $data);
-        $this->load->view('templates/footer');
+        if ($this->form_validation->run() === FALSE) {
+            $data['title'] = 'Information de Client';
+            $this->load->view('templates/header', $data);
+            $this->load->view('Affiche_Produit/index', $data);
+            $this->load->view('templates/footer');
+        }
+        else
+        {
+            echo'hou a';
+        }
     }
 
     public function createProduit()
@@ -45,7 +53,7 @@ class Affiche_Produit extends CI_Controller {
         }
         else
         {
-            //$this->Affiche_Produit_Model->set_produits();
+            $this->Affiche_Produit_Model->set_produits();
             echo "ok";
         }
     }
