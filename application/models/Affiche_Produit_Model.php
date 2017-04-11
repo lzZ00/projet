@@ -36,7 +36,9 @@ class Affiche_Produit_Model extends CI_Model {
         return $this->db->insert('produits', $data);
     }
 
-    public function delete_produits($id)
+    public function get_unProduits($id)
     {
+        $query = $this->db->query('SELECT id,nom FROM produits);
+
     }
 }
