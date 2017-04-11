@@ -43,7 +43,7 @@ class Affiche_Produit_Model extends CI_Model {
     }
     public function supprimer_unProduits($id)
     {
-        $query=$this->db->simple_query('DELETE FROM paniers WHERE paniers.produit_id = '.$id.'');
-        $query=$this->db->simple_query('DELETE FROM produits WHERE id='.$id.'');
+        $this->db->simple_query('DELETE FROM paniers WHERE paniers.produit_id = '.$id.'');
+        $this->db->simple_query('DELETE FROM produits WHERE id='.$id.'');
     }
 }
