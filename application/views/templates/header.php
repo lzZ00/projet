@@ -95,7 +95,6 @@
     </div>
 </div>
 <?php
-echo 'worinima';
 ?>
 <?php
 if(isset($_POST['test'])){
