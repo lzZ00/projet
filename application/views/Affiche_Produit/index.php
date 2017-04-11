@@ -11,8 +11,7 @@
         <td>
             <a href=" ">modifier</a>
             <a href=>supprimer</a>
-
-            <?php echo form_open('Affiche_Produit/'); ?>
+            <?php echo form_open('Affiche_Produit'); ?>
                 <?php echo validation_errors(); ?>
                 <input type="submit" value="Sup" name="Sup">
                 <?php $idS=$donnes['id']; ?>

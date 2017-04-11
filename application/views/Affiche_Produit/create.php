@@ -2,7 +2,7 @@
 
 <?php echo validation_errors(); ?>
 
-<?php echo form_open('Affiche_Produit/create'); ?>
+<?php echo form_open('Affiche_Produit/createProduit'); ?>
 
 <label for="nom">Name</label>
 <input type="input" name="nom" /><br />
