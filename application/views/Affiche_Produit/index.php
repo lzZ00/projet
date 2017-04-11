@@ -1,6 +1,6 @@
 
 <a href="<?php echo base_url('/index.php/Affiche_Produit/createProduit')?>" class="bg-primary">
-   Ajouter
+   Ajouter un Produit
 </a>
 <br/><br/>
 <table class="table table-hover">
