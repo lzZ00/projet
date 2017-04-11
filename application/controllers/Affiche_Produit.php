@@ -45,12 +45,12 @@ class Affiche_Produit extends CI_Controller {
         }
         else
         {
-            $this->Affiche_Produit_Model->set_produits();
+            //$this->Affiche_Produit_Model->set_produits();
             echo "ok";
         }
     }
 
-    function deleteProduit(){
+    public function deleteProduit(){
         $id = $this->input->get('id');
         $this->db->where('id',$id);
         $this->db->delete('produits');

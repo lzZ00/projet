@@ -41,4 +41,8 @@ class Affiche_Produit_Model extends CI_Model {
         //$query = $this->db->query('SELECT id,nom FROM produits);
 
     }
+    public function supprimer_unProduits($id)
+    {
+        $this->db->simple_query('DELETE FROM produits WHERE id=$id`');
+    }
 }
