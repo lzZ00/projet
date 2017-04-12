@@ -10,8 +10,14 @@
 </div>
 
 <div class="form-group">
-    <label for="type">Type</label>
-    <input type="input" class="form-control" id="type" placeholder="Type" name="type"  style="width: 20%">
+    <label>Type: </label>
+    <select name="type">
+        <?php foreach ($typeProduits as $donnes): ?>
+            <?php $id=$donnes['id'];?>
+            <option value="<?php echo $id?>" ><?php echo $id?></option>
+        <?php endforeach; ?>
+    </select>
+
 </div>
 
 <div class="form-group">
@@ -29,4 +35,14 @@
 </div>
 
 
+
+
 </form>
+<?php
+if(isset($_POST['submit'])){
+    echo'cnm';
+    $id=$_POST['type'];
+    echo $id;
+}
+?>
+

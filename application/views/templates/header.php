@@ -99,11 +99,6 @@
 </div>
 <?php
 ?>
-<?php
-if(isset($_POST['test'])){
-echo 'signup clicke';
-}
-?>
 
 <!-- Modal 登录-->
 <div class="modal fade" id="signin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -139,7 +134,6 @@ if(isset($_POST['signup'])){
     $adresse=$_POST['adresse'];
     $tel=$_POST['tel'];
     $this->Signup_Signin_Model->Signup($nom,$mail,$mdp,$adresse ,$tel);
-
 }
 
 ?>

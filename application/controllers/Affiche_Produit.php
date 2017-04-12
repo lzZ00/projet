@@ -49,8 +49,9 @@ class Affiche_Produit extends CI_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
         $data['title'] = 'Create a news item';
+        $data['typeProduits'] = $this->Affiche_Produit_Model->get_typeProduits();
         $this->form_validation->set_rules('nom', 'Name', 'required');
-        //  $this->form_validation->set_rules('type', 'Type', 'required');
+        $this->form_validation->set_rules('type', 'Type', 'required');
         $this->form_validation->set_rules('prix', 'Price', 'required');
         $this->form_validation->set_rules('photo', 'Photo', 'required');
         if ($this->form_validation->run() === FALSE) {
