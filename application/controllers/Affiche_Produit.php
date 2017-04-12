@@ -13,6 +13,7 @@ class Affiche_Produit extends CI_Controller
     {
         parent::__construct();
         $this->load->model('Affiche_Produit_Model');
+        $this->load->model('Signup_Signin_Model');
         $this->load->helper('url_helper');
     }
 

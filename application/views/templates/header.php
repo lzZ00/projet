@@ -76,19 +76,22 @@
                 <h4 class="modal-title" id="myModalLabel" align="center">加入磊家</h4>
                 <h6 class="modal-title" id="myModalLabel" align="center">梅斯最实惠的中超</h6>
             </div>
+                <?php echo form_open(''); ?>
             <div class="modal-body">
-                <input type="text" class="form-control" placeholder="姓名">
+                <input type="text" class="form-control" placeholder="姓名" name="nom">
                 </br>
-                <input type="text" class="form-control" placeholder="邮箱">
+                <input type="text" class="form-control" placeholder="邮箱" name="mail">
                 </br>
-                <input type="text" class="form-control" placeholder="密码(不少于6位)">
+                <input type="text" class="form-control" placeholder="密码(不少于6位)" name="mdp">
                 </br>
-
+                <input type="text" class="form-control" placeholder="地址(仅限梅斯地区)" name="adresse">
+                </br>
+                <input type="text" class="form-control" placeholder="电话(选填)" name="tel">
+                </br>
             </div>
             <div class="modal-footer">
-                <form name="signup" methode="post" action="#">
-                <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block">注册</button>
-                    <input type="submit" name="test" value="test">
+                <?php echo validation_errors(); ?>
+                    <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block" name="signup">注册</button>
                 </form>
             </div>
         </div>
@@ -112,6 +115,7 @@ echo 'signup clicke';
             </div>
             <div class="modal-body">
                 <p>n'import quoio</p>
+                <?php echo form_open(''); ?>
                 <input type="text" class="form-control" placeholder="邮箱">
                 </br>
                 <input type="password" class="form-control" placeholder="密码">
@@ -120,10 +124,24 @@ echo 'signup clicke';
             <div class="modal-footer">
                 <button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
             </div>
+                </form>
         </div>
     </div>
 </div>
 
+<!-- 注册和登录按钮触发事件，因为如果写在control要每页都复制这个事件，暂时找不到更好的解决方法，所以写在这里-->
+<?php
+if(isset($_POST['signup'])){
+    echo 'signup';
+    $nom=$_POST['nom'];
+    $mail=$_POST['mail'];
+    $mdp=$_POST['mdp'];
+    $adresse=$_POST['adresse'];
+    $tel=$_POST['tel'];
+    $this->Signup_Signin_Model->Signup($nom,$mail,$mdp,$adresse ,$tel);
 
+}
+
+?>
 
 
