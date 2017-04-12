@@ -1,5 +1,5 @@
 
-<a href="<?php echo base_url('/index.php/Affiche_Produit/createProduit')?>" class="btn-info">
+<a href="<?php echo base_url('/index.php/Affiche_Produit/createProduit')?>" class="btn btn-hover">
    Ajouter un Produit
 </a>
 <br/><br/>
@@ -12,11 +12,9 @@
   <td> <?php echo $donnes['nom']?> </td>
     <td><?php echo $donnes['prix']?></td>
         <td>
-            <a href=" ">modifier</a>
-            <a href=>supprimer</a>
             <?php echo form_open('Affiche_Produit'); ?>
                 <?php echo validation_errors(); ?>
-                <input type="submit" value="Sup" name="Sup">
+                <input type="submit" value="Sup" name="Supprimer" class="btn btn-danger">
                 <?php $idS=$donnes['id']; ?>
                 <input type="hidden" name="idS" value=<?php echo $idS;?>>
             </form>

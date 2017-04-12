@@ -25,7 +25,7 @@ class Affiche_Produit extends CI_Controller
         //if (empty($data['produits'])) {
          //   show_404();
         //}
-        if (isset($_POST['Sup'])) {
+        if (isset($_POST['Supprimer'])) {
             echo 'success';
             echo $_POST['idS'];
             $this->Affiche_Produit_Model->supprimer_unProduits($_POST['idS']);
@@ -58,7 +58,7 @@ class Affiche_Produit extends CI_Controller
             $this->load->view('templates/footer');
         } else {
             $this->Affiche_Produit_Model->set_produits();
-            echo "ok";
+            redirect(base_url('/index.php/Affiche_Produit/'));
         }
     }
 
