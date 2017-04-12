@@ -36,13 +36,3 @@
 
 
 
-
-</form>
-<?php
-if(isset($_POST['submit'])){
-    echo'cnm';
-    $id=$_POST['type'];
-    echo $id;
-}
-?>
-
