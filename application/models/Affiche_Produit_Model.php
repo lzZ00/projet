@@ -38,17 +38,33 @@ class Affiche_Produit_Model extends CI_Model {
 
     public function get_unProduits($id)
     {
-        $query = $this->db->query('SELECT id,nom FROM produits WHERE id = '.$id.'');
+        /*$query = $this->db->simple_query('SELECT id,nom,prix,photo FROM produits WHERE id = '.$id.'');
+        return $query->row_array();*/
+        $this->db->select('*');
+        $this->db->from('produits');
+        $this->db->where('id',$id);
+        $query=$this->db->get();
         return $query->row_array();
+
+
     }
 
-
-    public function deleteProduit($id) {
-
-    }
     public function supprimer_unProduits($id)
     {
         $this->db->simple_query('DELETE FROM paniers WHERE paniers.produit_id = '.$id.'');
         $this->db->simple_query('DELETE FROM produits WHERE id='.$id.'');
+    }
+
+    public function updateProduit($id)
+    {
+        $this->load->helper('url');
+        $data = array(
+            'nom' => $this->input->post('nom'),
+            //  'type' => $this->input->post('type'),
+            'prix' => $this->input->post('prix'),
+            'photo' => $this->input->post('photo')
+        );
+        $this->db->where('id', $id);
+        $this->db->update('produits', $data);
     }
 }

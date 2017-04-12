@@ -23,7 +23,7 @@ class Affiche_Produit extends CI_Controller
         $data['produits'] = $this->Affiche_Produit_Model->get_produit();
         //$this->form_validation->set_rules('title', 'Title', 'required');
         //if (empty($data['produits'])) {
-         //   show_404();
+        //   show_404();
         //}
         if (isset($_POST['Supprimer'])) {
             echo 'success';
@@ -62,21 +62,30 @@ class Affiche_Produit extends CI_Controller
         }
     }
 
-    public function deleteProduit()
-    {
-        $id = $this->input->get('id');
-        $this->db->where('id', $id);
-        $this->db->delete('produits');
-    }
-
-    function get_unProduit($id)
+    function testProduit($id)
     {
         $data['produits'] = $this->Affiche_Produit_Model->get_unProduits($id);
         $this->load->view('templates/header', $data);
-        $this->load->view('Affiche_Produit/index', $data);
+        $this->load->view('Affiche_Produit/test', $data);
         $this->load->view('templates/footer');
     }
 
+    function editProduit()
+    {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        if (isset($_POST['Modifier'])) {
+            $data['produit']= $this->Affiche_Produit_Model->get_unProduits($_POST['idM']);
+            $this->load->view('templates/header', $data);
+            $this->load->view('Affiche_Produit/edit', $data);
+            $this->load->view('templates/footer');
+        }
+        if (isset($_POST['Update'])) {
+            $id = $this->input->post('idM');
+            $this->Affiche_Produit_Model->updateProduit($id);
+            redirect(base_url('/index.php/Affiche_Produit/'));
+        }
+    }
 
 }
 
