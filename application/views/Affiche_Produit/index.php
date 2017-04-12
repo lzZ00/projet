@@ -1,5 +1,5 @@
 
-<a href="<?php echo base_url('/index.php/Affiche_Produit/createProduit')?>" class="bg-primary">
+<a href="<?php echo base_url('/index.php/Affiche_Produit/createProduit')?>" class="btn-info">
    Ajouter un Produit
 </a>
 <br/><br/>
