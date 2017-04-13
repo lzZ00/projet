@@ -66,7 +66,6 @@ class Affiche_Produit extends CI_Controller
 
     function testProduit()
     {
-        $data['produits'] = $this->Affiche_Produit_Model->get_unProduits(1);
         $this->load->view('templates/header', $data);
         $this->load->view('Affiche_Produit/test', $data);
         $this->load->view('templates/footer');
