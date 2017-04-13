@@ -14,9 +14,28 @@
         <td>
             <?php echo form_open('Affiche_Produit'); ?>
                 <?php echo validation_errors(); ?>
-                <input type="submit" value="Supprimer" name="Supprimer" class="btn btn-danger btn-xs">
                 <?php $idS=$donnes['id']; ?>
+                <a href="#" type="button" data-toggle="modal" data-target="#supprimerm<?php echo $idS;?>"class="btn btn-danger btn-xs" >删除</a>
                 <input type="hidden" name="idS" value=<?php echo $idS;?>>
+                <!-- 删除确认的弹窗-->
+                <div class="modal fade" id="supprimerm<?php echo $idS;?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <div class="modal-dialog modal-sm" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                <h4 class="modal-title" id="myModalLabel">删除确认<?php echo $idS;?></h4>
+                            </div>
+                            <div class="modal-body">
+                                <p>确定要删除吗？</p>
+                                <button type="submit" class="btn btn-danger"value="Supprimer" name="Supprimer" >确定</button>
+                                <input type="hidden" name="idS" value=<?php echo $idS;?>>
+                                <button type="submit" class="btn btn-primary "data-dismiss="modal" aria-label="Close" >取消</button>
+                                </br>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </form><br/>
             <?php echo form_open('Affiche_Produit/editProduit'); ?>
             <?php echo validation_errors(); ?>

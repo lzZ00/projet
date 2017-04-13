@@ -11,7 +11,7 @@
 
 <div class="form-group">
     <label>Type: </label>
-    <select name="type" button class="btn btn-default dropdown-toggle">
+    <select class="btn btn-default dropdown-toggle"name="type" button class="btn btn-default dropdown-toggle">
         <?php foreach ($typeProduits as $donnes): ?>
             <option value="<?php echo $donnes['id']?>" ><?php echo $donnes['libelle']?></option>
         <?php endforeach; ?>
