@@ -64,9 +64,9 @@ class Affiche_Produit extends CI_Controller
         }
     }
 
-    function testProduit($id)
+    function testProduit()
     {
-        $data['produits'] = $this->Affiche_Produit_Model->get_unProduits($id);
+        $data['produits'] = $this->Affiche_Produit_Model->get_unProduits(1);
         $this->load->view('templates/header', $data);
         $this->load->view('Affiche_Produit/test', $data);
         $this->load->view('templates/footer');
@@ -78,6 +78,7 @@ class Affiche_Produit extends CI_Controller
         $this->load->library('form_validation');
         if (isset($_POST['Modifier'])) {
             $data['produit']= $this->Affiche_Produit_Model->get_unProduits($_POST['idM']);
+            $data['typeProduits'] = $this->Affiche_Produit_Model->get_typeProduits();
             $this->load->view('templates/header', $data);
             $this->load->view('Affiche_Produit/edit', $data);
             $this->load->view('templates/footer');

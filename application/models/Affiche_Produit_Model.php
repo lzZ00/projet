@@ -40,11 +40,16 @@ class Affiche_Produit_Model extends CI_Model {
     {
         /*$query = $this->db->simple_query('SELECT id,nom,prix,photo FROM produits WHERE id = '.$id.'');
         return $query->row_array();*/
-        $this->db->select('*');
+      $this->db->select('id,nom,prix,photo,typeProduit_id');
         $this->db->from('produits');
         $this->db->where('id',$id);
         $query=$this->db->get();
         return $query->row_array();
+   /*     $sql = "SELECT * FROM produits WHERE id = '.$id' ";
+        $query = $this->db->query($sql);
+        return $query->row_array();*/
+
+
     }
 
     public function supprimer_unProduits($id)
