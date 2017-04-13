@@ -72,7 +72,7 @@ class Affiche_Produit_Model extends CI_Model {
         $this->load->helper('url');
         $data = array(
             'nom' => $this->input->post('nom'),
-            //  'type' => $this->input->post('type'),
+            'typeProduit_id' => $this->input->post('type'),
             'prix' => $this->input->post('prix'),
             'photo' => $this->input->post('photo')
         );

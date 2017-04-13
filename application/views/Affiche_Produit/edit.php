@@ -16,9 +16,15 @@
 </div>
 
 <div class="form-group">
-    <label for="type">Type</label>
-    <input type="input" class="form-control" id="type" placeholder="Type" name="type"  style="width: 20%"
-           value="<?php echo $produit['typeProduit_id']?> ">
+    <label>Type</label>
+    <select name="type"  button class="btn btn-default dropdown-toggle">
+        <?php foreach ($typeProduits as $value): ?>
+            <option value="<?php echo $value['id'] ?>"
+                <?php if(isset($produit['typeProduit_id']) and $produit['typeProduit_id']==$value['id']) echo "selected"; ?>>
+                <?php echo $value['libelle'];?>
+            </option>
+        <?php endforeach; ?>
+    </select>
 </div>
 
 <div class="form-group">
