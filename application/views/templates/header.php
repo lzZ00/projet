@@ -109,7 +109,6 @@
                 <h4 class="modal-title" id="myModalLabel">登录</h4>
             </div>
             <div class="modal-body">
-                <p>n'import quoio</p>
                 <?php echo form_open(''); ?>
                 <input type="text" class="form-control" placeholder="邮箱">
                 </br>

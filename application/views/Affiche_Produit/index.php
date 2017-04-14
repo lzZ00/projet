@@ -1,15 +1,15 @@
-
 <a href="<?php echo base_url('/index.php/Affiche_Produit/createProduit')?>" class="btn btn-primary">
    Ajouter un Produit
 </a>
 <br/><br/>
 <table class="table table-hover">
-    <tr><th>nom</th><th>prix</th><th>operation</th>
+    <tr><th>photo</th><th>nom</th><th>prix</th><th>operation</th>
     </tr>
     </thead>
 <?php foreach ($produits as $donnes): ?>
     <tr>
-  <td> <?php echo $donnes['nom']?> </td>
+    <td><img src="<?php echo base_url()?>assets/img/<?php echo $donnes['photo']?>" width="50" alt="photo"/></td>
+    <td><?php echo $donnes['nom']?> </td>
     <td><?php echo $donnes['prix']?></td>
         <td>
             <?php echo form_open('Affiche_Produit'); ?>
@@ -47,5 +47,6 @@
         </tr>
     </form>
 <?php endforeach; ?>
+
 </table>
 
