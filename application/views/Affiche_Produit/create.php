@@ -74,8 +74,6 @@ $uptypes=array(
         }
         //le nom de photo va changer à id_etu+$type
         move_uploaded_file($_FILES["upfile"]["tmp_name"],"assets/img/" . $nom);
-
-
         echo "</br>";
         ?>
         <td><img src="<?php echo base_url()?>assets/img/<?php echo $nom?>" width="50" alt="photo"/></td>

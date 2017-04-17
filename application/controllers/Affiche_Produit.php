@@ -64,12 +64,21 @@ class Affiche_Produit extends CI_Controller
         }
     }
 
-    function testProduit()
+    function type1Produit()
     {
-        $this->load->view('templates/header', $data);
-        $this->load->view('Affiche_Produit/test', $data);
-        $this->load->view('templates/footer');
-    }
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $data['type'] = $this->Affiche_Produit_Model->get_Type1Produits();
+        //$this->form_validation->set_rules('title', 'Title', 'required');
+        //if (empty($data['produits'])) {
+        //   show_404();
+        //}
+            $data['title'] = 'Information de Client';
+            $this->load->view('templates/header', $data);
+            $this->load->view('Affiche_Produit/type1', $data);
+            $this->load->view('templates/footer');
+        }
+
 
     function editProduit()
     {

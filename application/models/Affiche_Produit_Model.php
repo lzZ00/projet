@@ -48,8 +48,6 @@ class Affiche_Produit_Model extends CI_Model {
    /*     $sql = "SELECT * FROM produits WHERE id = '.$id' ";
         $query = $this->db->query($sql);
         return $query->row_array();*/
-
-
     }
 
     public function supprimer_unProduits($id)
@@ -67,6 +65,7 @@ class Affiche_Produit_Model extends CI_Model {
         $query = $this->db->get_where('produits', array('slug' => $slug));
         return $query->row_array();
     }
+
     public function updateProduit($id)
     {
         $this->load->helper('url');
@@ -79,4 +78,23 @@ class Affiche_Produit_Model extends CI_Model {
         $this->db->where('id', $id);
         $this->db->update('produits', $data);
     }
+
+    public function get_Type1Produits()
+    {
+        /*$query = $this->db->simple_query('SELECT id,nom,prix,photo FROM produits WHERE id = '.$id.'');
+     /*   return $query->row_array();
+        /*
+        $this->db->select('id,nom,prix,photo,typeProduit_id');
+        $this->db->from('produits');
+        $this->db->where('typeProduit_id',$typeid);
+        $query=$this->db->get();
+        return $query->row_array();*/
+        /*     $sql = "SELECT * FROM produits WHERE id = '.$id' ";
+             $query = $this->db->query($sql);
+             return $query->row_array();*/
+        $sql = "SELECT * FROM produits WHERE typeProduit_id = ? ";
+        $query = $this->db->query($sql, array(1));
+        return $query->result_array();
+    }
+
 }

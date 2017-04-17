@@ -37,15 +37,15 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">商品分类 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
-                        <li><a href="#">主食</a></li>
-                        <li><a href="#">休闲食品</a></li>
-                        <li><a href="#">方便面</a></li>
+                        <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>">主食</a></li>
+                        <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>">休闲食品</a></li>
+                        <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>">方便面</a></li>
+                        <li class="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>"></li>
+                        <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>">调料</a></li>
+                        <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>">即食品</a></li>
                         <li class="divider"></li>
-                        <li><a href="#">调料</a></li>
-                        <li><a href="#">即食品</a></li>
-                        <li class="divider"></li>
-                        <li><a href="#">干货</a></li>
-                        <li><a href="#">蔬菜</a></li>
+                        <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>">干货</a></li>
+                        <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>">蔬菜</a></li>
                     </ul>
                 </li>
                 <li><a href="#">新品上架</a></li>
