@@ -40,7 +40,7 @@
                         <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>">主食</a></li>
                         <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type2Produit') ?>">休闲食品</a></li>
                         <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type3Produit') ?>">方便面</a></li>
-                        <li class="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>"></li>
+                        <li class=""></li>
                         <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>">调料</a></li>
                         <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>">即食品</a></li>
                         <li class="divider"></li>

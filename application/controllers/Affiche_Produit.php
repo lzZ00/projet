@@ -110,6 +110,7 @@ class Affiche_Produit extends CI_Controller
     }
 
 
+
     function editProduit()
     {
         $this->load->helper('form');

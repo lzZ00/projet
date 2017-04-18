@@ -1,3 +1,4 @@
+
 <a href="<?php echo base_url('/index.php/Affiche_Produit/createProduit')?>" class="btn btn-primary">
     Ajouter un Produit
 </a>

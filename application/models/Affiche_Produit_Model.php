@@ -92,6 +92,7 @@ class Affiche_Produit_Model extends CI_Model {
         /*     $sql = "SELECT * FROM produits WHERE id = '.$id' ";
              $query = $this->db->query($sql);
              return $query->row_array();*/
+
         $sql = "SELECT * FROM produits WHERE typeProduit_id = ? ";
         $query = $this->db->query($sql, array($id));
         return $query->result_array();
