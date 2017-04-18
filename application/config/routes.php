@@ -72,6 +72,7 @@ $route['Affiche_Produit/editProduit'] = 'Affiche_Produit/editProduit';
 $route['Affiche_Produit/type1Produit'] = 'Affiche_Produit/type1Produit';
 $route['Affiche_Produit/type2Produit'] = 'Affiche_Produit/type2Produit';
 $route['Affiche_Produit/type3Produit'] = 'Affiche_Produit/type3Produit';
+$route['Affiche_Produit/test'] = 'Affiche_Produit/test';
 $route['Affiche_Produit/(:any)'] = 'Affiche_Produit/view/$1';
 $route['Affiche_Produit'] = 'Affiche_Produit';
 

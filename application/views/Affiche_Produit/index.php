@@ -2,7 +2,7 @@
    Ajouter un Produit
 </a>
 <br/><br/>
-<table class="table table-hover">
+<table class="table table-hover" style="width: 30%;float:left" >
     <tr><th>photo</th><th>nom</th><th>prix</th><th>operation</th>
     </tr>
     </thead>
@@ -35,18 +35,43 @@
                         </div>
                     </div>
                 </div>
-
-            </form><br/>
+            </form>
+            <br/>
             <?php echo form_open('Affiche_Produit/editProduit'); ?>
             <?php echo validation_errors(); ?>
             <input type="submit" value="Modifier" name="Modifier" class="btn btn-warning btn-xs">
             <?php $idM=$donnes['id']; ?>
             <input type="hidden" name="idM" value=<?php echo $idM;?>>
             </form>
+            <br/>
+            <?php echo form_open('Affiche_Produit/editProduit'); ?>
+            <?php echo validation_errors(); ?>
+            <input type="submit" value="Ajouter" name="Ajouter" class="btn btn-xs">
+            <?php $idM=$donnes['id']; ?>
+            <input type="hidden" name="idM" value=<?php echo $idM;?>>
         </td>
         </tr>
     </form>
 <?php endforeach; ?>
-
 </table>
+<div class="col-lg-6">
+    <table class="table-bordered table-responsive table col-lg-6 "style="float: right">
+        <caption style="text-align: center"> panier </caption>
+        <thead>
+        <tr><th>nom</th><th>quantite</th><th>prix</th><th>dateAjout</th><th>operation</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- {% for panier in Panierdata if Panierdata is not empty %}-->
+         <form method="post" action="">
+             <input name="id"  type="hidden" value=""/>
+             <tr>
+                 <td></td><td></td><td></td><td></td><td><a href="">supprimer</a></td>
+             </tr>
+             <!-- {% endfor %}-->
+             <td>
+                 <input class="btn btn-danger" input type="submit" name="addPanier" value="valider"/>
+             </td>
+         <tbody>
+     </table>
 
