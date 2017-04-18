@@ -68,7 +68,7 @@ class Affiche_Produit extends CI_Controller
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $data['type'] = $this->Affiche_Produit_Model->get_Type1Produits();
+        $data['produits'] = $this->Affiche_Produit_Model->get_Type1Produits(1);
         //$this->form_validation->set_rules('title', 'Title', 'required');
         //if (empty($data['produits'])) {
         //   show_404();
@@ -78,6 +78,36 @@ class Affiche_Produit extends CI_Controller
             $this->load->view('Affiche_Produit/type1', $data);
             $this->load->view('templates/footer');
         }
+
+    function type2Produit()
+    {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $data['produits'] = $this->Affiche_Produit_Model->get_Type1Produits(2);
+        //$this->form_validation->set_rules('title', 'Title', 'required');
+        //if (empty($data['produits'])) {
+        //   show_404();
+        //}
+        $data['title'] = 'Information de Client';
+        $this->load->view('templates/header', $data);
+        $this->load->view('Affiche_Produit/type1', $data);
+        $this->load->view('templates/footer');
+    }
+
+    function type3Produit()
+    {
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $data['produits'] = $this->Affiche_Produit_Model->get_Type1Produits(3);
+        //$this->form_validation->set_rules('title', 'Title', 'required');
+        //if (empty($data['produits'])) {
+        //   show_404();
+        //}
+        $data['title'] = 'Information de Client';
+        $this->load->view('templates/header', $data);
+        $this->load->view('Affiche_Produit/type1', $data);
+        $this->load->view('templates/footer');
+    }
 
 
     function editProduit()

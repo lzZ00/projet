@@ -79,7 +79,7 @@ class Affiche_Produit_Model extends CI_Model {
         $this->db->update('produits', $data);
     }
 
-    public function get_Type1Produits()
+    public function get_Type1Produits($id)
     {
         /*$query = $this->db->simple_query('SELECT id,nom,prix,photo FROM produits WHERE id = '.$id.'');
      /*   return $query->row_array();
@@ -93,7 +93,7 @@ class Affiche_Produit_Model extends CI_Model {
              $query = $this->db->query($sql);
              return $query->row_array();*/
         $sql = "SELECT * FROM produits WHERE typeProduit_id = ? ";
-        $query = $this->db->query($sql, array(1));
+        $query = $this->db->query($sql, array($id));
         return $query->result_array();
     }
 
