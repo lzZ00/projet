@@ -14,6 +14,7 @@ class Affiche_Produit extends CI_Controller
         parent::__construct();
         $this->load->model('Affiche_Produit_Model');
         $this->load->model('Signup_Signin_Model');
+        $this->load->model('Affiche_Panier_Model');
         $this->load->helper('url_helper');
     }
 
@@ -22,6 +23,7 @@ class Affiche_Produit extends CI_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
         $data['produits'] = $this->Affiche_Produit_Model->get_produit();
+        $data['paniers'] = $this->Affiche_Panier_Model->getAllPanier(1);
         //$this->form_validation->set_rules('title', 'Title', 'required');
         //if (empty($data['produits'])) {
         //   show_404();
@@ -41,7 +43,22 @@ class Affiche_Produit extends CI_Controller
             $this->load->view('Affiche_Produit/index', $data);
             $this->load->view('templates/footer');
         }
+/*        if (isset($_POST['Ajouter'])) {
+            echo 'success';
+            echo $_POST['idA'];
+            $produit = $this->Affiche_Produit_Model->get_unProduits($_POST['idA']);;
+            $this->Affiche_Panier_Model->addProduit($produit);
+            $this->load->view('templates/header', $data);
+            $this->load->view('Affiche_Produit/index', $data);
+            $this->load->view('templates/footer');
+            redirect(base_url('/index.php/Affiche_Produit/'));
 
+        } else {
+            $data['title'] = 'Information de Client';
+            $this->load->view('templates/header', $data);
+            $this->load->view('Affiche_Produit/index', $data);
+            $this->load->view('templates/footer');
+        }*/
     }
 
     public function createProduit()
@@ -126,6 +143,27 @@ class Affiche_Produit extends CI_Controller
             $id = $this->input->post('idM');
             $this->Affiche_Produit_Model->updateProduit($id);
             redirect(base_url('/index.php/Affiche_Produit/'));
+        }
+    }
+
+    function addProduit(){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        if (isset($_POST['Ajouter'])) {
+            echo 'success';
+            echo $_POST['idA'];
+            $produit = $this->Affiche_Produit_Model->get_unProduits($_POST['idA']);;
+            $this->Affiche_Panier_Model->addProduit($produit);
+            $this->load->view('templates/header');
+            $this->load->view('Affiche_Produit/index');
+            $this->load->view('templates/footer');
+            redirect(base_url('/index.php/Affiche_Produit/'));
+
+        } else {
+            $data['title'] = 'Information de Client';
+            $this->load->view('templates/header');
+            $this->load->view('Affiche_Produit/index');
+            $this->load->view('templates/footer');
         }
     }
 

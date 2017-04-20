@@ -44,11 +44,11 @@
             <input type="hidden" name="idM" value=<?php echo $idM;?>>
             </form>
             <br/>
-            <?php echo form_open('Affiche_Produit/editProduit'); ?>
+            <?php echo form_open('Affiche_Produit/addProduit'); ?>
             <?php echo validation_errors(); ?>
             <input type="submit" value="Ajouter" name="Ajouter" class="btn btn-xs">
-            <?php $idM=$donnes['id']; ?>
-            <input type="hidden" name="idM" value=<?php echo $idM;?>>
+            <?php $idA=$donnes['id']; ?>
+            <input type="hidden" name="idA" value=<?php echo $idA;?>>
         </td>
         </tr>
     </form>
@@ -61,17 +61,16 @@
         <tr><th>nom</th><th>quantite</th><th>prix</th><th>dateAjout</th><th>operation</th>
         </tr>
         </thead>
+        <?php foreach ($paniers as $donnes): ?>
         <tbody>
         <!-- {% for panier in Panierdata if Panierdata is not empty %}-->
          <form method="post" action="">
              <input name="id"  type="hidden" value=""/>
              <tr>
-                 <td></td><td></td><td></td><td></td><td><a href="">supprimer</a></td>
+                 <td><?php echo $donnes['nom']?> </td><td><?php echo $donnes['quantite']?> </td><td><?php echo $donnes['prix']?></td><td><?php echo $donnes['dateAjoutPanier']?> </td><td><a href="">supprimer</a></td>
              </tr>
              <!-- {% endfor %}-->
-             <td>
-                 <input class="btn btn-danger" input type="submit" name="addPanier" value="valider"/>
-             </td>
          <tbody>
+        <?php endforeach; ?>
      </table>
 
