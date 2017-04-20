@@ -168,6 +168,14 @@ class Affiche_Produit extends CI_Controller
             $this->load->view('templates/footer');
         }
     }
+    function delete_PanierProduit(){
+        $id = $this->input->get('id');
+        echo $id;
+        $this->Affiche_Panier_Model->deleteProduit($id);
+        redirect(base_url('/index.php/Affiche_Produit/'));
+
+    }
+
 
 }
 

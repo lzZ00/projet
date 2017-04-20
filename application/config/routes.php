@@ -66,7 +66,7 @@ $route['news'] = 'news';
 $route['Affiche_Client/(:any)'] = 'Affiche_Client/view/$1';
 $route['Affiche_Client']='Affiche_Client';
 
-
+$route['Affiche_Produit/delete_PanierProduit'] = 'Affiche_Produit/delete_PanierProduit';
 $route['Affiche_Produit/createProduit'] = 'Affiche_Produit/createProduit';
 $route['Affiche_Produit/editProduit'] = 'Affiche_Produit/editProduit';
 $route['Affiche_Produit/addProduit'] = 'Affiche_Produit/addProduit';
@@ -77,9 +77,6 @@ $route['Affiche_Produit/test'] = 'Affiche_Produit/test';
 $route['Affiche_Produit/(:any)'] = 'Affiche_Produit/view/$1';
 $route['Affiche_Produit'] = 'Affiche_Produit';
 
-$route['Affiche_Painer/addProduit'] = 'Affiche_Panier/addProduit';
-$route['Affiche_Painer/(:any)'] = 'Affiche_Painer/view/$1';
-$route['Affiche_Painer'] = 'Affiche_Painer';
 
 $route['user/login'] = 'user/login';
 $route['user/logout'] = 'user/logout';
@@ -88,6 +85,10 @@ $route['user'] = 'user';
 
 $route['test/(:any)'] = 'test/view/$1';
 $route['test'] = 'test';
+
+$route['panier/addProduit'] = 'panier/addProduit';
+$route['panier/(:any)'] = 'panier/view/$1';
+$route['panier'] = 'panier';
 
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';

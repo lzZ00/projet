@@ -65,9 +65,10 @@
         <tbody>
         <!-- {% for panier in Panierdata if Panierdata is not empty %}-->
          <form method="post" action="">
-             <input name="id"  type="hidden" value=""/>
+             <input name="id" type="hidden" value=""/>
              <tr>
-                 <td><?php echo $donnes['nom']?> </td><td><?php echo $donnes['quantite']?> </td><td><?php echo $donnes['prix']?></td><td><?php echo $donnes['dateAjoutPanier']?> </td><td><a href="">supprimer</a></td>
+                 <td><?php echo $donnes['nom']?> </td><td><?php echo $donnes['quantite']?> </td><td><?php echo $donnes['prix']?></td><td><?php echo $donnes['dateAjoutPanier']?> </td>
+                 <td>  <a href="<?php echo site_url('Affiche_Produit/delete_PanierProduit');?>?id=<?php echo $donnes['id'];?>">删除</a></td>
              </tr>
              <!-- {% endfor %}-->
          <tbody>
