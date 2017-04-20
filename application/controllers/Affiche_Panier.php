@@ -16,8 +16,32 @@ class Affiche_Painer extends CI_Controller
         $this->load->helper('url_helper');
     }
 
-    public function showUserPanier() {
-        $data['paniers'] = $this->Affiche_Panier_Model->getAllPanier(1);
+    public function index() {
+        $user = $this->session->userdata('user');
+        $data['paniers'] = $this->Affiche_Panier_Model->getAllPanier($user);
+        $this->load->view('templates/header', $data);
+        $this->load->view('Affiche_Produit/index', $data);
+        $this->load->view('templates/footer');
+    }
+    function addProduit(){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        if (isset($_POST['Ajouter'])) {
+            echo 'success';
+            echo $_POST['idA'];
+            $user = $this->session->userdata('user');
+            $produit = $this->Affiche_Produit_Model->get_unProduits($_POST['idA']);;
+            $this->Affiche_Panier_Model->addProduit($user,$produit);
+            $this->load->view('templates/header');
+            $this->load->view('Affiche_Produit/index');
+            $this->load->view('templates/footer');
+            redirect(base_url('/index.php/Affiche_Produit/'));
 
+        } else {
+            $data['title'] = 'Information de Client';
+            $this->load->view('templates/header');
+            $this->load->view('Affiche_Produit/index');
+            $this->load->view('templates/footer');
+        }
     }
 }

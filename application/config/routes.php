@@ -77,10 +77,17 @@ $route['Affiche_Produit/test'] = 'Affiche_Produit/test';
 $route['Affiche_Produit/(:any)'] = 'Affiche_Produit/view/$1';
 $route['Affiche_Produit'] = 'Affiche_Produit';
 
+$route['Affiche_Painer/addProduit'] = 'Affiche_Panier/addProduit';
+$route['Affiche_Painer/(:any)'] = 'Affiche_Painer/view/$1';
+$route['Affiche_Painer'] = 'Affiche_Painer';
+
 $route['user/login'] = 'user/login';
 $route['user/logout'] = 'user/logout';
-$route['user/(:any)'] = 'login/view/$1';
+$route['user/(:any)'] = 'user/view/$1';
 $route['user'] = 'user';
+
+$route['test/(:any)'] = 'test/view/$1';
+$route['test'] = 'test';
 
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
