@@ -23,7 +23,8 @@ class Affiche_Produit extends CI_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
         $data['produits'] = $this->Affiche_Produit_Model->get_produit();
-        $data['paniers'] = $this->Affiche_Panier_Model->getAllPanier(1);
+        $user = $this->session->userdata('user');
+        $data['paniers'] = $this->Affiche_Panier_Model->getAllPanier($user);
         //$this->form_validation->set_rules('title', 'Title', 'required');
         //if (empty($data['produits'])) {
         //   show_404();
@@ -152,8 +153,9 @@ class Affiche_Produit extends CI_Controller
         if (isset($_POST['Ajouter'])) {
             echo 'success';
             echo $_POST['idA'];
+            $user = $this->session->userdata('user');
             $produit = $this->Affiche_Produit_Model->get_unProduits($_POST['idA']);;
-            $this->Affiche_Panier_Model->addProduit($produit);
+            $this->Affiche_Panier_Model->addProduit($user,$produit);
             $this->load->view('templates/header');
             $this->load->view('Affiche_Produit/index');
             $this->load->view('templates/footer');
