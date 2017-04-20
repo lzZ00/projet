@@ -60,9 +60,18 @@
             <div class=" col-md-2 col-md-offset-0.5">
             </div>
             <ul class="nav navbar-nav">
-                <li><a href="#" type="button" data-toggle="modal" data-target="#signup" >注册</a></li>
-                <li><a href="#" type="button" data-toggle="modal" data-target="#signin" >登录</a></li>
+                <?php $user = $this->session->userdata('user');?>
+                <?php if (empty($user)) :?>
+                    <p>您好，欢迎来到<b>Chez Lei商城</b>
+                    <li><a href="#" type="button" data-toggle="modal" data-target="#signup" >注册</a></li>
+                    <li><a href="#" type="button" data-toggle="modal" data-target="#signin" >登录</a></li>
+                <?php else :?>
+                    <p><?php echo $user['login'];?>,您好，欢迎来到<b>Chez Lei</b> [<a href="<?php echo site_url('user/logout');?>">注销</a>]</p>
+                <?php endif;?>
             </ul>
+            <div class=" col-md-2 col-md-offset-0.5" style="float: right" >
+
+            </div>
         </div>
     </div>
 </nav>
@@ -109,10 +118,10 @@
                 <h4 class="modal-title" id="myModalLabel">登录</h4>
             </div>
             <div class="modal-body">
-                <?php echo form_open(''); ?>
-                <input type="text" class="form-control" placeholder="邮箱">
+                <?php echo form_open('user/login'); ?>
+                <input type="text" class="form-control" name="email" placeholder="邮箱">
                 </br>
-                <input type="password" class="form-control" placeholder="密码">
+                <input type="password" class="form-control" name="password" placeholder="密码">
 
             </div>
             <div class="modal-footer">
