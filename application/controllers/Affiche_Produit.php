@@ -154,8 +154,17 @@ class Affiche_Produit extends CI_Controller
             echo 'success';
             echo $_POST['idA'];
             $user = $this->session->userdata('user');
-            $produit = $this->Affiche_Produit_Model->get_unProduits($_POST['idA']);;
-            $this->Affiche_Panier_Model->addProduit($user,$produit);
+            $panier = $this->Affiche_Panier_Model->getUnPanier($_POST['idA'],$user);
+            if (($panier ==null) || ($panier['commande_id'] != null )){
+                $produit = $this->Affiche_Produit_Model->get_unProduits($_POST['idA']);
+                $this->Affiche_Panier_Model->addProduit($user,$produit);
+            }
+            else{
+                $quantite=1;
+                $panier = $this->Affiche_Panier_Model->getUnPanier($_POST['idA'],$user);
+                $produit = $this->Affiche_Produit_Model->get_unProduits($_POST['idA']);
+                $this->Affiche_Panier_Model->updatePanier($panier,$quantite,$produit);
+            }
             $this->load->view('templates/header');
             $this->load->view('Affiche_Produit/index');
             $this->load->view('templates/footer');
