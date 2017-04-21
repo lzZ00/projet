@@ -55,6 +55,11 @@
             <?php if ( $user['droit']!='DROITadmin' && !empty($user)) :?>
             <?php echo form_open('Affiche_Produit/addProduit'); ?>
             <?php echo validation_errors(); ?>
+            <select name="quantite">
+                <?php for($i=1;$i<=7;$i++){ ?>
+                    <option value="<?php  echo $i ; ?>"><?php echo $i; ?></option>
+                <?php } ?>
+                </select>
             <input type="submit" value="Ajouter" name="Ajouter" class="btn btn-xs">
             <?php $idA=$donnes['id']; ?>
             <input type="hidden" name="idA" value=<?php echo $idA;?>>

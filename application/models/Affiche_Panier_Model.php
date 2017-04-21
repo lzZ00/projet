@@ -27,9 +27,9 @@ class Affiche_Panier_Model extends CI_Model
         $query=$this->db->get();
         return $query->row_array();
     }
-    public function addProduit($user,$produit){
+    public function addProduit($user,$produit,$quantite){
         $this->load->helper('url');
-        $this->db->set('quantite', '1');
+        $this->db->set('quantite', $quantite);
         $this->db->set('prix',$produit['prix']);
         $this->db->set('produit_id',  $produit['id']);
         $this->db->set('user_id', $user['id']);
