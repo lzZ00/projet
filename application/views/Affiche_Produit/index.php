@@ -55,8 +55,8 @@
             <?php if ( $user['droit']!='DROITadmin' && !empty($user)) :?>
             <?php echo form_open('Affiche_Produit/addProduit'); ?>
             <?php echo validation_errors(); ?>
-            <select name="quantite">
-                <?php for($i=1;$i<=7;$i++){ ?>
+            <select name="quantite" class="form-control" style="width: 30%">
+                <?php for($i=1;$i<=10;$i++){ ?>
                     <option value="<?php  echo $i ; ?>"><?php echo $i; ?></option>
                 <?php } ?>
                 </select>
