@@ -3,7 +3,11 @@
 </a>
 <br/><br/>
 <table class="table table-hover" style="width: 30%;float:left" >
-    <tr><th>photo</th><th>nom</th><th>prix</th><th>operation</th>
+    <tr><th>photo</th><th>nom</th><th>prix</th>
+        <?php $user = $this->session->userdata('user');?>
+        <?php if ( $user['droit']!='DROITadmin' && !empty($user)) :?>
+        <th>operation</th>
+        <?php endif;?>
     </tr>
     </thead>
 <?php foreach ($produits as $donnes): ?>
@@ -12,6 +16,8 @@
     <td><?php echo $donnes['nom']?> </td>
     <td><?php echo $donnes['prix']?></td>
         <td>
+    <?php $user = $this->session->userdata('user');?>
+    <?php if ( $user['droit']=='DROITadmin' && !empty($user)) :?>
             <?php echo form_open('Affiche_Produit'); ?>
                 <?php echo validation_errors(); ?>
                 <?php $idS=$donnes['id']; ?>
@@ -43,7 +49,10 @@
             <?php $idM=$donnes['id']; ?>
             <input type="hidden" name="idM" value=<?php echo $idM;?>>
             </form>
+    <?php endif;?>
             <br/>
+            <?php $user = $this->session->userdata('user');?>
+            <?php if ( $user['droit']!='DROITadmin' && !empty($user)) :?>
             <?php echo form_open('Affiche_Produit/addProduit'); ?>
             <?php echo validation_errors(); ?>
             <input type="submit" value="Ajouter" name="Ajouter" class="btn btn-xs">
@@ -52,8 +61,11 @@
         </td>
         </tr>
     </form>
+    <?php endif;?>
 <?php endforeach; ?>
 </table>
+<?php $user = $this->session->userdata('user');?>
+<?php if ( $user['droit']!='DROITadmin' && !empty($user)) :?>
 <div class="col-lg-6">
     <table class="table-bordered table-responsive table col-lg-6 "style="float: right">
         <caption style="text-align: center"> panier </caption>
@@ -74,4 +86,4 @@
          <tbody>
         <?php endforeach; ?>
      </table>
-
+    <?php endif;?>
