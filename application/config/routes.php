@@ -83,8 +83,8 @@ $route['user/logout'] = 'user/logout';
 $route['user/(:any)'] = 'user/view/$1';
 $route['user'] = 'user';
 
-$route['test/(:any)'] = 'test/view/$1';
-$route['test'] = 'test';
+$route['commande/(:any)'] = 'commande/view/$1';
+$route['commande'] = 'commande';
 
 $route['panier/addProduit'] = 'panier/addProduit';
 $route['panier/(:any)'] = 'panier/view/$1';
