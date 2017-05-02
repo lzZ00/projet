@@ -84,7 +84,7 @@
         <?php foreach ($paniers as $donnes): ?>
         <tbody>
         <!-- {% for panier in Panierdata if Panierdata is not empty %}-->
-         <form method="post" action="<?php echo site_url('news')?>"">
+         <form method="post" action="<?php echo site_url('commande')?>"">
              <input name="id" type="hidden" value="<?php echo $donnes['id'] ?>"/>
              <tr>
                  <td><?php echo $donnes['nom']?></td><td><?php echo $donnes['quantite']?> </td><td><?php echo $donnes['prix']?></td><td><?php echo $donnes['dateAjoutPanier']?> </td>

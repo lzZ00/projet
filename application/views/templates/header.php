@@ -67,6 +67,7 @@
                     <li><a href="#" type="button" data-toggle="modal" data-target="#signin" >登录</a></li>
                 <?php else :?>
                     <p><?php echo $user['login'];?>,您好，欢迎来到<b>Chez Lei</b> [<a href="<?php echo site_url('user/logout');?>">注销</a>]</p>
+                    <li><a href="#" type="button" data-toggle="modal" data-target="#signin" >购物车</a></li>
                     <li><a href="#" type="button" data-toggle="modal" data-target="#signin" >我的订单</a></li>
                 <?php endif;?>
             </ul>
