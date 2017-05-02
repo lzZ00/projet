@@ -83,6 +83,7 @@ $route['user/logout'] = 'user/logout';
 $route['user/(:any)'] = 'user/view/$1';
 $route['user'] = 'user';
 
+$route['commande/detail'] = 'commande/detail';
 $route['commande/(:any)'] = 'commande/view/$1';
 $route['commande'] = 'commande';
 

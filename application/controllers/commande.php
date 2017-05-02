@@ -24,4 +24,11 @@ class commande extends CI_Controller
         $this->load->view('Affiche_Commande/index', $data);
     }
 
+    function detail(){
+        $id = $this->input->get('id');
+        echo $id;
+        $data['commande'] = $this->Affiche_Commande_Model->Affiche_Commande_Model($id);
+        $this->load->view('Affiche_Commande/detail', $data);
+    }
+
 }

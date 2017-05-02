@@ -12,7 +12,7 @@
         <input name="id" type="hidden" value="<?php echo $donnes['id'] ?>"/>
         <tr>
             <td><?php echo $donnes['id']?></td><td><?php echo $donnes['prix']?> </td><td><?php echo $donnes['date_achat']?></td><td><?php echo $donnes['libelle']?> </td>
-            <td>  <a href="">删除</a></td>
+            <td>  <a href="<?php echo site_url('commande/detail');?>?id=<?php echo $donnes['id'];?>">detail</a></td>
         </tr><!-- {% endfor %}-->
         <?php endforeach; ?>
         <tbody>

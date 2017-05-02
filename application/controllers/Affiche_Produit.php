@@ -185,7 +185,6 @@ class Affiche_Produit extends CI_Controller
         echo $id;
         $this->Affiche_Panier_Model->deleteProduit($id);
         redirect(base_url('/index.php/Affiche_Produit/'));
-
     }
 
 
