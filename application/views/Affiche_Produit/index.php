@@ -92,7 +92,7 @@
              </tr><!-- {% endfor %}-->
         <?php endforeach; ?>
         <tbody>
-        <td>prix total:<?php echo $prix['prix']?></td>
+        <tr><th>prix total</th><td><?php echo $prix['prix']?></td></tr>
         <td style="position: absolute">
             <input class="btn btn-success" input type="submit" name="valider" value="valider"/>
      </table>
