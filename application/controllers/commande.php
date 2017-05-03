@@ -19,16 +19,31 @@ class commande extends CI_Controller
 
     public function index()
     {
-        $data['commande'] = $this->Affiche_Commande_Model->getAllCommande();
-
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $user = $this->session->userdata('user');
+        $prix = $this->Affiche_Commande_Model->getPrixTotal($user);
+        $date = date('Y-m-d H;i;s');
+        $this->Affiche_Commande_Model->creerCommande($user,$prix['prix'],$date);
+        $data['commande'] = $this->Affiche_Commande_Model->getCommande($user);
+        $this->load->view('templates/header', $data);
         $this->load->view('Affiche_Commande/index', $data);
+        $this->load->view('templates/footer');
+    }
+    public function showUserCommande()
+    {
+
+
     }
 
     function detail(){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
         $id = $this->input->get('id');
-        echo $id;
-        $data['commande'] = $this->Affiche_Commande_Model->Affiche_Commande_Model($id);
+        $data['commande'] = $this->Affiche_Commande_Model->getCommandeDetail($id);
+        $this->load->view('templates/header', $data);
         $this->load->view('Affiche_Commande/detail', $data);
+        $this->load->view('templates/footer');
     }
 
 }

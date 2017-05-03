@@ -23,7 +23,7 @@ class Affiche_Painer extends CI_Controller
         $this->load->view('Affiche_Produit/index', $data);
         $this->load->view('templates/footer');
     }
-    function addProduit(){
+/*    function addProduit(){
         $this->load->helper('form');
         $this->load->library('form_validation');
         if (isset($_POST['Ajouter'])) {
@@ -43,5 +43,5 @@ class Affiche_Painer extends CI_Controller
             $this->load->view('Affiche_Produit/index');
             $this->load->view('templates/footer');
         }
-    }
+    }*/
 }

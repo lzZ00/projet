@@ -1,6 +1,6 @@
 
 <div class="col-lg-6">
-    <table style="float: right">
+    <table class="table">
         <caption style="text-align: center"> commande </caption>
         <thead>
         <tr><th>Commandes</th></th><th>prix</th><th>dateAchat</th><th>Etat</th>
@@ -15,7 +15,6 @@
             <td>  <a href="<?php echo site_url('commande/detail');?>?id=<?php echo $donnes['id'];?>">detail</a></td>
         </tr><!-- {% endfor %}-->
         <?php endforeach; ?>
-        <tbody>
-        <input class="btn btn-success" input type="submit" name="valider" value="valider"/>
-
+        </tbody>
     </table>
+    </div>

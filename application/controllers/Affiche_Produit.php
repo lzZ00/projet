@@ -162,8 +162,6 @@ class Affiche_Produit extends CI_Controller
             }
             else{
                 $quantite=$_POST['quantite'];
-            /*    var_dump($quantite);
-                die();*/
                 $panier = $this->Affiche_Panier_Model->getUnPanier($_POST['idA'],$user);
                 $produit = $this->Affiche_Produit_Model->get_unProduits($_POST['idA']);
                 $this->Affiche_Panier_Model->updatePanier($panier,$quantite,$produit);
