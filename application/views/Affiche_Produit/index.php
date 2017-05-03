@@ -4,7 +4,7 @@
 <br/><br/>
 
 <div class="row" col-md-2 col-md-offset-3>
-        <table class="table table-hover" style="width: 30%;float:left" >
+        <table class="table table-hover" style="width: 30%;" >
             <tr><th>photo</th><th>nom</th><th>prix</th>
                 <?php $user = $this->session->userdata('user');?>
                 <?php if ( $user['droit']!='DROITadmin' && !empty($user)) :?>
