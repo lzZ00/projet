@@ -69,8 +69,8 @@
                 <?php else :?>
                     <p><?php echo $user['login'];?>,您好，欢迎来到<b>Chez Lei</b> [<a href="<?php echo site_url('user/logout');?>">注销</a>]</p>
                     <li><a href="<?php echo site_url('Affiche_Produit');?>">首页</a></li>
-                    <li><a href="<?php echo site_url('Affiche_Produit');?>">购物车</a></li>
-                    <li><a href="<?php echo site_url('Affiche_Produit');?>">我的订单</a></li>
+                    <li><a href="<?php echo site_url('Affiche_Panier');?>">购物车</a></li>
+                    <li><a href="<?php echo site_url('commande');?>">我的订单</a></li>
                 <?php endif;?>
             </ul>
             <div class=" col-md-2 col-md-offset-0.5" style="float: right" >

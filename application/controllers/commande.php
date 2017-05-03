@@ -22,9 +22,6 @@ class commande extends CI_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
         $user = $this->session->userdata('user');
-        $prix = $this->Affiche_Commande_Model->getPrixTotal($user);
-        $date = date('Y-m-d H;i;s');
-        $this->Affiche_Commande_Model->creerCommande($user,$prix['prix'],$date);
         $data['commande'] = $this->Affiche_Commande_Model->getCommande($user);
         $this->load->view('templates/header', $data);
         $this->load->view('Affiche_Commande/index', $data);
@@ -32,8 +29,18 @@ class commande extends CI_Controller
     }
     public function showUserCommande()
     {
+        $user = $this->session->userdata('user');
+        $data['commande'] = $this->Affiche_Commande_Model->getCommande($user);
 
-
+    }
+    public function creerCommande(){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $user = $this->session->userdata('user');
+        $prix = $this->Affiche_Commande_Model->getPrixTotal($user);
+        $date = date('Y-m-d H;i;s');
+        $this->Affiche_Commande_Model->creerCommande($user,$prix['prix'],$date);
+        redirect(base_url('/index.php/Affiche_Produit/'));
     }
 
     function detail(){

@@ -63,6 +63,7 @@ $route['news/test'] = 'news/test';
 $route['news/(:any)'] = 'news/view/$1';
 $route['news'] = 'news';
 
+
 $route['Affiche_Client/(:any)'] = 'Affiche_Client/view/$1';
 $route['Affiche_Client']='Affiche_Client';
 
@@ -83,13 +84,15 @@ $route['user/logout'] = 'user/logout';
 $route['user/(:any)'] = 'user/view/$1';
 $route['user'] = 'user';
 
+$route['commande/creerCommande'] = 'commande/creerCommande';
 $route['commande/detail'] = 'commande/detail';
 $route['commande/(:any)'] = 'commande/view/$1';
 $route['commande'] = 'commande';
 
-$route['panier/addProduit'] = 'panier/addProduit';
-$route['panier/(:any)'] = 'panier/view/$1';
-$route['panier'] = 'panier';
+
+$route['Affiche_Panier/(:any)'] = 'Affiche_Panier/view/$1';
+$route['Affiche_Panier'] = 'panier';
+
 
 $route['(:any)'] = 'pages/view/$1';
 $route['default_controller'] = 'pages/view';
