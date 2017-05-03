@@ -15,6 +15,7 @@ class Affiche_Produit extends CI_Controller
         $this->load->model('Affiche_Produit_Model');
         $this->load->model('Signup_Signin_Model');
         $this->load->model('Affiche_Panier_Model');
+        $this->load->model('Affiche_Commande_Model');
         $this->load->helper('url_helper');
     }
 
@@ -25,6 +26,7 @@ class Affiche_Produit extends CI_Controller
         $data['produits'] = $this->Affiche_Produit_Model->get_produit();
         $user = $this->session->userdata('user');
         $data['paniers'] = $this->Affiche_Panier_Model->getAllPanier($user);
+        $data['prix'] = $this->Affiche_Commande_Model->getPrixTotal($user);
         //$this->form_validation->set_rules('title', 'Title', 'required');
         //if (empty($data['produits'])) {
         //   show_404();
