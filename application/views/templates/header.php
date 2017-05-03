@@ -33,7 +33,7 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
-                <li><a href="#">首页 <span class="sr-only">(current)</span></a></li>
+                <li><a href="<?php echo site_url('Affiche_Produit');?>">首页 <span class="sr-only">(current)</span></a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">商品分类 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
@@ -65,10 +65,10 @@
                     <p>您好，欢迎来到<b>Chez Lei商城</b>
                     <li><a href="#" type="button" data-toggle="modal" data-target="#signup" >注册</a></li>
                     <li><a href="#" type="button" data-toggle="modal" data-target="#signin" >登录</a></li>
-                    <li><a href="<?php echo site_url('Affiche_Produit');?>">首页</a></li>
+
                 <?php else :?>
                     <p><?php echo $user['login'];?>,您好，欢迎来到<b>Chez Lei</b> [<a href="<?php echo site_url('user/logout');?>">注销</a>]</p>
-                    <li><a href="<?php echo site_url('Affiche_Produit');?>">首页</a></li>
+
                     <li><a href="<?php echo site_url('Affiche_Panier');?>">购物车</a></li>
                     <li><a href="<?php echo site_url('commande');?>">我的订单</a></li>
                 <?php endif;?>

@@ -4,7 +4,11 @@
 </a>
 <br/><br/>
 <table class="table table-hover">
-    <tr><th>photo</th><th>nom</th><th>prix</th><th>operation</th>
+    <tr><th>photo</th><th>nom</th><th>prix</th>
+        <?php $user = $this->session->userdata('user');?>
+        <?php if ( $user['droit']=='DROITadmin') :?>
+        <th>operation</th>
+        <?php endif;?>
     </tr>
     </thead>
     <?php foreach ($produits as $donnes): ?>
@@ -16,6 +20,8 @@
                 <?php echo form_open('Affiche_Produit'); ?>
                 <?php echo validation_errors(); ?>
                 <?php $idS=$donnes['id']; ?>
+        <?php $user = $this->session->userdata('user');?>
+        <?php if ( $user['droit']=='DROITadmin') :?>
                 <a href="#" type="button" data-toggle="modal" data-target="#supprimerm<?php echo $idS;?>"class="btn btn-danger btn-xs" >删除</a>
                 <input type="hidden" name="idS" value=<?php echo $idS;?>>
                 <!-- 删除确认的弹窗-->
@@ -36,17 +42,22 @@
                         </div>
                     </div>
                 </div>
+        <?php endif;?>
 
                 </form><br/>
+                <?php $user = $this->session->userdata('user');?>
+                <?php if ( $user['droit']=='DROITadmin') :?>
                 <?php echo form_open('Affiche_Produit/editProduit'); ?>
                 <?php echo validation_errors(); ?>
                 <input type="submit" value="Modifier" name="Modifier" class="btn btn-warning btn-xs">
                 <?php $idM=$donnes['id']; ?>
                 <input type="hidden" name="idM" value=<?php echo $idM;?>>
+                <?php endif;?>
                 </form>
             </td>
         </tr>
         </form>
     <?php endforeach; ?>
+
 
 </table>
