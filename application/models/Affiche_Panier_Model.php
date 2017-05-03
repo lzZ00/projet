@@ -36,7 +36,6 @@ class Affiche_Panier_Model extends CI_Model
         $this->db->insert('paniers');
     }
 
-
     public function deleteProduit($id){
         $this->db->simple_query('DELETE FROM paniers WHERE id='.$id.'');
     }
