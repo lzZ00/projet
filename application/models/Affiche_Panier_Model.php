@@ -36,12 +36,13 @@ class Affiche_Panier_Model extends CI_Model
             foreach ($query->result_array() as $produit_old){
                 $id=$produit_old['id'];
                 $quantite_old=$produit_old['quantite'];
-
             }
             $quantite=$quantite_old+$quantite;
+            $prix=$produit['prix'] * $quantite;
 
             $data = array(
-                'quantite'  => $quantite
+                'quantite'  => $quantite,
+                'prix'=>$prix
             );
             $this->db->where('id', $id);
             $this->db->update('paniers', $data);
