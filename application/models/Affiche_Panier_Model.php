@@ -29,11 +29,30 @@ class Affiche_Panier_Model extends CI_Model
     }
     public function addProduit($user,$produit,$quantite){
         $this->load->helper('url');
-        $this->db->set('quantite', $quantite);
-        $this->db->set('prix',$produit['prix']* $quantite);
-        $this->db->set('produit_id',  $produit['id']);
-        $this->db->set('user_id', $user['id']);
-        $this->db->insert('paniers');
+        $sql="select id,produit_id,quantite from paniers where  user_id=".$user['id']." and commande_id is NULL and produit_id=".$produit['id']."";
+        $query = $this->db->query($sql,array($user['id']));
+
+        if($query->row_array()!=null){
+            foreach ($query->result_array() as $produit_old){
+                $id=$produit_old['id'];
+                $quantite_old=$produit_old['quantite'];
+
+            }
+            $quantite=$quantite_old+$quantite;
+
+            $data = array(
+                'quantite'  => $quantite
+            );
+            $this->db->where('id', $id);
+            $this->db->update('paniers', $data);
+
+        }else {
+            $this->db->set('quantite', $quantite);
+            $this->db->set('prix', $produit['prix'] * $quantite);
+            $this->db->set('produit_id', $produit['id']);
+            $this->db->set('user_id', $user['id']);
+            $this->db->insert('paniers');
+        }
     }
 
     public function deleteProduit($id){
