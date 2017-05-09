@@ -110,11 +110,13 @@
                  <td><?php echo $donnes['prix']?></td><td><?php echo $donnes['dateAjoutPanier']?> </td>
                  <td>  <a href="<?php echo site_url('Affiche_Produit/delete_PanierProduit');?>?id=<?php echo $donnes['id'];?>">删除</a></td>
              </tr><!-- {% endfor %}-->
+        <input name="produit_id" type="hidden" value="<?php echo $donnes['produit_id'] ?>"/>
         <?php endforeach; ?>
         <tbody>
         <tr><th>prix total</th><td><?php echo $prix['prix']?></td></tr>
         <td style="position: absolute">
             <input class="btn btn-success" input type="submit" name="valider" value="valider"/>
+
      </table>
     <?php endif;?>
 

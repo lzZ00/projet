@@ -14,7 +14,7 @@ class Affiche_Panier_Model extends CI_Model
     }
     public function getAllPanier($user)
     {
-        $sql = "SELECT paniers.id,paniers.quantite,paniers.prix,paniers.dateAjoutPanier,produits.nom FROM 
+        $sql = "SELECT paniers.id,paniers.quantite,paniers.prix,paniers.dateAjoutPanier,produits.nom,paniers.produit_id FROM 
                 paniers INNER JOIN produits ON produits.id=paniers.produit_id WHERE paniers.user_id = ? and paniers.commande_id is null";
         $query = $this->db->query($sql,array( $user['id']));
         return $query->result_array();

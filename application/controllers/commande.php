@@ -39,8 +39,18 @@ class commande extends CI_Controller
         $user = $this->session->userdata('user');
         $prix = $this->Affiche_Commande_Model->getPrixTotal($user);
         $date = date('Y-m-d H;i;s');
+        $this->Affiche_Commande_Model->updateDispo($user);
         $this->Affiche_Commande_Model->creerCommande($user,$prix['prix'],$date);
         redirect(base_url('/index.php/Affiche_Produit/'));
+    }
+
+    function test(){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $user = $this->session->userdata('user');
+        $data['test'] = $this->Affiche_Commande_Model->test($user);
+        $this->load->view('Affiche_Commande/test', $data);
+
     }
 
     function detail(){

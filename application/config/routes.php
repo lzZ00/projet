@@ -87,6 +87,7 @@ $route['user'] = 'user';
 $route['commande/creerCommande'] = 'commande/creerCommande';
 $route['commande/allCommande'] = 'commande/allCommande';
 $route['commande/valideCommande'] = 'commande/valideCommande';
+$route['commande/test'] = 'commande/test';
 $route['commande/detail'] = 'commande/detail';
 $route['commande/(:any)'] = 'commande/view/$1';
 $route['commande'] = 'commande';

@@ -76,4 +76,38 @@ class Affiche_Commande_Model extends CI_Model
         $this->db->update('commandes');
     }
 
+    function updateDispo($user){
+        $this->db->select('*');
+        $this->db->from('paniers');
+        $this->db->Where('user_id',$user['id']);
+        $this->db->Where('commande_id is null');
+        $query=$this->db->get();
+        $produit_id = $query->result_array();
+        foreach ($produit_id as $donnees){
+            $id=$donnees['produit_id'];
+            $quantite = $donnees['quantite'];
+        }
+        $this->db->select('*');
+        $this->db->from('produits');
+        $this->db->Where('id',$id);
+        $query=$this->db->get();
+        $row =$query->row_array();
+
+        $this->db->set('dispo', $row['dispo'] -  $quantite);
+        $this->db->Where('id',$id);
+        $this->db->update('produits');
+
+    }
+    function test($user){
+        $this->db->select('*');
+        $this->db->from('paniers');
+        $this->db->Where('user_id',$user['id']);
+        $this->db->Where('commande_id is null');
+        $query=$this->db->get();
+        return $query->result_array();
+    }
+
+
+
+
 }
