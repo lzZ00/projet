@@ -157,7 +157,6 @@ class Affiche_Produit extends CI_Controller
             $user = $this->session->userdata('user');
             $quantite=$_POST['quantite'];
             $dispo=$_POST['dispo'];
-
             $panier = $this->Affiche_Panier_Model->getUnPanier($_POST['idA'],$user);
             if (($panier ==null) || ($panier['commande_id'] != null )){
                 $produit = $this->Affiche_Produit_Model->get_unProduits($_POST['idA']);

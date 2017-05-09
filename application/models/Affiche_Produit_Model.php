@@ -37,7 +37,6 @@ class Affiche_Produit_Model extends CI_Model {
 
         return $this->db->insert('produits', $data);
     }
-
     public function get_unProduits($id)
     {
         /*$query = $this->db->simple_query('SELECT id,nom,prix,photo FROM produits WHERE id = '.$id.'');

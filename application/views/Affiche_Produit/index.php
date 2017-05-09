@@ -90,7 +90,6 @@
             <?php endif;?>
         <?php endforeach; ?>
         </table>
-
 </div>
 <?php $user = $this->session->userdata('user');?>
 <?php if ( $user['droit']!='DROITadmin' && !empty($user)) :?>

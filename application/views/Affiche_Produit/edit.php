@@ -27,7 +27,6 @@
     </select>
 </div>
 
-
 <div class="form-group">
     <label for="prix">Price</label>
     <input type="input" class="form-control" id="prix" placeholder="Price" name="prix"  style="width: 20%"
