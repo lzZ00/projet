@@ -86,7 +86,7 @@ class Affiche_Commande_Model extends CI_Model
         foreach ($produit_id as $donnees){
             $id=$donnees['produit_id'];
             $quantite = $donnees['quantite'];
-        }
+
         $this->db->select('*');
         $this->db->from('produits');
         $this->db->Where('id',$id);
@@ -96,7 +96,7 @@ class Affiche_Commande_Model extends CI_Model
         $this->db->set('dispo', $row['dispo'] -  $quantite);
         $this->db->Where('id',$id);
         $this->db->update('produits');
-
+        }
     }
     function test($user){
         $this->db->select('*');
@@ -104,7 +104,12 @@ class Affiche_Commande_Model extends CI_Model
         $this->db->Where('user_id',$user['id']);
         $this->db->Where('commande_id is null');
         $query=$this->db->get();
-        return $query->result_array();
+        foreach ($query->result_array() as $donnees){
+            echo $donnees['quantite'];
+            echo ' ';
+        }
+
+
     }
 
 

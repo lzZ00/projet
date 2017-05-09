@@ -48,7 +48,9 @@ class commande extends CI_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
         $user = $this->session->userdata('user');
-        $data['test'] = $this->Affiche_Commande_Model->test($user);
+        $data = $this->Affiche_Commande_Model->test($user);
+        var_dump($data);
+        die();
         $this->load->view('Affiche_Commande/test', $data);
 
     }

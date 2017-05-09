@@ -52,6 +52,9 @@ class Affiche_Panier_Model extends CI_Model
             $this->db->update('paniers', $data);
 
         }else {
+            if ($quantite == null){
+                return false;
+            }
             $this->db->set('quantite', $quantite);
             $this->db->set('prix', $produit['prix'] * $quantite);
             $this->db->set('produit_id', $produit['id']);
