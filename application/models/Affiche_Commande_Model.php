@@ -70,4 +70,10 @@ class Affiche_Commande_Model extends CI_Model
         $this->db->update('paniers');
     }
 
+    public function valideCommande($id){
+        $this->db->set('etat_id', '2');
+        $this->db->Where('id',$id);
+        $this->db->update('commandes');
+    }
+
 }

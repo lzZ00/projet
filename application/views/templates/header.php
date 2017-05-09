@@ -70,7 +70,14 @@
                     <p><?php echo $user['login'];?>,您好，欢迎来到<b>Chez Lei</b> [<a href="<?php echo site_url('user/logout');?>">注销</a>]</p>
 
                     <li><a href="<?php echo site_url('Affiche_Panier');?>">购物车</a></li>
+                    <?php $user = $this->session->userdata('user');?>
+                    <?php if ( $user['droit']=='DROITadmin' ):?>
+                    <li><a href="<?php echo site_url('commande/allCommande');?>">管理订单</a></li>
+                    <?php endif;?>
+                <?php $user = $this->session->userdata('user');?>
+                <?php if ( $user['droit']!='DROITadmin' ):?>
                     <li><a href="<?php echo site_url('commande');?>">我的订单</a></li>
+                    <?php endif;?>
                 <?php endif;?>
             </ul>
             <div class=" col-md-2 col-md-offset-0.5" style="float: right" >

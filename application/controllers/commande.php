@@ -53,4 +53,21 @@ class commande extends CI_Controller
         $this->load->view('templates/footer');
     }
 
+    function allCommande(){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $data['commande'] = $this->Affiche_Commande_Model->getAllCommande();
+        $this->load->view('templates/header', $data);
+        $this->load->view('Affiche_Commande/index', $data);
+        $this->load->view('templates/footer');
+    }
+
+    function valideCommande(){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $id = $this->input->get('id');
+        $this->Affiche_Commande_Model->valideCommande($id);
+        redirect(site_url('commande/allCommande/'));
+    }
+
 }
