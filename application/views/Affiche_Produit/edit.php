@@ -34,6 +34,19 @@
 </div>
 
 <div class="form-group">
+    <label for="dispo">Dispo</label>
+    <input type="input" class="form-control" id="dispo" placeholder="Dispo" name="dispo"  style="width: 20%"
+           value="<?php echo $produit['dispo']?> ">
+</div>
+
+<div class="form-group">
+    <label for="stock">Stock</label>
+    <input type="input" class="form-control" id="stock" placeholder="Stock" name="stock"  style="width: 20%"
+           value="<?php echo $produit['stock']?> ">
+</div>
+
+
+<div class="form-group">
     <label for="type">Photo</label>
     <input type="input" class="form-control" id="photo" placeholder="Photo" name="photo"  style="width: 20%"
            value="<?php echo $produit['photo']?> ">

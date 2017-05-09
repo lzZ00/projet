@@ -27,9 +27,9 @@ class Affiche_Panier_Model extends CI_Model
         $query=$this->db->get();
         return $query->row_array();
     }
-    public function addProduit($user,$produit,$quantite){
+    public function addProduit($user,$produit,$quantite,$dispo){
         $this->load->helper('url');
-        $sql="select id,produit_id,quantite from paniers where  user_id=".$user['id']." and commande_id is NULL and produit_id=".$produit['id']."";
+        $sql="select id,produit_id,quantite,prix from paniers where  user_id=".$user['id']." and commande_id is NULL and produit_id=".$produit['id']."";
         $query = $this->db->query($sql,array($user['id']));
 
         if($query->row_array()!=null){
@@ -39,9 +39,14 @@ class Affiche_Panier_Model extends CI_Model
 
             }
             $quantite=$quantite_old+$quantite;
+            $prix = $produit['prix'] *  $quantite;
+            if ($quantite > $dispo){
+                return false;
+            }
 
             $data = array(
-                'quantite'  => $quantite
+                'quantite'  => $quantite,
+                'prix' =>$prix
             );
             $this->db->where('id', $id);
             $this->db->update('paniers', $data);

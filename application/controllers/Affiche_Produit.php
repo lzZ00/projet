@@ -153,14 +153,14 @@ class Affiche_Produit extends CI_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
         if (isset($_POST['Ajouter'])) {
-            echo 'success';
             echo $_POST['idA'];
             $user = $this->session->userdata('user');
             $quantite=$_POST['quantite'];
+            $dispo=$_POST['dispo'];
             $panier = $this->Affiche_Panier_Model->getUnPanier($_POST['idA'],$user);
             if (($panier ==null) || ($panier['commande_id'] != null )){
                 $produit = $this->Affiche_Produit_Model->get_unProduits($_POST['idA']);
-                $this->Affiche_Panier_Model->addProduit($user,$produit,$quantite);
+                $this->Affiche_Panier_Model->addProduit($user,$produit,$quantite,$dispo);
             }
             else{
                 $quantite=$_POST['quantite'];

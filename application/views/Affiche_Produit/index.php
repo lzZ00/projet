@@ -7,7 +7,15 @@
         <table class="table table-hover" style="width: 30%;" >
             <tr><th>photo</th><th>nom</th><th>prix</th>
                 <?php $user = $this->session->userdata('user');?>
-                <?php if ( $user['droit']!='DROITadmin' && !empty($user)) :?>
+                <?php if ( $user['droit']=='DROITadmin' || !empty($user)) :?>
+                <th>dispo</th>
+                <?php endif;?>
+                <?php $user = $this->session->userdata('user');?>
+                <?php if ( $user['droit']=='DROITadmin' ):?>
+                <th>stock</th>
+                <?php endif;?>
+                <?php $user = $this->session->userdata('user');?>
+                <?php if ( $user['droit']=='DROITadmin' || !empty($user)) :?>
                 <th>operation</th>
                 <?php endif;?>
             </tr>
@@ -17,6 +25,15 @@
             <td><img src="<?php echo base_url()?>assets/img/<?php echo $donnes['photo']?>" width="50" alt="photo"/></td>
             <td><?php echo $donnes['nom']?> </td>
             <td><?php echo $donnes['prix']?></td>
+                <?php $user = $this->session->userdata('user');?>
+                <?php if ( $user['droit']=='DROITadmin' || !empty($user)) :?>
+            <td><?php echo $donnes['dispo']?></td>
+            <?php endif;?>
+                <?php $user = $this->session->userdata('user');?>
+                <?php if ( $user['droit']=='DROITadmin' ):?>
+            <td><?php echo $donnes['stock']?></td>
+            <?php endif;?>
+
                 <td>
             <?php $user = $this->session->userdata('user');?>
             <?php if ( $user['droit']=='DROITadmin' && !empty($user)) :?>
@@ -57,14 +74,16 @@
                     <?php if ( $user['droit']!='DROITadmin' && !empty($user)) :?>
                     <?php echo form_open('Affiche_Produit/addProduit'); ?>
                     <?php echo validation_errors(); ?>
-                    <select name="quantite" class="form-control" style="width: 30%">
-                        <?php for($i=1;$i<=10;$i++){ ?>
+                    <select name="quantite" class="form-control" style="width: 50%">
+                        <?php for($i=1;$i<=$donnes['dispo'];$i++){ ?>
                             <option value="<?php  echo $i ; ?>"><?php echo $i; ?></option>
                         <?php } ?>
                         </select>
                     <input type="submit" value="Ajouter" name="Ajouter" class="btn btn-xs">
                     <?php $idA=$donnes['id']; ?>
                     <input type="hidden" name="idA" value=<?php echo $idA;?>>
+                    <?php $dispo=$donnes['dispo']; ?>
+                <input type="hidden" name="dispo" value=<?php echo $dispo;?>>
                 </td>
                 </tr>
             </form>
@@ -87,7 +106,8 @@
          <form method="post" action="<?php echo site_url('commande/creerCommande')?>"">
              <input name="id" type="hidden" value="<?php echo $donnes['id'] ?>"/>
              <tr>
-                 <td><?php echo $donnes['nom']?></td><td><?php echo $donnes['quantite']?> </td><td><?php echo $donnes['prix']?></td><td><?php echo $donnes['dateAjoutPanier']?> </td>
+                 <td><?php echo $donnes['nom']?></td><td><?php echo $donnes['quantite']?> </td>
+                 <td><?php echo $donnes['prix']?></td><td><?php echo $donnes['dateAjoutPanier']?> </td>
                  <td>  <a href="<?php echo site_url('Affiche_Produit/delete_PanierProduit');?>?id=<?php echo $donnes['id'];?>">删除</a></td>
              </tr><!-- {% endfor %}-->
         <?php endforeach; ?>
@@ -97,5 +117,6 @@
             <input class="btn btn-success" input type="submit" name="valider" value="valider"/>
      </table>
     <?php endif;?>
+
     </div>
 <br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>

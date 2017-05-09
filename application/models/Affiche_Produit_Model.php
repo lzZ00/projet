@@ -30,6 +30,8 @@ class Affiche_Produit_Model extends CI_Model {
             'nom' => $this->input->post('nom'),
             'typeProduit_id' => $this->input->post('type'),
             'prix' => $this->input->post('prix'),
+            'dispo' => $this->input->post('dispo'),
+            'stock' => $this->input->post('stock'),
             'photo' => $this->input->post('photo')
         );
 
@@ -40,7 +42,7 @@ class Affiche_Produit_Model extends CI_Model {
     {
         /*$query = $this->db->simple_query('SELECT id,nom,prix,photo FROM produits WHERE id = '.$id.'');
         return $query->row_array();*/
-      $this->db->select('id,nom,prix,photo,typeProduit_id');
+      $this->db->select('*');
         $this->db->from('produits');
         $this->db->where('id',$id);
         $query=$this->db->get();
