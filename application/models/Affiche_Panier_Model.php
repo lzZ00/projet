@@ -44,6 +44,7 @@ class Affiche_Panier_Model extends CI_Model
                 return false;
             }
 
+
             $data = array(
                 'quantite'  => $quantite,
                 'prix' =>$prix
