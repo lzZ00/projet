@@ -6,8 +6,8 @@
 <?php endif;?>
 <br/><br/>
 
-<div class="row" col-md-2 col-md-offset-3>
-        <table class="table table-hover" style="width: 30%;" >
+<div align="center">
+        <table class="table table-bordered" style="width: 30%;" >
             <tr><th>photo</th><th>nom</th><th>prix</th>
                 <?php $user = $this->session->userdata('user');?>
                 <?php if ( $user['droit']=='DROITadmin' || !empty($user)) :?>
@@ -28,13 +28,13 @@
             <td><img src="<?php echo base_url()?>assets/img/<?php echo $donnes['photo']?>" width="50" alt="photo"/></td>
             <td><?php echo $donnes['nom']?> </td>
             <td><?php echo $donnes['prix']?></td>
-                <?php $user = $this->session->userdata('user');?>
-                <?php if ( $user['droit']=='DROITadmin' || !empty($user)) :?>
-            <td><?php echo $donnes['dispo']?></td>
+            <?php $user = $this->session->userdata('user');?>
+            <?php if ( $user['droit']=='DROITadmin' || !empty($user)) :?>
+                <td><?php echo $donnes['dispo']?></td>
             <?php endif;?>
-                <?php $user = $this->session->userdata('user');?>
-                <?php if ( $user['droit']=='DROITadmin' ):?>
-            <td><?php echo $donnes['stock']?></td>
+            <?php $user = $this->session->userdata('user');?>
+            <?php if ( $user['droit']=='DROITadmin' ):?>
+                <td><?php echo $donnes['stock']?></td>
             <?php endif;?>
 
                 <td>
@@ -91,16 +91,17 @@
                 </tr>
             </form>
             <?php endif;?>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+
         </table>
-
+    <?php echo $this->pagination->create_links(); ?>
 </div>
-<?php echo $this->pagination->create_links(); ?>
 
+<br/><br/><br/><br/>
 <?php $user = $this->session->userdata('user');?>
 <?php if ( $user['droit']!='DROITadmin' && !empty($user)) :?>
-<div class="col-lg-6">
-    <table class="table-bordered table-responsive table col-lg-6 "style="float: right">
+<div align="center">
+    <table class="table-bordered table  " style="width: 30%;" >
         <caption style="text-align: center"> panier </caption>
         <thead>
         <tr><th>nom</th><th>quantite</th><th>prix</th><th>dateAjout</th><th>operation</th>
