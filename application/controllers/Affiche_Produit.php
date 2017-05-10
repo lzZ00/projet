@@ -217,11 +217,12 @@ class Affiche_Produit extends CI_Controller
     public function search_produit(){
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $this->load->library('pagination');
         $nom = $this->input->post('search');
         if (isset($nom) and !empty($nom)){
             $data['produits']= $this->Affiche_Produit_Model->search_produitByName($nom);
             $this->load->view('templates/header');
-            $this->load->view('Affiche_Produit/index',$data);
+            $this->load->view('Affiche_Produit/search_produit',$data);
             $this->load->view('templates/footer');
         }
         else{
