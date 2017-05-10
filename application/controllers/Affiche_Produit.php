@@ -23,14 +23,39 @@ class Affiche_Produit extends CI_Controller
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $data['produits'] = $this->Affiche_Produit_Model->get_produit();
+
+      // $data['produits'] = $this->Affiche_Produit_Model->get_produit();
+
+        $this->load->library('pagination');
+        $config['base_url'] = base_url().'index.php/Affiche_Produit/index';
+        $config['total_rows'] = $this->Affiche_Produit_Model->count_produit();
+        $config['per_page'] = 2;
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['first_link'] = false;
+        $config['last_link'] = false;
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_link'] = '&laquo';
+        $config['prev_tag_open'] = '<li class="prev">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+        $this->pagination->initialize($config);
+        $data['produits'] = $this->Affiche_Produit_Model->fetch_produit($config['per_page'],$this->uri->segment(3));
         $user = $this->session->userdata('user');
         $data['paniers'] = $this->Affiche_Panier_Model->getAllPanier($user);
         $data['prix'] = $this->Affiche_Commande_Model->getPrixTotal($user);
-        //$this->form_validation->set_rules('title', 'Title', 'required');
-        //if (empty($data['produits'])) {
-        //   show_404();
-        //}
+
+
+
         if (isset($_POST['Supprimer'])) {
             echo 'success';
             echo $_POST['idS'];
@@ -187,6 +212,54 @@ class Affiche_Produit extends CI_Controller
         redirect(base_url('/index.php/Affiche_Produit/'));
     }
 
+    public function search_produit(){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $nom = $this->input->post('search');
+        if (isset($nom) and !empty($nom)){
+            $data['produits']= $this->Affiche_Produit_Model->search_produitByName($nom);
+            $this->load->view('templates/header');
+            $this->load->view('Affiche_Produit/index',$data);
+            $this->load->view('templates/footer');
+        }
+        else{
+            redirect(base_url('/index.php/Affiche_Produit/'));
+        }
+    }
+
+    public function pagination(){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->load->library('pagination');
+        $config['base_url'] = base_url().'index.php/Affiche_Produit/pagination';
+        $config['total_rows'] = $this->Affiche_Produit_Model->count_produit();
+        $config['per_page'] = 2;
+        $config['full_tag_open'] = '<ul class="pagination">';
+        $config['full_tag_close'] = '</ul>';
+        $config['first_link'] = false;
+        $config['last_link'] = false;
+        $config['first_tag_open'] = '<li>';
+        $config['first_tag_close'] = '</li>';
+        $config['prev_link'] = '&laquo';
+        $config['prev_tag_open'] = '<li class="prev">';
+        $config['prev_tag_close'] = '</li>';
+        $config['next_link'] = '&raquo';
+        $config['next_tag_open'] = '<li>';
+        $config['next_tag_close'] = '</li>';
+        $config['last_tag_open'] = '<li>';
+        $config['last_tag_close'] = '</li>';
+        $config['cur_tag_open'] = '<li class="active"><a href="#">';
+        $config['cur_tag_close'] = '</a></li>';
+        $config['num_tag_open'] = '<li>';
+        $config['num_tag_close'] = '</li>';
+
+        $this->pagination->initialize($config);
+        $data['produits'] = $this->Affiche_Produit_Model->fetch_produit($config['per_page'],$this->uri->segment(3));
+        $this->load->view('templates/header');
+        $this->load->view('Affiche_Produit/test',$data);
+        $this->load->view('templates/footer');
+
+    }
 
 }
 

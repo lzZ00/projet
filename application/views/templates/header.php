@@ -50,11 +50,11 @@
                 </li>
                 <li><a href="#">新品上架</a></li>
             </ul>
-            <form class="navbar-form navbar-left" role="search">
+            <form class="navbar-form navbar-left" role="search" action="<?php echo base_url().'index.php/Affiche_Produit/search_produit' ;?>" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="商品搜索">
+                    <input type="text" class="form-control" placeholder="商品搜索" name="search" id="search">
                 </div>
-                <button type="submit" class="btn btn-default glyphicon glyphicon-search"></button>
+                <button type="submit" class="btn btn-default glyphicon glyphicon-search" ></button>
             </form>
 
             <div class=" col-md-2 col-md-offset-0.5">

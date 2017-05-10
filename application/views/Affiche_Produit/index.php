@@ -1,6 +1,9 @@
+<?php $user = $this->session->userdata('user');?>
+<?php if ( $user['droit']=='DROITadmin'):?>
 <a href="<?php echo base_url('/index.php/Affiche_Produit/createProduit')?>" class="btn btn-primary">
    Ajouter un Produit
 </a>
+<?php endif;?>
 <br/><br/>
 
 <div class="row" col-md-2 col-md-offset-3>
@@ -90,7 +93,10 @@
             <?php endif;?>
         <?php endforeach; ?>
         </table>
+
 </div>
+<?php echo $this->pagination->create_links(); ?>
+
 <?php $user = $this->session->userdata('user');?>
 <?php if ( $user['droit']!='DROITadmin' && !empty($user)) :?>
 <div class="col-lg-6">

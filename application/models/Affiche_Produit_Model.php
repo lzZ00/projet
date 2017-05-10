@@ -12,6 +12,22 @@ class Affiche_Produit_Model extends CI_Model {
     {
         $this->load->database();
     }
+
+    public function count_produit()
+    {
+        return  $this->db->count_all('produits');
+    }
+    public function fetch_produit($limit,$offset){
+        $this->db->limit($limit,$offset);
+        $query = $this->db->get('produits');
+        if ($query->num_rows() > 0){
+            return $query->result_array();
+        }
+        else{
+            return $query->result_array();
+        }
+    }
+
     public function get_produit($slug = FALSE)
     {
         if ($slug === FALSE)
@@ -98,5 +114,20 @@ class Affiche_Produit_Model extends CI_Model {
         $query = $this->db->query($sql, array($id));
         return $query->result_array();
     }
+
+    public function search_produitByName($nom){
+        $this->db->select('*');
+        $this->db->from('produits');
+        $this->db->like('nom',$nom);
+        $query=$this->db->get();
+        if ($query->num_rows() > 0){
+            return $query->result_array();
+        }
+        else{
+            return $query->result_array();
+        }
+    }
+
+
 
 }
