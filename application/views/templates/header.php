@@ -67,7 +67,7 @@
                     <li><a href="#" type="button" data-toggle="modal" data-target="#signin" >登录</a></li>
 
                 <?php else :?>
-                    <p><?php echo $user['login'];?>,您好，欢迎来到<b>Chez Lei</b> [<a href="<?php echo site_url('user/logout');?>">注销</a>]</p>
+                    <p><?php echo $user['nom'];?>, 您好，欢迎来到<b>Chez Lei</b> [<a href="<?php echo site_url('user/logout');?>">注销</a>]</p>
 
                     <li><a href="<?php echo site_url('Affiche_Panier');?>">购物车</a></li>
                     <?php $user = $this->session->userdata('user');?>
@@ -146,15 +146,18 @@
 <!-- 注册和登录按钮触发事件，因为如果写在control要每页都复制这个事件，暂时找不到更好的解决方法，所以写在这里-->
 <?php
 if(isset($_POST['signup'])){
-    echo 'signup';
     $nom=$_POST['nom'];
     $mail=$_POST['mail'];
     $mdp=$_POST['mdp'];
     $adresse=$_POST['adresse'];
     $tel=$_POST['tel'];
     $this->Signup_Signin_Model->Signup($nom,$mail,$mdp,$adresse ,$tel);
+    if ($user = $this->Signup_Signin_Model->get_user($mail,$mdp)) {
+        #成功，将用户信息保存至session
+        $this->session->set_userdata('user',$user);
+        redirect('Affiche_Produit');
+    }
 }
-
 ?>
 
 

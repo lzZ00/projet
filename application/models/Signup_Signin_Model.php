@@ -17,7 +17,7 @@ class Signup_Signin_Model extends CI_Model {
     public function Signup($nom,$mail,$mdp,$adresse,$tel){
 
         $this->db->simple_query("INSERT INTO `users` (`id`, `email`, `password`, `nom`, `adresse`, `droit`, `tel`)
-                                 VALUES (NULL, '$mail', '$mdp', '$nom', '$adresse', '' , '$tel')");
+                                 VALUES (NULL, '$mail', '$mdp', '$nom', '$adresse', 'DROITclient' , '$tel')");
     }
 
     public function get_user($email,$password){

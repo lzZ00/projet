@@ -122,7 +122,7 @@ class Affiche_Produit extends CI_Controller
         //}
             $data['title'] = 'Information de Client';
             $this->load->view('templates/header', $data);
-            $this->load->view('Affiche_Produit/type1', $data);
+            $this->load->view('Affiche_Produit/test', $data);
             $this->load->view('templates/footer');
         }
 

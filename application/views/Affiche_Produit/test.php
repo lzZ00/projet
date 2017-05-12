@@ -1,21 +1,49 @@
 
-<div class="col-lg-6">
-    <table class="table-bordered table-responsive table col-lg-6 "style="float: right">
-        <caption style="text-align: center"> test </caption>
-        <thead>
-        <tr><th>photo</th><th>nom</th><th>prix</th>
-        </tr>
-        </thead>
-        <?php foreach ($produits as $donnes): ?>
-        <tbody>
-        <tr>
-            <td><img src="<?php echo base_url()?>assets/img/<?php echo $donnes['photo']?>" width="50" alt="photo"/></td>
-            <td><?php echo $donnes['nom']?> </td>
-            <td><?php echo $donnes['prix']?></td>
-        </tr><!-- {% endfor %}-->
-        <?php endforeach; ?>
-        <tbody>
+<link rel="stylesheet" media="screen" href="<?php echo base_url()?>assets/css/test.css"">
 
-    </table>
-    <?php echo $this->pagination->create_links(); ?>
+
+
+<div class="container">
+    <div class="row">
+        <?php foreach ($produits as $donnes): ?>
+        <div class="col-xs-12 col-sm-6 col-md-8 col-lg-3" style="width: 30%">
+            <div class="speical speical-default speical-radius">
+           <!--     <div class="shape">
+                    <div class="shape-text">
+                    </div>
+                </div>-->
+                <div class="speical-content">
+                    <h3 class="text-special-default">
+                        <?php echo $donnes['nom']?>
+                    </h3>
+                    <p>
+                        <img src="<?php echo base_url()?>assets/img/<?php echo $donnes['photo']?>" width="50px" height="50px"  alt="photo" class="img-responsive img-rounded"/>
+                    </p>
+                    <p>
+                        prix: <?php echo $donnes['prix']?>
+                    </p>
+                    <p>
+                        <?php echo form_open('Affiche_Produit/addProduit'); ?>
+                        <?php echo validation_errors(); ?>
+                        <select name="quantite" class="form-control" style="width: 50%">
+                            <?php for($i=1;$i<=$donnes['dispo'];$i++){ ?>
+                                <option value="<?php  echo $i ; ?>"><?php echo $i; ?></option>
+                            <?php } ?>
+                        </select>
+                        <input type="submit" value="Ajouter" name="Ajouter" class="btn btn-xs">
+                        <?php $idA=$donnes['id']; ?>
+                        <input type="hidden" name="idA" value=<?php echo $idA;?>>
+                        <?php $dispo=$donnes['dispo']; ?>
+                        <input type="hidden" name="dispo" value=<?php echo $dispo;?>>
+                        </td>
+                        </tr>
+                        </form>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <?php endforeach; ?>
     </div>
+
+</div>
+

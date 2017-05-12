@@ -34,7 +34,7 @@ class Affiche_Commande_Model extends CI_Model
     function getCommande($user) {
         $sql = "SELECT commandes.id,commandes.prix,commandes.date_achat,commandes.user_id,etats.libelle FROM 
                 commandes INNER JOIN etats ON etats.id=commandes.etat_id
-                WHERE commandes.user_id = ?";
+                WHERE commandes.user_id = ? ORDER BY commandes.id";
         $query = $this->db->query($sql,array($user['id']));
         return $query->result_array();
     }
