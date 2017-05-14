@@ -148,7 +148,7 @@
 if(isset($_POST['signup'])){
     $nom=$_POST['nom'];
     $mail=$_POST['mail'];
-    $mdp=$_POST['mdp'];
+    $mdp=hash('md5',$_POST['mdp']);
     $adresse=$_POST['adresse'];
     $tel=$_POST['tel'];
     $this->Signup_Signin_Model->Signup($nom,$mail,$mdp,$adresse ,$tel);
