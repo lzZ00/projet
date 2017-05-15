@@ -100,7 +100,7 @@
             <div class="modal-body">
                 <input type="text" class="form-control" placeholder="姓名" name="nom" required>
                 </br>
-                <input type="text" class="form-control" placeholder="邮箱" name="mail" id="mail" required>
+                <input type="email" class="form-control" placeholder="邮箱" name="mail" id="mail" data-error="不符合格式" required>
                     </br>
                     <p id="mail_lab"></p>
                 </br>
@@ -148,15 +148,9 @@
 <!-- 注册和登录按钮触发事件，因为如果写在control要每页都复制这个事件，暂时找不到更好的解决方法，所以写在这里-->
 <?php
 if(isset($_POST['signup'])){
-
-    if (preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$_POST['mail'])) {
-        echo "<script>";
-        echo "document.getElementById(\"mail_lab\").innerHTML = \"邮箱不符合格式\";";
-        echo "</script>";
-        echo "rinima";
-    }else{
-
-    }
+    echo "<script>";
+    echo "document.getElementById(\"mail_lab\").innerHTML = \"邮箱不符合格式\";";
+    echo "</script>";
     $nom=$_POST['nom'];
     $mail=$_POST['mail'];
     $mdp=hash('md5',$_POST['mdp']);
@@ -193,8 +187,11 @@ if(isset($_POST['signup'])){
         }
     }
     */
-    function mailerro(){
+    /*function mailerro(){
         document.getElementById("mail_lab").innerHTML = "邮箱不符合格式";
     }
+    document.getElementById("mail_lab").innerHTML = "邮箱不符合格式";
+    */
+
 </script>
 
