@@ -98,11 +98,13 @@
             </div>
                 <?php echo form_open(''); ?>
             <div class="modal-body">
-                <input type="text" class="form-control" placeholder="姓名" name="nom">
+                <input type="text" class="form-control" placeholder="姓名" name="nom" required>
                 </br>
-                <input type="text" class="form-control" placeholder="邮箱" name="mail">
+                <input type="text" class="form-control" placeholder="邮箱" name="mail" id="mail" required>
+                    </br>
+                    <p id="mail_lab"></p>
                 </br>
-                <input type="text" class="form-control" placeholder="密码(不少于6位)" name="mdp">
+                <input type="text" class="form-control" placeholder="密码(不少于6位)" name="mdp" required>
                 </br>
                 <input type="text" class="form-control" placeholder="地址(仅限梅斯地区)" name="adresse">
                 </br>
@@ -111,7 +113,7 @@
             </div>
             <div class="modal-footer">
                 <?php echo validation_errors(); ?>
-                    <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block" name="signup">注册</button>
+                    <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block" name="signup" onclick="valide()">注册</button>
                 </form>
             </div>
         </div>
@@ -130,9 +132,9 @@
             </div>
             <div class="modal-body">
                 <?php echo form_open('user/login'); ?>
-                <input type="text" class="form-control" name="email" placeholder="邮箱">
+                <input type="text" class="form-control" name="email" placeholder="邮箱" required autofocus>
                 </br>
-                <input type="password" class="form-control" name="password" placeholder="密码">
+                <input type="password" class="form-control" name="password" placeholder="密码" required>
 
             </div>
             <div class="modal-footer">
@@ -146,6 +148,15 @@
 <!-- 注册和登录按钮触发事件，因为如果写在control要每页都复制这个事件，暂时找不到更好的解决方法，所以写在这里-->
 <?php
 if(isset($_POST['signup'])){
+
+    if (preg_match("/([\w\-]+\@[\w\-]+\.[\w\-]+)/",$_POST['mail'])) {
+        echo "<script>";
+        echo "document.getElementById(\"mail_lab\").innerHTML = \"邮箱不符合格式\";";
+        echo "</script>";
+        echo "rinima";
+    }else{
+
+    }
     $nom=$_POST['nom'];
     $mail=$_POST['mail'];
     $mdp=hash('md5',$_POST['mdp']);
@@ -159,5 +170,31 @@ if(isset($_POST['signup'])){
     }
 }
 ?>
-
+<script>
+    /*
+    function validate_email(field)
+    {
+        with (field)
+        {
+            apos=value.indexOf("@")
+            dotpos=value.lastIndexOf(".")
+            if (apos<1||dotpos-apos<2)
+            {return false}
+            else {return true}
+        }
+    }
+    function valide() {
+        if(validate_email(mail)==false) {
+            document.getElementById("mail_lab").innerHTML = "邮箱不符合格式";
+            //document.getElementById("mail_lab").innerHTML = $("#mail").val();
+        }
+        else{
+            document.getElementById("mail_lab").innerHTML = "";
+        }
+    }
+    */
+    function mailerro(){
+        document.getElementById("mail_lab").innerHTML = "邮箱不符合格式";
+    }
+</script>
 
