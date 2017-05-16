@@ -1,0 +1,62 @@
+/*相关CSS定义*/
+
+@import url('http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css');
+@import url('http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css');
+@import url('http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css');
+
+
+.redborder {
+    border:2px solid #f96145;
+    border-radius:2px;
+}
+
+
+.bigicon {
+    font-size: 97px;
+    color: #f08000;
+}
+
+.loginpanel {
+    text-align: center;
+    width: 300px;
+    border-radius: 0.5rem;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    margin: 5px auto;
+    padding: 20px;
+}
+
+
+
+
+.buttonwrapper{
+    position:relative;
+    overflow:hidden;
+    height:50px;
+}
+
+.lockbutton {
+    font-size: 27px;
+    color: #f96145;
+    padding: 5px;
+    width:50%;
+    position:absolute;
+    top:0;
+    left:58px;
+}
+
+.loginbutton {
+    background-color: #f08000;
+    width: 100%;
+    -webkit-border-top-right-radius: 0;
+    -webkit-border-bottom-right-radius: 0;
+    -moz-border-radius-topright: 0;
+    -moz-border-radius-bottomright: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+    left: -300px;
+    position:absolute;
+    top:0;
+}

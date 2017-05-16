@@ -8,9 +8,10 @@
     <title>Chez Lei</title>
     <!-- jquery -->
     <script src="<?php echo base_url()?>assets/jquery-3.2.0.min.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/login.js"></script>
     <!-- Bootstrap -->
     <link href="<?php echo base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
-
+    <link href="<?php echo base_url()?>assets/css/login.css" rel="stylesheet">
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -100,11 +101,10 @@
             <div class="modal-body">
                 <input type="text" class="form-control" placeholder="姓名" name="nom" required>
                 </br>
-                <input type="email" class="form-control" placeholder="邮箱" name="mail" id="mail" data-error="不符合格式" required>
-                    </br>
-                    <p id="mail_lab"></p>
+                <input type="email" class="form-control" placeholder="邮箱" name="mail" id="mail"  required>
                 </br>
                 <input type="text" class="form-control" placeholder="密码(不少于6位)" name="mdp" required>
+                <?php if(isset($err)) echo '<small class="error">'.$err.'</small>';?>
                 </br>
                 <input type="text" class="form-control" placeholder="地址(仅限梅斯地区)" name="adresse">
                 </br>
@@ -130,32 +130,37 @@
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 <h4 class="modal-title" id="myModalLabel">登录</h4>
             </div>
+            <div class="loginpanel">
+            <div>
             <div class="modal-body">
                 <?php echo form_open('user/login'); ?>
-                <input type="text" class="form-control" name="email" placeholder="邮箱" required autofocus>
+                <input type="text" id="username" class="form-control" name="email" placeholder="邮箱" required autofocus onkeypress="check_values();">
                 </br>
-                <input type="password" class="form-control" name="password" placeholder="密码" required>
+                <input type="password" id="password" class="form-control" name="password" placeholder="密码" required onkeypress="check_values();">
 
             </div>
-            <div class="modal-footer">
-                <button type="submit" class="btn btn-primary btn-lg btn-block">登录</button>
+            <div class="buttonwrapper">
+                <button type="submit" id="loginbtn" class="btn btn-warning loginbutton" >登录
+                <span class="fa fa-check"></span>
+                </button>
+                <span id="lockbtn" class="fa fa-lock lockbutton redborder"></span>
             </div>
-                </form>
+            </div>
+            </div>
         </div>
     </div>
 </div>
 
 <!-- 注册和登录按钮触发事件，因为如果写在control要每页都复制这个事件，暂时找不到更好的解决方法，所以写在这里-->
 <?php
+$this->load->library('form_validation');
 if(isset($_POST['signup'])){
-    echo "<script>";
-    echo "document.getElementById(\"mail_lab\").innerHTML = \"邮箱不符合格式\";";
-    echo "</script>";
     $nom=$_POST['nom'];
     $mail=$_POST['mail'];
-    $mdp=hash('md5',$_POST['mdp']);
+    $mdp=md5($_POST['mdp']);
     $adresse=$_POST['adresse'];
     $tel=$_POST['tel'];
+    $this->form_validation->set_rules('password','密码','required|min_length[6]|max_length[16]|md5');
     $this->Signup_Signin_Model->Signup($nom,$mail,$mdp,$adresse ,$tel);
     if ($user = $this->Signup_Signin_Model->get_user($mail,$mdp)) {
         #成功，将用户信息保存至session
@@ -164,34 +169,5 @@ if(isset($_POST['signup'])){
     }
 }
 ?>
-<script>
-    /*
-    function validate_email(field)
-    {
-        with (field)
-        {
-            apos=value.indexOf("@")
-            dotpos=value.lastIndexOf(".")
-            if (apos<1||dotpos-apos<2)
-            {return false}
-            else {return true}
-        }
-    }
-    function valide() {
-        if(validate_email(mail)==false) {
-            document.getElementById("mail_lab").innerHTML = "邮箱不符合格式";
-            //document.getElementById("mail_lab").innerHTML = $("#mail").val();
-        }
-        else{
-            document.getElementById("mail_lab").innerHTML = "";
-        }
-    }
-    */
-    /*function mailerro(){
-        document.getElementById("mail_lab").innerHTML = "邮箱不符合格式";
-    }
-    document.getElementById("mail_lab").innerHTML = "邮箱不符合格式";
-    */
 
-</script>
 

@@ -22,7 +22,7 @@ class Signup_Signin_Model extends CI_Model {
 
     public function get_user($email,$password){
         $condition['email'] = $email;
-        $condition['password'] =hash('md5',$password);
+        $condition['password'] =md5($password);
         $query = $this->db->where($condition)->get(self::TBL_USER);
         return $query->row_array();
     }
