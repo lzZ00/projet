@@ -90,6 +90,8 @@ class Affiche_Produit_Model extends CI_Model {
             'nom' => $this->input->post('nom'),
             'typeProduit_id' => $this->input->post('type'),
             'prix' => $this->input->post('prix'),
+            'dispo' => $this->input->post('dispo'),
+            'stock' => $this->input->post('stock'),
             'photo' => $this->input->post('photo')
         );
         $this->db->where('id', $id);

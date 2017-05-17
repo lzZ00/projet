@@ -97,14 +97,18 @@
                 <h4 class="modal-title" id="myModalLabel" align="center">加入磊家</h4>
                 <h6 class="modal-title" id="myModalLabel" align="center">梅斯最实惠的中超</h6>
             </div>
-                <?php echo form_open(''); ?>
+                 <?php echo validation_errors(); ?>
+                <?php echo form_open('user/signup'); ?>
             <div class="modal-body">
-                <input type="text" class="form-control" placeholder="姓名" name="nom" required>
+                <h5>Username</h5>
+                <input type="text" class="form-control" placeholder="姓名" name="nom"  required>
                 </br>
-                <input type="email" class="form-control" placeholder="邮箱" name="mail" id="mail"  required>
+                <h5>Email</h5>
+                <?php echo form_error('mail'); ?>
+                <input type="email" class="form-control" placeholder="邮箱" name="mail" id="mail"  value="<?php echo set_value('mail'); ?>" required>
                 </br>
-                <input type="text" class="form-control" placeholder="密码(不少于6位)" name="mdp" required>
-                <?php if(isset($err)) echo '<small class="error">'.$err.'</small>';?>
+                <h5>Password</h5>
+                <input type="password" class="form-control" placeholder="密码(不少于6位)" name="mdp" required>
                 </br>
                 <input type="text" class="form-control" placeholder="地址(仅限梅斯地区)" name="adresse">
                 </br>
@@ -113,7 +117,7 @@
             </div>
             <div class="modal-footer">
                 <?php echo validation_errors(); ?>
-                    <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block" name="signup" onclick="valide()">注册</button>
+                    <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block" name="signup">注册</button>
                 </form>
             </div>
         </div>
@@ -137,7 +141,6 @@
                 <input type="text" id="username" class="form-control" name="email" placeholder="邮箱" required autofocus onkeypress="check_values();">
                 </br>
                 <input type="password" id="password" class="form-control" name="password" placeholder="密码" required onkeypress="check_values();">
-
             </div>
             <div class="buttonwrapper">
                 <button type="submit" id="loginbtn" class="btn btn-warning loginbutton" >登录
@@ -149,11 +152,12 @@
             </div>
         </div>
     </div>
+    </form>
 </div>
 
 <!-- 注册和登录按钮触发事件，因为如果写在control要每页都复制这个事件，暂时找不到更好的解决方法，所以写在这里-->
 <?php
-$this->load->library('form_validation');
+/*$this->load->library('form_validation');
 if(isset($_POST['signup'])){
     $nom=$_POST['nom'];
     $mail=$_POST['mail'];
@@ -167,7 +171,7 @@ if(isset($_POST['signup'])){
         $this->session->set_userdata('user',$user);
         redirect('Affiche_Produit');
     }
-}
+}*/
 ?>
 
 

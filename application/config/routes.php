@@ -81,6 +81,8 @@ $route['Affiche_Produit/(:any)'] = 'Affiche_Produit/view/$1';
 $route['Affiche_Produit'] = 'Affiche_Produit';
 
 
+
+$route['user/signup'] = 'user/signup';
 $route['user/login'] = 'user/login';
 $route['user/logout'] = 'user/logout';
 $route['user/(:any)'] = 'user/view/$1';

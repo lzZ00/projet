@@ -13,13 +13,13 @@ $uptypes=array(
 
 <h2><?php echo $title; ?></h2>
 
-<?php echo validation_errors(); ?>
-
 <?php echo form_open('Affiche_Produit/createProduit','id="create"'); ?>
-
+<form data-toggle="validator" role="form">
 <div class="form-group">
     <label for="nom">Name</label>
-    <input type="input" class="form-control" id="nom" placeholder="Name" name="nom"  style="width: 20%">
+    <?php echo form_error('nom'); ?>
+    <input type="input" class="form-control" id="nom" placeholder="Name" name="nom"  style="width: 20%"
+           value="<?php echo set_value('nom'); ?>" required>
 </div>
 
 <div class="form-group">
@@ -34,17 +34,21 @@ $uptypes=array(
 
 <div class="form-group">
     <label for="prix">Price</label>
-    <input type="input" class="form-control" id="prix" placeholder="Price" name="prix"  style="width: 20%">
+    <?php echo form_error('prix'); ?>
+    <input type="input" class="form-control" id="prix" placeholder="Price" name="prix"  style="width: 20%"
+           value="<?php echo set_value('prix'); ?>">
 </div>
 
 <div class="form-group">
     <label for="dispo">Dispo</label>
-    <input type="input" class="form-control" id="dispo" placeholder="Dispo" name="dispo"  style="width: 20%">
+    <input type="input" class="form-control" id="dispo" placeholder="Dispo" name="dispo"  style="width: 20%"
+           value="<?php echo set_value('dispo'); ?>">
 </div>
 
 <div class="form-group">
     <label for="stock">Stock</label>
-    <input type="input" class="form-control" id="stock" placeholder="Stock" name="stock"  style="width: 20%">
+    <input type="input" class="form-control" id="stock" placeholder="Stock" name="stock"  style="width: 20%"
+           value="<?php echo set_value('stock'); ?>">
 </div>
 
 <div class="form-group">
