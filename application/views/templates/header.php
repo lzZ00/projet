@@ -103,6 +103,33 @@
         xmlhttp.send();
     }
 </script>
+
+<script>
+    function showHint(str) {
+        if (str.length == 0) {
+            document.getElementById("txtHint").innerHTML = "";
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("txtHint").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "../UniqueLogin/test/?q=" + str, true);
+            xmlhttp.send();
+        }
+    }
+</script>
+
+
+<p><b>Start typing a name in the input field below:</b></p>
+
+First name: <input type="text" onkeyup="showHint(this.value)">
+
+<p>Suggestions: <span id="txtHint"></span></p>
+
+
 <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
