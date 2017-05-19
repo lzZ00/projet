@@ -35,4 +35,8 @@ class Signup_Signin_Model extends CI_Model {
         return $query->result_array();
 
     }
+    public function get_all_user_name(){
+        $query=$this->db->get('users');
+        return $query->result_array();
+    }
 }
