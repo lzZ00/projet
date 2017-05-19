@@ -26,4 +26,13 @@ class Signup_Signin_Model extends CI_Model {
         $query = $this->db->where($condition)->get(self::TBL_USER);
         return $query->row_array();
     }
+
+    public function loginUnique($str){
+        $this->db->select('nom');
+        $this->db->from('users');
+        $this->db->Where('nom',$str);
+        $query=$this->db->get();
+        return $query->result_array();
+
+    }
 }

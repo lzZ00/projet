@@ -89,6 +89,20 @@
 </nav>
 
 <!-- Modal 注册-->
+<script type="text/javascript">
+    function loginUnique(str){
+        xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function(){
+            if (xmlhttp.readyState==4 && xmlhttp.status == 200){
+                var resu = xmlhttp.responseText;
+                console.log(resu);
+                document.getElementById("uniquenom").innerHTML = resu;
+            }
+        }
+        xmlhttp.open("GET","UniqueLogin?q="+str,true);
+        xmlhttp.send();
+    }
+</script>
 <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-sm" role="document">
         <div class="modal-content">
@@ -97,11 +111,13 @@
                 <h4 class="modal-title" id="myModalLabel" align="center">加入磊家</h4>
                 <h6 class="modal-title" id="myModalLabel" align="center">梅斯最实惠的中超</h6>
             </div>
-                 <?php echo validation_errors(); ?>
                 <?php echo form_open('user/signup'); ?>
             <div class="modal-body">
                 <h5>Username</h5>
-                <input type="text" class="form-control" placeholder="姓名" name="nom"  required>
+                <?php echo form_error('nom'); ?>
+                <input type="text" class="form-control" placeholder="姓名" name="nom"  id="nom" onkeyup="loginUnique(this.value)"
+                       required  >
+                <p> <span id="uniquenom"></span></p>
                 </br>
                 <h5>Email</h5>
                 <?php echo form_error('mail'); ?>
