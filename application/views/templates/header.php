@@ -116,18 +116,18 @@
                     document.getElementById("txtHint").innerHTML = this.responseText;
                 }
             };
-            xmlhttp.open("GET", "../UniqueLogin/test/?q=" + str, true);
+            xmlhttp.open("GET", "UniqueLogin/test/?q=" + str, true);
             xmlhttp.send();
         }
     }
 </script>
 
 
-<p><b>Start typing a name in the input field below:</b></p>
+<!--<p><b>Start typing a name in the input field below:</b></p>
 
-First name: <input type="text" onkeyup="showHint(this.value)">
+First name: <input type="text" onkeyup="showHint(this.value)">-->
 
-<p>Suggestions: <span id="txtHint"></span></p>
+
 
 
 <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -142,9 +142,9 @@ First name: <input type="text" onkeyup="showHint(this.value)">
             <div class="modal-body">
                 <h5>Username</h5>
                 <?php echo form_error('nom'); ?>
-                <input type="text" class="form-control" placeholder="姓名" name="nom"  id="nom" onkeyup="loginUnique(this.value)"
+                <input type="text" class="form-control" placeholder="姓名" name="nom"  id="nom" onkeyup="showHint(this.value)"
                        required  >
-                <p> <span id="uniquenom"></span></p>
+                <p>Suggestions: <span id="txtHint"></span></p>
                 </br>
                 <h5>Email</h5>
                 <?php echo form_error('mail'); ?>

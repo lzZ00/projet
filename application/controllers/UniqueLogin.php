@@ -23,7 +23,7 @@ class UniqueLogin extends CI_Controller
         $this->load->helper('form');
         $this->load->library('form_validation');
         $nom = $this->input->post('nom');
-
+        echo 'ok';
      /*   $login = $this->Signup_Signin_Model->loginUnique($_POST['nom']);
         if(empty($donnees)){
             echo 'login ok';

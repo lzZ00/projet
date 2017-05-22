@@ -100,7 +100,8 @@ $route['commande'] = 'commande';
 $route['Affiche_Panier/(:any)'] = 'Affiche_Panier/view/$1';
 $route['Affiche_Panier'] = 'panier';
 
-$route['UniqueLogin/(:any)'] = 'UniqueLogin/$1';
+$route['UniqueLogin/test'] = 'UniqueLogin/test';
+$route['UniqueLogin/(:any)'] = 'UniqueLogin/view/$1';
 $route['UniqueLogin'] = 'UniqueLogin';
 
 $route['(:any)'] = 'pages/view/$1';
