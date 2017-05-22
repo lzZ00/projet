@@ -59,7 +59,6 @@ $uptypes=array(
 <div class="form-group">
         <input type="submit" name="submit" value="Create news item" class="btn btn-default" />
     </div>
-</div>
 </form>
 
 

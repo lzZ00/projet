@@ -65,4 +65,16 @@ class UniqueLogin extends CI_Controller
 // Output "no suggestion" if no hint was found or output correct values
        // echo $hint === "" ? "no suggestion" : $hint;
     }
+
+    public function testEmail(){
+        $q = $_REQUEST["q"];
+        $user=$this->Signup_Signin_Model->emailUnique($q);
+        if($user==NULL){
+            echo 'ok';
+        }
+        else{
+            echo 'already exist';
+        }
+
+    }
 }

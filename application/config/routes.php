@@ -81,7 +81,7 @@ $route['Affiche_Produit/(:any)'] = 'Affiche_Produit/view/$1';
 $route['Affiche_Produit'] = 'Affiche_Produit';
 
 
-
+$route['user/UniqueNom'] = 'user/UniqueNom';
 $route['user/signup'] = 'user/signup';
 $route['user/login'] = 'user/login';
 $route['user/logout'] = 'user/logout';
@@ -100,6 +100,7 @@ $route['commande'] = 'commande';
 $route['Affiche_Panier/(:any)'] = 'Affiche_Panier/view/$1';
 $route['Affiche_Panier'] = 'panier';
 
+$route['UniqueLogin/testEmail'] = 'UniqueLogin/testEmail';
 $route['UniqueLogin/test'] = 'UniqueLogin/test';
 $route['UniqueLogin/(:any)'] = 'UniqueLogin/view/$1';
 $route['UniqueLogin'] = 'UniqueLogin';

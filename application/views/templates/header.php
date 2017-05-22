@@ -64,7 +64,7 @@
                 <?php $user = $this->session->userdata('user');?>
                 <?php if (empty($user)) :?>
                     <p>您好，欢迎来到<b>Chez Lei商城</b>
-                    <li><a href="#" type="button" data-toggle="modal" data-target="#signup" >注册</a></li>
+                    <li><a href="<?php echo site_url('user/signup');?>" type="button"  >注册</a></li>
                     <li><a href="#" type="button" data-toggle="modal" data-target="#signin" >登录</a></li>
 
                 <?php else :?>
@@ -116,7 +116,7 @@
                     document.getElementById("txtHint").innerHTML = this.responseText;
                 }
             };
-            xmlhttp.open("GET", "UniqueLogin/test/?q=" + str, true);
+            xmlhttp.open("GET", "UniqueLogin/test/?q="+ str, true);
             xmlhttp.send();
         }
     }
@@ -126,9 +126,6 @@
 <!--<p><b>Start typing a name in the input field below:</b></p>
 
 First name: <input type="text" onkeyup="showHint(this.value)">-->
-
-
-
 
 <div class="modal fade" id="signup" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog modal-sm" role="document">

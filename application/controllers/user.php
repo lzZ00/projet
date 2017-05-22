@@ -40,7 +40,9 @@ class user extends CI_Controller
 		$this->form_validation->set_rules('mail','Email','required|valid_email|is_unique[users.email]');
         if ($this->form_validation->run() == false) {
             # 未通过
-            echo validation_errors();
+            $this->load->view('templates/header');
+            $this->load->view('login/index');
+            $this->load->view('templates/footer');
         } else {
             # 通过,注册
             $nom = $this->input->post('nom',true);
@@ -74,8 +76,24 @@ class user extends CI_Controller
         }
     }
 
+    public function UniqueNom(){
+        $q = $_REQUEST["q"];
+
+        $hint = "";
+        $user=$this->Signup_Signin_Model->loginUnique($q);
+        if($user==NULL){
+            echo 'ok';
+        }
+        else{
+            echo 'already exist';
+        }
+
+    }
+
     public function logout(){
         $this->session->unset_userdata('user');
         redirect('Affiche_Produit');
     }
+
+
 }
