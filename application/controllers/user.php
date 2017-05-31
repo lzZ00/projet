@@ -15,6 +15,8 @@ class user extends CI_Controller
         $this->load->model('Signup_Signin_Model');
         $this->load->model('Affiche_Panier_Model');
         $this->load->helper('url_helper');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
     }
 
     public function index()
@@ -51,15 +53,17 @@ class user extends CI_Controller
             $adresse = $this->input->post('adresse',true);
             $tel = $this->input->post('tel',true);
             $mdp1=md5($mdp);
-            if ($this->Signup_Signin_Model->Signup($nom,$mail,$mdp1,$adresse ,$tel)) {
-                echo 'ok';
-            } else {
-                # 注册失败
+            $this->Signup_Signin_Model->Signup($nom,$mail,$mdp1,$adresse ,$tel);
+            if ($user = $this->Signup_Signin_Model->get_user($mail,$mdp)) {
+                #成功，将用户信息保存至session
+                $this->session->set_userdata('user',$user);
                 redirect('Affiche_Produit');
+            }
+
             }
         }
 
-    }
+
 
     public function login(){
         $this->load->helper('form');
@@ -93,6 +97,46 @@ class user extends CI_Controller
     public function logout(){
         $this->session->unset_userdata('user');
         redirect('Affiche_Produit');
+    }
+
+    public function profil(){
+        $user = $this->session->userdata('user');
+        $data['produit']=$this->Signup_Signin_Model->readUser($user['id']);
+        $this->load->view('templates/header');
+        $this->load->view('login/profil',$data);
+        $this->load->view('templates/footer');
+    }
+
+    public function editProfil(){
+
+        $user = $this->session->userdata('user');
+        $data['produit']=$this->Signup_Signin_Model->readUser($user['id']);
+        if (isset($_POST['Update'])) {
+            $this->Signup_Signin_Model->updateUser($user['id']);
+            redirect(base_url('/index.php/user/profil'));
+        }
+        $this->load->view('templates/header');
+        $this->load->view('login/edit',$data);
+        $this->load->view('templates/footer');
+
+    }
+
+    public function changerMdp(){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $user = $this->session->userdata('user');
+        $this->form_validation->set_rules('password','New Password','required|min_length[6]|max_length[20]');
+        $this->form_validation->set_rules('passconf', 'Password Confirmation', 'required|matches[password]');
+        if ($this->form_validation->run() == false) {
+            # 未通过
+            $this->load->view('templates/header');
+            $this->load->view('login/changerMdp');
+            $this->load->view('templates/footer');
+        } else {
+            # 通过
+            $this->Signup_Signin_Model->updateUserMdp($user['id']);
+            redirect(base_url('/index.php/user/profil'));
+        }
     }
 
 

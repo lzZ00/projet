@@ -24,8 +24,10 @@ class panier extends CI_Controller
         $this->load->library('form_validation');
         $user = $this->session->userdata('user');
         $data['paniers'] = $this->Affiche_Panier_Model->getAllPanier($user);
+        $data['prix'] = $this->Affiche_Commande_Model->getPrixTotal($user);
         $this->load->view('templates/header');
         $this->load->view('Affiche_Panier/index',$data);
         $this->load->view('templates/footer');
+
     }
 }

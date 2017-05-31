@@ -70,6 +70,9 @@
 <?php $user = $this->session->userdata('user');?>
 <?php if ( $user['droit']=='DROITadmin'):?>
     <div align="center">
+        <a href="<?php echo base_url('/index.php/Affiche_Produit/createProduit')?>" class="btn btn-primary">
+            Ajouter un Produit
+        </a>
         <table class="table table-bordered" style="width: 30%;" >
             <tr><th>photo</th><th>nom</th><th>prix</th>
                 <?php $user = $this->session->userdata('user');?>
@@ -97,7 +100,7 @@
                         <?php echo form_open('Affiche_Produit'); ?>
                         <?php echo validation_errors(); ?>
                         <?php $idS=$donnes['id']; ?>
-                        <a href="#" type="button" data-toggle="modal" data-target="#supprimerm<?php echo $idS;?>"class="btn btn-danger btn-xs" >删除</a>
+                        <a href="#" type="button" data-toggle="modal" data-target="#supprimerm<?php echo $idS;?>"class="btn btn-danger btn-xs" >Supprimer</a>
                         <input type="hidden" name="idS" value=<?php echo $idS;?>>
                         <!-- 删除确认的弹窗-->
                         <div class="modal fade" id="supprimerm<?php echo $idS;?>" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -151,7 +154,7 @@
          <form method="post" action="<?php echo site_url('commande/creerCommande')?>"">
              <input name="id" type="hidden" value="<?php echo $donnes['id'] ?>"/>
              <tr>
-                 <td><?php echo $donnes['nom']?></td><td><?php echo $donnes['quantite']?> </td>
+                 <td><?php echo $donnes['nom']?></td><td><?php echo $donnes['quantite']?></td>
                  <td><?php echo $donnes['prix']?></td><td><?php echo $donnes['dateAjoutPanier']?> </td>
                  <td>  <a href="<?php echo site_url('Affiche_Produit/delete_PanierProduit');?>?id=<?php echo $donnes['id'];?>">删除</a></td>
              </tr><!-- {% endfor %}-->

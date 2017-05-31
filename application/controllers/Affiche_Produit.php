@@ -29,7 +29,7 @@ class Affiche_Produit extends CI_Controller
         $this->load->library('pagination');
         $config['base_url'] = base_url().'index.php/Affiche_Produit/index';
         $config['total_rows'] = $this->Affiche_Produit_Model->count_produit();
-        $config['per_page'] = 5;
+        $config['per_page'] = 6;
         // Bootstrap for CodeIgniter pagination.
         $config['full_tag_open'] = '<ul class="pagination">';
         $config['full_tag_close'] = '</ul>';

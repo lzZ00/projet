@@ -16,16 +16,16 @@
         }
     }
 
-    function showEmail(str) {
+    function showEmail2(str) {
         if (str.length == 0) {
-            document.getElementById("txtEmail").innerHTML = "";
+            document.getElementById("txtEmail2").innerHTML = "";
             return;
         } else {
             var xmlhttp = new XMLHttpRequest();
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     console.log(this.responseText);
-                    document.getElementById("txtEmail").innerHTML = this.responseText;
+                    document.getElementById("txtEmail2").innerHTML = this.responseText;
                 }
             };
             xmlhttp.open("GET", "http://localhost:8080/projetWeb/index.php/UniqueLogin/testEmail/?q=" + str, true);
@@ -33,8 +33,8 @@
         }
     }
 </script>
- <h4 class="modal-title" id="myModalLabel" align="center">加入磊家</h4>
- <h6 class="modal-title" id="myModalLabel" align="center">梅斯最实惠的中超</h6>
+ <h4 class="modal-title" id="myModalLabel" align="center">Welcome</h4>
+<!-- <h6 class="modal-title" id="myModalLabel" align="center">梅斯最实惠的中超</h6>-->
 
      <?php echo form_open('user/signup'); ?>
 <div align="center">
@@ -50,9 +50,9 @@
                     <label for="mail">Email</label>
                     <?php echo form_error('mail'); ?>
                     <input type="input" class="form-control" id="mail" placeholder="Mail" name="mail"  style="width: 20%"
-                           value="<?php echo set_value('mail'); ?>" onkeyup="showEmail(this.value)"  required>
+                           value="<?php echo set_value('mail'); ?>" onkeyup="showEmail2(this.value)"  required>
                 </div>
-                <p><span id="txtEmail"></span></p>
+                <p><span id="txtEmail2"></span></p>
 
                 <div class="form-group">
                     <label for="mdp">Password</label>
@@ -77,7 +77,7 @@
                 </div>
 
                 <div class="form-group">
-                <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block" name="signup" style="width: 5%">注册</button>
+                <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block" name="signup" style="width: 5%">Inscription</button>
                 </div>
                 </form>
      </div>

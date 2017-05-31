@@ -34,9 +34,9 @@
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
             <ul class="nav navbar-nav">
-                <li><a href="<?php echo site_url('Affiche_Produit');?>">首页 <span class="sr-only">(current)</span></a></li>
+                <li><a href="<?php echo site_url('Affiche_Produit');?>">Home <span class="sr-only">(current)</span></a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">商品分类 <span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catégories<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>">主食</a></li>
                         <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type2Produit') ?>">休闲食品</a></li>
@@ -49,11 +49,11 @@
                         <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>">蔬菜</a></li>
                     </ul>
                 </li>
-                <li><a href="#">新品上架</a></li>
+                <li><a href="#">Nouveau</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search" action="<?php echo base_url().'index.php/Affiche_Produit/search_produit' ;?>" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="商品搜索" name="search" id="search">
+                    <input type="text" class="form-control" placeholder="search" name="search" id="search">
                 </div>
                 <button type="submit" class="btn btn-default glyphicon glyphicon-search" ></button>
             </form>
@@ -63,21 +63,21 @@
             <ul class="nav navbar-nav">
                 <?php $user = $this->session->userdata('user');?>
                 <?php if (empty($user)) :?>
-                    <p>您好，欢迎来到<b>Chez Lei商城</b>
-                    <li><a href="<?php echo site_url('user/signup');?>" type="button"  >注册</a></li>
-                    <li><a href="#" type="button" data-toggle="modal" data-target="#signin" >登录</a></li>
+                    <p>    &nbsp&nbsp Bonjour, bienvenue<!--<b>Chez Lei商城</b>--></p>
+                    <li><a href="<?php /*echo site_url('user/signup');*/?>"  type="button"  data-toggle="modal" data-target="#signup"  >Inscription</a></li>
+                    <li><a href="#" type="button" data-toggle="modal" data-target="#signin" >Connexion</a></li>
 
                 <?php else :?>
-                    <p><?php echo $user['nom'];?>, 您好，欢迎来到<b>Chez Lei</b> [<a href="<?php echo site_url('user/logout');?>">注销</a>]</p>
-
-                    <li><a href="<?php echo site_url('Affiche_Panier');?>">购物车</a></li>
+                    <p><?php echo $user['nom'];?>, Bonjour, bienvenue<!--<b>Chez Lei</b>--> [<a href="<?php echo site_url('user/logout');?>">Logout</a>]</p>
+                    <li><a href="<?php echo site_url('Affiche_Panier');?>">Panier</a></li>
                     <?php $user = $this->session->userdata('user');?>
                     <?php if ( $user['droit']=='DROITadmin' ):?>
-                    <li><a href="<?php echo site_url('commande/allCommande');?>">管理订单</a></li>
+                    <li><a href="<?php echo site_url('commande/allCommande');?>">Gestion des commandes</a></li>
                     <?php endif;?>
                 <?php $user = $this->session->userdata('user');?>
                 <?php if ( $user['droit']!='DROITadmin' ):?>
-                    <li><a href="<?php echo site_url('commande');?>">我的订单</a></li>
+                    <li><a href="<?php echo site_url('commande');?>">Mez commandes</a></li>
+                        <li><a href="<?php echo site_url('user/profil');?>">Profil</a></li>
                     <?php endif;?>
                 <?php endif;?>
             </ul>
@@ -122,6 +122,26 @@
     }
 </script>
 
+<script>
+
+    function showEmail(str) {
+        if (str.length == 0) {
+            document.getElementById("txtEmail").innerHTML = "";
+            return;
+        } else {
+            var xmlhttp = new XMLHttpRequest();
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log(this.responseText);
+                    document.getElementById("txtEmail").innerHTML = this.responseText;
+                }
+            };
+            xmlhttp.open("GET", "http://localhost:8080/projetWeb/index.php/UniqueLogin/testEmail/?q=" + str, true);
+            xmlhttp.send();
+        }
+    }
+</script>
+
 
 <!--<p><b>Start typing a name in the input field below:</b></p>
 
@@ -132,32 +152,32 @@ First name: <input type="text" onkeyup="showHint(this.value)">-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel" align="center">加入磊家</h4>
-                <h6 class="modal-title" id="myModalLabel" align="center">梅斯最实惠的中超</h6>
+                <h4 class="modal-title" id="myModalLabel" align="center">Welcome</h4>
+              <!--  <h6 class="modal-title" id="myModalLabel" align="center">梅斯最实惠的中超</h6>-->
             </div>
                 <?php echo form_open('user/signup'); ?>
             <div class="modal-body">
                 <h5>Username</h5>
                 <?php echo form_error('nom'); ?>
-                <input type="text" class="form-control" placeholder="姓名" name="nom"  id="nom" onkeyup="showHint(this.value)"
+                <input type="text" class="form-control" placeholder="Name" name="nom"  id="nom" onkeyup="showHint(this.value)"
                        required  >
                 <p>Suggestions: <span id="txtHint"></span></p>
-                </br>
+
                 <h5>Email</h5>
                 <?php echo form_error('mail'); ?>
-                <input type="email" class="form-control" placeholder="邮箱" name="mail" id="mail"  value="<?php echo set_value('mail'); ?>" required>
-                </br>
+                <input type="email" class="form-control" placeholder="Mail" name="mail" id="mail" onkeyup="showEmail(this.value)" required >
+                <p>Suggestions: <span id="txtEmail"></span></p>
                 <h5>Password</h5>
-                <input type="password" class="form-control" placeholder="密码(不少于6位)" name="mdp" required>
+                <input type="password" class="form-control" placeholder="password(not less than six digits)" name="mdp" required>
                 </br>
-                <input type="text" class="form-control" placeholder="地址(仅限梅斯地区)" name="adresse">
+                <input type="text" class="form-control" placeholder="adresse" name="adresse">
                 </br>
-                <input type="text" class="form-control" placeholder="电话(选填)" name="tel">
+                <input type="text" class="form-control" placeholder="tel" name="tel">
                 </br>
             </div>
             <div class="modal-footer">
                 <?php echo validation_errors(); ?>
-                    <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block" name="signup">注册</button>
+                    <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block" name="signup">Inscription</button>
                 </form>
             </div>
         </div>
@@ -172,18 +192,18 @@ First name: <input type="text" onkeyup="showHint(this.value)">-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">登录</h4>
+                <h4 class="modal-title" id="myModalLabel">Connexion</h4>
             </div>
             <div class="loginpanel">
             <div>
             <div class="modal-body">
                 <?php echo form_open('user/login'); ?>
-                <input type="text" id="username" class="form-control" name="email" placeholder="邮箱" required autofocus onkeypress="check_values();">
+                <input type="text" id="username" class="form-control" name="email" placeholder="email" required autofocus onkeypress="check_values();">
                 </br>
-                <input type="password" id="password" class="form-control" name="password" placeholder="密码" required onkeypress="check_values();">
+                <input type="password" id="password" class="form-control" name="password" placeholder="password" required onkeypress="check_values();">
             </div>
             <div class="buttonwrapper">
-                <button type="submit" id="loginbtn" class="btn btn-warning loginbutton" >登录
+                <button type="submit" id="loginbtn" class="btn btn-warning loginbutton" >Se connecter
                 <span class="fa fa-check"></span>
                 </button>
                 <span id="lockbtn" class="fa fa-lock lockbutton redborder"></span>
@@ -197,21 +217,21 @@ First name: <input type="text" onkeyup="showHint(this.value)">-->
 
 <!-- 注册和登录按钮触发事件，因为如果写在control要每页都复制这个事件，暂时找不到更好的解决方法，所以写在这里-->
 <?php
-/*$this->load->library('form_validation');
+$this->load->library('form_validation');
 if(isset($_POST['signup'])){
     $nom=$_POST['nom'];
     $mail=$_POST['mail'];
-    $mdp=md5($_POST['mdp']);
+    $mdp=($_POST['mdp']);
     $adresse=$_POST['adresse'];
     $tel=$_POST['tel'];
-    $this->form_validation->set_rules('password','密码','required|min_length[6]|max_length[16]|md5');
-    $this->Signup_Signin_Model->Signup($nom,$mail,$mdp,$adresse ,$tel);
+    $mdp1=md5($mdp);
+    $this->Signup_Signin_Model->Signup($nom,$mail,$mdp1,$adresse ,$tel);
     if ($user = $this->Signup_Signin_Model->get_user($mail,$mdp)) {
         #成功，将用户信息保存至session
         $this->session->set_userdata('user',$user);
         redirect('Affiche_Produit');
     }
-}*/
+}
 ?>
 
 

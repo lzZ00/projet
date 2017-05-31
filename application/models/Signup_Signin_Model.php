@@ -49,5 +49,30 @@ class Signup_Signin_Model extends CI_Model {
         return $query->result_array();
     }
 
+    public function readUser($id){
+        $this->db->select('*');
+        $this->db->from('users');
+        $this->db->Where('id',$id);
+        $query=$this->db->get();
+        return $query->row_array();
+    }
+
+    public function updateUser($id){
+        $this->load->helper('url');
+        $data = array(
+            'adresse' => $this->input->post('adresse'),
+            'tel' => $this->input->post('tel'),
+        );
+        $this->db->where('id', $id);
+        $this->db->update('users', $data);
+    }
+
+    public function updateUserMdp($id){
+        $this->load->helper('url');
+        $this->db->set('password',md5($this->input->post('password')));
+        $this->db->Where('id',$id);
+        $this->db->update('users');
+    }
+
 
 }
