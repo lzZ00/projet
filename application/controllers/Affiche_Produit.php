@@ -16,6 +16,10 @@ class Affiche_Produit extends CI_Controller
         $this->load->model('Signup_Signin_Model');
         $this->load->model('Affiche_Panier_Model');
         $this->load->model('Affiche_Commande_Model');
+        $this->load->library('session');
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+        $this->load->helper(array('form', 'url'));
         $this->load->helper('url_helper');
     }
 
@@ -95,6 +99,11 @@ class Affiche_Produit extends CI_Controller
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $user = $this->session->userdata('user');
+        if (!isset($_SESSION['logged_in']) && $user['droit']!='DROITadmin' ){
+            redirect(base_url('/index.php/Affiche_Produit/'));
+            //redirect(base_url('/index.php/login/index?url='.current_url()));
+        }
         $data['title'] = 'Create a news item';
         $data['typeProduits'] = $this->Affiche_Produit_Model->get_typeProduits();
         $this->form_validation->set_rules('nom', 'Name', 'required|is_unique[produits.nom]');
@@ -156,12 +165,15 @@ class Affiche_Produit extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-
-
     function editProduit()
     {
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $user = $this->session->userdata('user');
+        if (!isset($_SESSION['logged_in']) && $user['droit']!='DROITadmin' ){
+            redirect(base_url('/index.php/Affiche_Produit/'));
+            //redirect(base_url('/index.php/login/index?url='.current_url()));
+        }
         if (isset($_POST['Modifier'])) {
             $data['produit']= $this->Affiche_Produit_Model->get_unProduits($_POST['idM']);
             $data['typeProduits'] = $this->Affiche_Produit_Model->get_typeProduits();
@@ -231,7 +243,7 @@ class Affiche_Produit extends CI_Controller
     }
 
     public function pagination(){
-        $this->load->helper('form');
+/*       fen ye *********  $this->load->helper('form');
         $this->load->library('form_validation');
         $this->load->library('pagination');
         $config['base_url'] = base_url().'index.php/Affiche_Produit/pagination';
@@ -260,9 +272,24 @@ class Affiche_Produit extends CI_Controller
         $data['produits'] = $this->Affiche_Produit_Model->fetch_produit($config['per_page'],$this->uri->segment(3));
         $this->load->view('templates/header');
         $this->load->view('Affiche_Produit/test',$data);
-        $this->load->view('templates/footer');
+        $this->load->view('templates/footer');*/
+    }
+
+    public function ajouterProduitPanier(){
+        $id = $this->input->get('id');
+        echo $id;
+        $this->Affiche_Panier_Model->updateProduitPanier($id);
+        redirect(base_url('/index.php/Affiche_Produit/'));
+    }
+    public function deleteProduitPanier()
+    {
+        $id = $this->input->get('id');
+        echo $id;
+        $this->Affiche_Panier_Model->deleteProduitPanier($id);
+        redirect(base_url('/index.php/Affiche_Produit/'));
 
     }
+
 
 }
 

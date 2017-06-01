@@ -22,7 +22,7 @@ class Affiche_Commande_Model extends CI_Model
     }
 
     function getCommandeDetail($id) {
-        $sql = "SELECT paniers.id,paniers.quantite,paniers.prix,paniers.dateAjoutPanier,produits.nom,users.login as nomClient,paniers.user_id,paniers.commande_id FROM 
+        $sql = "SELECT paniers.id,paniers.quantite,paniers.prix,paniers.dateAjoutPanier,produits.nom,users.nom as nomClient,paniers.user_id,paniers.commande_id FROM 
                 paniers INNER JOIN produits ON produits.id=paniers.produit_id 
                 INNER JOIN users ON users.id=paniers.user_id
                 WHERE paniers.commande_id = ?";

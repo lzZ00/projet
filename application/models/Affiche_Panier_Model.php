@@ -11,6 +11,7 @@ class Affiche_Panier_Model extends CI_Model
     public function __construct()
     {
         $this->load->database();
+        $this->load->helper('url');
     }
     public function getAllPanier($user)
     {
@@ -43,7 +44,6 @@ class Affiche_Panier_Model extends CI_Model
             if ($quantite > $dispo){
                 return false;
             }
-
             $data = array(
                 'quantite'  => $quantite,
                 'prix' =>$prix
@@ -75,6 +75,49 @@ class Affiche_Panier_Model extends CI_Model
         $this->db->set('dateAjoutPanier',date('Y-m-d H:i:s'));
         $this->db->Where('produit_id',$produit['id']);
         $this->db->update('paniers');
+    }
+
+    public function updateProduitPanier($id){
+        $this->db->simple_query('UPDATE paniers SET quantite=quantite + 1 WHERE id='.$id.'');
+
+        $this->db->select('produit_id');
+        $this->db->from('paniers');
+        $this->db->Where('id',$id);
+        $query=$this->db->get();
+        $resultat = $query->row_array();
+        $produit_id = $resultat['produit_id'];
+
+        $this->db->select('prix');
+        $this->db->from('produits');
+        $this->db->Where('id',$produit_id);
+        $query=$this->db->get();
+        $resultat = $query->row_array();
+        $produit_prix = $resultat['prix'];
+
+
+        $this->db->simple_query('UPDATE paniers SET prix=prix + '.$produit_prix.'  WHERE id='.$id.'');
+
+    }
+
+    public function deleteProduitPanier($id){
+        $this->db->simple_query('UPDATE paniers SET quantite=quantite - 1 WHERE id='.$id.'');
+
+        $this->db->select('produit_id');
+        $this->db->from('paniers');
+        $this->db->Where('id',$id);
+        $query=$this->db->get();
+        $resultat = $query->row_array();
+        $produit_id = $resultat['produit_id'];
+
+        $this->db->select('prix');
+        $this->db->from('produits');
+        $this->db->Where('id',$produit_id);
+        $query=$this->db->get();
+        $resultat = $query->row_array();
+        $produit_prix = $resultat['prix'];
+
+
+        $this->db->simple_query('UPDATE paniers SET prix=prix - '.$produit_prix.'  WHERE id='.$id.'');
     }
 
 

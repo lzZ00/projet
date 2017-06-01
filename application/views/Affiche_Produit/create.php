@@ -10,11 +10,11 @@ $uptypes=array(
     'image/x-png'
 );
 ?>
-
+<div align="center">
 <h2><?php echo $title; ?></h2>
 
 <?php echo form_open('Affiche_Produit/createProduit','id="create"'); ?>
-<form data-toggle="validator" role="form">
+<form data-toggle="validator" role="form" enctype="multipart/form-data">
 <div class="form-group">
     <label for="nom">Name</label>
     <?php echo form_error('nom'); ?>
@@ -53,22 +53,22 @@ $uptypes=array(
 
 <div class="form-group">
     <label for="type">Photo</label>
-    <input type="input" class="form-control" id="photo" placeholder="Photo" name="photo"  style="width: 20%">
+    <input type="file" class="form-control" id="photo" placeholder="Photo" name="photo"  style="width: 20%">
 </div>
 
 <div class="form-group">
         <input type="submit" name="submit" value="Create news item" class="btn btn-default" />
     </div>
 </form>
+</div>
 
 
-<!-- 存照片 -->
-<form enctype="multipart/form-data" method="post" name="upform">
+<!--<form enctype="multipart/form-data" method="post" name="upform">
     déposer le photo
     <input name="upfile" type="file">
     <input type="submit" value="Valider" name="Valider"><br>
     <?php
-    if(isset($_POST['Valider'])) {
+/*    if(isset($_POST['Valider'])) {
         //il faut remplir le $nomdephoto à l'id_etu
         $file = $_FILES["upfile"];
         $nom = $file['name'];
@@ -78,7 +78,7 @@ $uptypes=array(
         $type = substr($nom, strpos($nom, '.'));
         echo "</br>";
         //echo "".$type;
-        echo "succece";
+        echo $nom;
 
         if (!in_array($file["type"], $uptypes)) //verifier le type de fichier
         {
@@ -88,9 +88,9 @@ $uptypes=array(
         //le nom de photo va changer à id_etu+$type
         move_uploaded_file($_FILES["upfile"]["tmp_name"],"assets/img/" . $nom);
         echo "</br>";
-        ?>
-        <td><img src="<?php echo base_url()?>assets/img/<?php echo $nom?>" width="50" alt="photo"/></td>
+        */?>
+        <td><img src="<?php /*echo base_url()*/?>assets/img/<?php /*echo $nom*/?>" width="50" alt="photo"/></td>
         <?php
-    }
-    ?>
-</form>
+/*    }
+    */?>
+</form>-->
