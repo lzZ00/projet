@@ -9,6 +9,7 @@
     <!-- jquery -->
     <script src="<?php echo base_url()?>assets/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/login.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery.js"></script>
     <!-- Bootstrap -->
     <link href="<?php echo base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url()?>assets/css/login.css" rel="stylesheet">
@@ -140,6 +141,8 @@
             xmlhttp.send();
         }
     }
+
+
 </script>
 
 

@@ -223,7 +223,7 @@ class Affiche_Produit extends CI_Controller
         $id = $this->input->get('id');
         echo $id;
         $this->Affiche_Panier_Model->deleteProduit($id);
-        redirect(base_url('/index.php/Affiche_Produit/'));
+        redirect(base_url('/index.php/Affiche_Panier/'));
     }
 
     public function search_produit(){
@@ -279,14 +279,14 @@ class Affiche_Produit extends CI_Controller
         $id = $this->input->get('id');
         echo $id;
         $this->Affiche_Panier_Model->updateProduitPanier($id);
-        redirect(base_url('/index.php/Affiche_Produit/'));
+        redirect(base_url('/index.php/Affiche_Panier/'));
     }
     public function deleteProduitPanier()
     {
         $id = $this->input->get('id');
         echo $id;
         $this->Affiche_Panier_Model->deleteProduitPanier($id);
-        redirect(base_url('/index.php/Affiche_Produit/'));
+        redirect(base_url('/index.php/Affiche_Panier/'));
 
     }
 
