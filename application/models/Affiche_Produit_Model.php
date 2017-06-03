@@ -38,6 +38,7 @@ class Affiche_Produit_Model extends CI_Model {
         $query = $this->db->get_where('produits', array('slug' => $slug));
         return $query->row_array();
     }
+
     public function set_produits()
     {
         $this->load->helper('url');
@@ -51,8 +52,10 @@ class Affiche_Produit_Model extends CI_Model {
             'photo' => $this->input->post('photo')
         );
 
-        return $this->db->insert('produits', $data);
+        $this->db->insert('produits', $data);
+        return $this->db->insert_id();//获得刚刚添加的产品的id
     }
+
     public function get_unProduits($id)
     {
         /*$query = $this->db->simple_query('SELECT id,nom,prix,photo FROM produits WHERE id = '.$id.'');
@@ -92,7 +95,16 @@ class Affiche_Produit_Model extends CI_Model {
             'prix' => $this->input->post('prix'),
             'dispo' => $this->input->post('dispo'),
             'stock' => $this->input->post('stock'),
-            'photo' => $this->input->post('photo')
+            //'photo' => $this->input->post('photo')
+        );
+        $this->db->where('id', $id);
+        $this->db->update('produits', $data);
+    }
+
+    public function update_photo($id,$photo){
+        $this->load->helper('url');
+        $data = array(
+            'photo' => $photo
         );
         $this->db->where('id', $id);
         $this->db->update('produits', $data);

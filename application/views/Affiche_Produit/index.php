@@ -86,7 +86,7 @@
             </thead>
             <?php foreach ($produits as $donnes): ?>
                 <tr>
-                <td><img src="<?php echo base_url()?>assets/img/<?php echo $donnes['photo']?>" width="50" alt="photo"/></td>
+                <td><a href="<?php echo base_url()?>index.php/Affiche_Produit/edit_photo/<?php echo $donnes['id']?>"><img src="<?php echo base_url()?>assets/img/<?php echo $donnes['photo']?>" width="50" alt="photo"/></a></td>
                 <td><?php echo $donnes['nom']?> </td>
                 <td><?php echo $donnes['prix']?></td>
                     <td><?php echo $donnes['dispo']?></td>

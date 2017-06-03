@@ -115,9 +115,51 @@ class Affiche_Produit extends CI_Controller
             $this->load->view('Affiche_Produit/create');
             $this->load->view('templates/footer');
         } else {
-            $this->Affiche_Produit_Model->set_produits();
-            redirect(base_url('/index.php/Affiche_Produit/'));
+            $id=$this->Affiche_Produit_Model->set_produits();
+            redirect(base_url('/index.php/Affiche_Produit/edit_photo/'.$id));
         }
+    }
+    public function edit_photo($rowid=null){
+        $this->load->helper(array('form', 'url'));
+
+        $data['product']=$this->Affiche_Produit_Model->get_unProduits($rowid);
+        $data['rowid']=$rowid;
+        $data['error']='';
+        $this->load->view('templates/header');
+        $this->load->view('Affiche_Produit/edit_photo',$data);
+        $this->load->view('templates/footer');
+    }
+    public function do_upload_photo($rowid=null){
+        $this->load->helper(array('form', 'url'));
+        $this->load->library('image_lib');
+        $dir='assets/img/';
+        $config['upload_path']      = $dir;
+        $config['allowed_types']    = 'gif|jpg|png|jpeg';
+        $config['max_size']     = 5120;
+        $config['max_width']        = 5120;//图片最大宽度
+        $config['max_height']       = 5120;//图片最大高度
+        $data['rowid']=$rowid;
+        $this->load->library('upload', $config);
+        if ( ! $this->upload->do_upload('photo')) //如果没有上传成功
+        {
+            $data['product']=$this->Affiche_Produit_Model->get_unProduits($rowid);
+            $data['error'] = $this->upload->display_errors();
+            $this->load->view('templates/header');
+            $this->load->view('Affiche_Produit/edit_photo', $data);
+            $this->load->view('templates/footer');
+        }
+        else{
+            $name=$this->upload->data('file_name');//获得刚刚上传的图片名字
+            $this->Affiche_Produit_Model->update_photo($rowid,$name);
+            $data['product']=$this->Affiche_Produit_Model->get_unProduits($rowid);
+            $data['error']=$name.'上传成功';
+            $this->load->view('templates/header');
+            $this->load->view('Affiche_Produit/edit_photo', $data);
+            $this->load->view('templates/footer');
+
+        }
+
+
     }
 
     function type1Produit()
