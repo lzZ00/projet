@@ -48,7 +48,7 @@
                             <option value="<?php  echo $i ; ?>"><?php echo $i; ?></option>
                         <?php } ?>
                         </select>
-                    <input type="button" value="Ajouter" name="Ajouter" class="btn btn-xs" id="Ajouter" >
+                    <input type="button" value="Ajouter" name="Ajouter" class="btn btn-xs" id="<?php echo $donnes['id'];?>" onclick="add_produit(this.id)" >
                     <?php $idA=$donnes['id']; ?>
                     <input type="hidden" name="idA"  id="idA" value=<?php echo $idA;?> >
                     <?php $dispo=$donnes['dispo']; ?>
@@ -58,19 +58,6 @@
             </form>
                 </td>
             <?php endif;?>
-                <div id="div1"></div>
-                <script>
-                    var rowid=document.getElementById("idA").value;
-                    var quantite=document.getElementById("quantite").value;
-                    var dispo=document.getElementById("dispo").value;
-                    $('#Ajouter').click(function(){
-                        document.getElementById("div1").innerHTML='12312';
-                        $.ajax({
-                            url: "../../Affiche_Produit/add_Produit_ajax/" + rowid + "/" + quantite + "/" + dispo, success: function (result) {
-                            }
-                        });
-                    });
-                </script>
         </div>
     </div>
         </a>
@@ -153,3 +140,16 @@
 
 
 
+<div id="div1">111</div>
+<script>
+    //var rowid=document.getElementById("idA").value;
+    var quantite=document.getElementById("quantite").value;
+    var dispo=document.getElementById("dispo").value;
+    function add_produit(rowid){
+        document.getElementById("div1").innerHTML=rowid;
+        $.ajax({
+            url: "../../Affiche_Produit/add_Produit_ajax/" + rowid + "/" + quantite + "/" + dispo, success: function (result) {
+            }
+        });
+    }
+</script>
