@@ -40,7 +40,7 @@ $uptypes=array(
 </div>
 
 <div class="form-group">
-    <label for="dispo">Dispo</label>
+    <label for="dispo">Available</label>
     <input type="input" class="form-control" id="dispo" placeholder="Dispo" name="dispo"  style="width: 20%"
            value="<?php echo set_value('dispo'); ?>">
 </div>
@@ -51,10 +51,11 @@ $uptypes=array(
            value="<?php echo set_value('stock'); ?>">
 </div>
 
-<div class="form-group">
+<!--<div class="form-group">
     <label for="type">Photo</label>
     <input type="file" class="form-control" id="photo" placeholder="Photo" name="photo"  style="width: 20%">
 </div>
+-->
 
 <div class="form-group">
         <input type="submit" name="submit" value="Create news item" class="btn btn-default" />

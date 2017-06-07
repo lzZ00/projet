@@ -109,7 +109,6 @@ class Affiche_Produit extends CI_Controller
         $this->form_validation->set_rules('nom', 'Name', 'required|is_unique[produits.nom]');
         $this->form_validation->set_rules('type', 'Type', 'required');
         $this->form_validation->set_rules('prix', 'Price', 'required');
-        $this->form_validation->set_rules('photo', 'Photo', 'required');
         if ($this->form_validation->run() === FALSE) {
             $this->load->view('templates/header', $data);
             $this->load->view('Affiche_Produit/create');
@@ -120,13 +119,21 @@ class Affiche_Produit extends CI_Controller
         }
     }
     public function edit_photo($rowid=null){
-        $this->load->helper(array('form', 'url'));
+    $this->load->helper(array('form', 'url'));
+    $data['product']=$this->Affiche_Produit_Model->get_unProduits($rowid);
+    $data['rowid']=$rowid;
+    $data['error']='';
+    $this->load->view('templates/header');
+    $this->load->view('Affiche_Produit/edit_photo',$data);
+    $this->load->view('templates/footer');
+}
+    public function getProduit($rowid=null){
 
         $data['product']=$this->Affiche_Produit_Model->get_unProduits($rowid);
         $data['rowid']=$rowid;
         $data['error']='';
         $this->load->view('templates/header');
-        $this->load->view('Affiche_Produit/edit_photo',$data);
+        $this->load->view('Affiche_Produit/produitDetail',$data);
         $this->load->view('templates/footer');
     }
     public function do_upload_photo($rowid=null){

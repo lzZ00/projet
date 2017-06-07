@@ -10,9 +10,11 @@
     <script src="<?php echo base_url()?>assets/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/login.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery.js"></script>
+    <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
     <!-- Bootstrap -->
     <link href="<?php echo base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo base_url()?>assets/css/login.css" rel="stylesheet">
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"/>
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -37,7 +39,7 @@
             <ul class="nav navbar-nav">
                 <li><a href="<?php echo site_url('Affiche_Produit');?>">Home <span class="sr-only">(current)</span></a></li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Catégories<span class="caret"></span></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Categories<span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>">主食</a></li>
                         <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type2Produit') ?>">休闲食品</a></li>
@@ -50,7 +52,7 @@
                         <li><a href="<?php echo base_url('/index.php/Affiche_Produit/type1Produit') ?>">蔬菜</a></li>
                     </ul>
                 </li>
-                <li><a href="#">Nouveau</a></li>
+                <li><a href="#">News</a></li>
             </ul>
             <form class="navbar-form navbar-left" role="search" action="<?php echo base_url().'index.php/Affiche_Produit/search_produit' ;?>" method="post">
                 <div class="form-group">
@@ -64,21 +66,22 @@
             <ul class="nav navbar-nav">
                 <?php $user = $this->session->userdata('user');?>
                 <?php if (empty($user)) :?>
-                    <p>    &nbsp&nbsp Bonjour, bienvenue<!--<b>Chez Lei商城</b>--></p>
-                    <li><a href="<?php /*echo site_url('user/signup');*/?>"  type="button"  data-toggle="modal" data-target="#signup"  >Inscription</a></li>
-                    <li><a href="#" type="button" data-toggle="modal" data-target="#signin" >Connexion</a></li>
-
+                    <p>    &nbsp&nbsp Hello, welcome<!--<b>Chez Lei商城</b>--></p>
+                    <li><a href="<?php /*echo site_url('user/signup');*/?>"  type="button"  data-toggle="modal" data-target="#signup"  >sign up</a></li>
+                    <li><a href="#" type="button" data-toggle="modal" data-target="#signin" >sign in</a></li>
                 <?php else :?>
-                    <p><?php echo $user['nom'];?>, Bonjour, bienvenue<!--<b>Chez Lei</b>--> [<a href="<?php echo site_url('user/logout');?>">Logout</a>]</p>
-                    <li><a href="<?php echo site_url('Affiche_Panier');?>">Panier</a></li>
+                    <p><?php echo $user['nom'];?>, Hello, welcome<!--<b>Chez Lei</b>--> [<a href="<?php echo site_url('user/logout');?>">Logout</a>]</p>
+                <?php if ( $user['droit']!='DROITadmin' && (!empty($user) )):?>
+                    <li style="position:relative"><a href="<?php echo site_url('Affiche_Panier');?>">Cart<i class="fa fa-plus" id="plus" style="color:red;position: absolute;margin-bottom: 3px;"></i></a></li>
+                    <?php endif;?>
                     <?php $user = $this->session->userdata('user');?>
                     <?php if ( $user['droit']=='DROITadmin' ):?>
-                    <li><a href="<?php echo site_url('commande/allCommande');?>">Gestion des commandes</a></li>
+                    <li><a href="<?php echo site_url('commande/allCommande');?>">Order management</a></li>
                     <?php endif;?>
                 <?php $user = $this->session->userdata('user');?>
                 <?php if ( $user['droit']!='DROITadmin' ):?>
-                    <li><a href="<?php echo site_url('commande');?>">Mez commandes</a></li>
-                        <li><a href="<?php echo site_url('user/profil');?>">Profil</a></li>
+                    <li><a href="<?php echo site_url('commande');?>">My orders</a></li>
+                        <li><a href="<?php echo site_url('user/profil');?>">Profile</a></li>
                     <?php endif;?>
                 <?php endif;?>
             </ul>
@@ -121,6 +124,8 @@
             xmlhttp.send();
         }
     }
+
+
 </script>
 
 <script>
@@ -145,6 +150,18 @@
 
 </script>
 
+<script>
+    $(document).ready(function(){
+        $("#sign").validate({
+            rules:{
+                mdp:{
+                    required:true,
+                    minlength:6,
+                }
+            }});
+
+    })
+</script>
 
 <!--<p><b>Start typing a name in the input field below:</b></p>
 
@@ -158,7 +175,7 @@ First name: <input type="text" onkeyup="showHint(this.value)">-->
                 <h4 class="modal-title" id="myModalLabel" align="center">Welcome</h4>
               <!--  <h6 class="modal-title" id="myModalLabel" align="center">梅斯最实惠的中超</h6>-->
             </div>
-                <?php echo form_open('user/signup'); ?>
+                <form method="post" id="sign" action="<?php echo site_url('user/signup')?>">
             <div class="modal-body">
                 <h5>Username</h5>
                 <?php echo form_error('nom'); ?>
@@ -180,7 +197,7 @@ First name: <input type="text" onkeyup="showHint(this.value)">-->
             </div>
             <div class="modal-footer">
                 <?php echo validation_errors(); ?>
-                    <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block" name="signup">Inscription</button>
+                    <button type="submit" id="signup" class="btn btn-primary btn-lg btn-block" name="signup">Sign Up</button>
                 </form>
             </div>
         </div>
@@ -195,7 +212,7 @@ First name: <input type="text" onkeyup="showHint(this.value)">-->
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Connexion</h4>
+                <h4 class="modal-title" id="myModalLabel">Log in</h4>
             </div>
             <div class="loginpanel">
             <div>
@@ -206,7 +223,7 @@ First name: <input type="text" onkeyup="showHint(this.value)">-->
                 <input type="password" id="password" class="form-control" name="password" placeholder="password" required onkeypress="check_values();">
             </div>
             <div class="buttonwrapper">
-                <button type="submit" id="loginbtn" class="btn btn-warning loginbutton" >Se connecter
+                <button type="submit" id="loginbtn" class="btn btn-warning loginbutton" >To log in
                 <span class="fa fa-check"></span>
                 </button>
                 <span id="lockbtn" class="fa fa-lock lockbutton redborder"></span>
@@ -217,7 +234,7 @@ First name: <input type="text" onkeyup="showHint(this.value)">-->
     </div>
     </form>
 </div>
-
+</body>
 <!-- 注册和登录按钮触发事件，因为如果写在control要每页都复制这个事件，暂时找不到更好的解决方法，所以写在这里-->
 <?php
 $this->load->library('form_validation');

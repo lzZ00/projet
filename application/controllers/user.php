@@ -37,9 +37,9 @@ class user extends CI_Controller
     public function signup(){
         $this->load->helper('form');
         $this->load->library('form_validation');
-        $this->form_validation->set_rules('nom','Username','required|is_unique[users.nom]');
+  /*      $this->form_validation->set_rules('nom','Username','required|is_unique[users.nom]');
 		$this->form_validation->set_rules('mdp','Password','required|min_length[6]|max_length[20]');
-		$this->form_validation->set_rules('mail','Email','required|valid_email|is_unique[users.email]');
+		$this->form_validation->set_rules('mail','Email','required|valid_email|is_unique[users.email]');*/
         if ($this->form_validation->run() == false) {
             # 未通过
             $this->load->view('templates/header');
