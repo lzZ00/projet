@@ -237,7 +237,7 @@ class Affiche_Produit extends CI_Controller
         }
     }
 
-    function addProduit(){
+    /*function addProduit(){
         $this->load->helper('form');
         $this->load->library('form_validation');
         if (isset($_POST['Ajouter'])) {
@@ -267,7 +267,31 @@ class Affiche_Produit extends CI_Controller
             $this->load->view('Affiche_Produit/index');
             $this->load->view('templates/footer');
         }
+    }*/
+
+    function add_Produit_ajax($idA,$quantite=null,$dispo=null){
+        $this->load->helper('form');
+        $this->load->library('form_validation');
+
+        echo $idA;
+        $user = $this->session->userdata('user');
+        $panier = $this->Affiche_Panier_Model->getUnPanier($idA,$user);
+        if (($panier ==null) || ($panier['commande_id'] != null )){
+            $produit = $this->Affiche_Produit_Model->get_unProduits($idA);
+            $this->Affiche_Panier_Model->addProduit($user,$produit,$quantite,$dispo);
+        }
+        else{
+            $panier = $this->Affiche_Panier_Model->getUnPanier($idA,$user);
+            $produit = $this->Affiche_Produit_Model->get_unProduits($idA);
+            $this->Affiche_Panier_Model->updatePanier($panier,$quantite,$produit);
+        }
+        //$this->load->view('templates/header');
+        // $this->load->view('Affiche_Produit/index');
+        //$this->load->view('templates/footer');
+        //redirect(base_url('/index.php/Affiche_Produit/index'));
     }
+
+
     function delete_PanierProduit(){
         $id = $this->input->get('id');
         echo $id;
@@ -336,6 +360,11 @@ class Affiche_Produit extends CI_Controller
         echo $id;
         $this->Affiche_Panier_Model->deleteProduitPanier($id);
         redirect(base_url('/index.php/Affiche_Panier/'));
+
+    }
+
+    public function ajaxAdd(){
+        $this->load->helper(array('form', 'url'));
 
     }
 

@@ -78,6 +78,7 @@ $route['Affiche_Produit/search_produit'] = 'Affiche_Produit/search_produit';
 $route['Affiche_Produit/ajouterProduitPanier'] = 'Affiche_Produit/ajouterProduitPanier';
 $route['Affiche_Produit/deleteProduitPanier'] = 'Affiche_Produit/deleteProduitPanier';
 $route['Affiche_Produit/pagination'] = 'Affiche_Produit/pagination';
+$route['Affiche_Produit/ajaxAdd'] = 'Affiche_Produit/ajaxAdd';
 $route['Affiche_Produit/index'] = 'Affiche_Produit/index';
 $route['Affiche_Produit/(:any)'] = 'Affiche_Produit/view/$1';
 $route['Affiche_Produit'] = 'Affiche_Produit';

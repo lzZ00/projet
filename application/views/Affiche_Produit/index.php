@@ -5,7 +5,9 @@
     <?php else :?>
     <link rel="stylesheet" media="screen" href="<?php echo base_url()?>assets/css/User.css"">
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/login.js"></script>
+
 <?php endif;?>
+
 
 <!--       用户的页面   -->
 <?php $user = $this->session->userdata('user');?>
@@ -14,7 +16,7 @@
 <div class="row">
         <?php foreach ($produits as $donnes): ?>
     <div class="col-xs-12 col-sm-6 col-md-8 col-lg-3" style="width: 30%">
-        <a href="<?php echo base_url()?>index.php/Affiche_Produit/getProduit/<?php echo $donnes['id']?>">
+  <!--   <a href="<?php /*echo base_url()*/?>index.php/Affiche_Produit/getProduit/<?php /*echo $donnes['id']*/?>">-->
         <div class="speical speical-default speical-radius" >
 
             <div class="speical-content">
@@ -41,21 +43,34 @@
                 <td>
                     <?php echo form_open('Affiche_Produit/addProduit'); ?>
                     <?php echo validation_errors(); ?>
-                    <select name="quantite" class="form-control" style="width: 50%">
+                    <select name="quantite" class="form-control" id="quantite" style="width: 50%">
                         <?php for($i=1;$i<=$donnes['dispo'];$i++){ ?>
                             <option value="<?php  echo $i ; ?>"><?php echo $i; ?></option>
                         <?php } ?>
                         </select>
-                    <input type="submit" value="Buy" name="Ajouter" class="btn btn-xs" onclick="onclick()">
+                    <input type="button" value="Ajouter" name="Ajouter" class="btn btn-xs" id="Ajouter" >
                     <?php $idA=$donnes['id']; ?>
-                    <input type="hidden" name="idA" value=<?php echo $idA;?>>
+                    <input type="hidden" name="idA"  id="idA" value=<?php echo $idA;?> >
                     <?php $dispo=$donnes['dispo']; ?>
-                <input type="hidden" name="dispo" value=<?php echo $dispo;?>>
+                <input type="hidden" name="dispo" id="dispo" value=<?php echo $dispo;?>>
                 </td>
                 </tr>
             </form>
                 </td>
             <?php endif;?>
+                <div id="div1"></div>
+                <script>
+                    var rowid=document.getElementById("idA").value;
+                    var quantite=document.getElementById("quantite").value;
+                    var dispo=document.getElementById("dispo").value;
+                    $('#Ajouter').click(function(){
+                        document.getElementById("div1").innerHTML='12312';
+                        $.ajax({
+                            url: "../../Affiche_Produit/add_Produit_ajax/" + rowid + "/" + quantite + "/" + dispo, success: function (result) {
+                            }
+                        });
+                    });
+                </script>
         </div>
     </div>
         </a>
