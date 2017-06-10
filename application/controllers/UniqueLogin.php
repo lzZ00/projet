@@ -77,4 +77,15 @@ class UniqueLogin extends CI_Controller
         }
 
     }
+
+
+    public function test2(){
+        $user = $this->session->userdata('user');
+        $panier=$this->Affiche_Panier_Model->getAllPanier($user);
+   /*   print_r($panier);
+        die();*/
+      echo json_encode($panier);
+       /* echo $panier;*/
+
+    }
 }

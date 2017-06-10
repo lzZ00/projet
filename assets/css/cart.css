@@ -1,0 +1,10 @@
+#carts{
+    display: none;width: 400px;height: 400px;
+    position: absolute; top: 70px;left: 50px;bottom: 0;
+    right: 370px;
+    padding: 50px;
+    z-index: 30;
+    border-radius: 35px;
+    background-color:ghostwhite;
+    box-shadow: 0 3px 18px rgba(0, 0, 0, .5);
+}

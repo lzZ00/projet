@@ -3,70 +3,77 @@
 <?php if (empty($user)) :?>
 <link rel="stylesheet" media="screen" href="<?php echo base_url()?>assets/css/emptyUser.css"">
     <?php else :?>
-    <link rel="stylesheet" media="screen" href="<?php echo base_url()?>assets/css/User.css"">
+    <link rel="stylesheet" media="screen" href="<?php echo base_url()?>assets/css/User1.css"">
+
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/login.js"></script>
 
 <?php endif;?>
 
 
+
 <!--       用户的页面   -->
 <?php $user = $this->session->userdata('user');?>
 <?php if ( $user['droit']!='DROITadmin'):?>
-<div class="container" align="center">
-<div class="row">
-        <?php foreach ($produits as $donnes): ?>
-    <div class="col-xs-12 col-sm-6 col-md-8 col-lg-3" style="width: 30%">
-  <!--   <a href="<?php /*echo base_url()*/?>index.php/Affiche_Produit/getProduit/<?php /*echo $donnes['id']*/?>">-->
-        <div class="speical speical-default speical-radius" >
+    <div class="container" align="center">
 
-            <div class="speical-content">
-                <h3 class="text-special-default">
-                    <?php echo $donnes['nom']?>
-                </h3>
-                <p>
-                    <img src="<?php echo base_url()?>assets/img/<?php echo $donnes['photo']?>" width="50px" height="50px"  alt="photo" class="img-responsive img-rounded"/>
-                </p>
-                <p>
-                    prix: <?php echo $donnes['prix']?>
-                </p>
+
+    <?php foreach ($produits as $donnes): ?>
+        <div class="col-sm-4">
+            <a href="<?php echo base_url()?>index.php/Affiche_Produit/getProduit/<?php echo $donnes['id']?>">
+                <div class="speical speical-default speical-radius" >
+
+                    <div class="speical-content">
+                        <h3 class="text-special-default">
+                            <?php echo $donnes['nom']?>
+                        </h3>
+                        <p>
+                            <img src="<?php echo base_url()?>assets/img/<?php echo $donnes['photo']?>" width="50px" height="50px"  alt="photo" class="img-responsive img-rounded"/>
+                        </p>
+                        <p>
+                            prix: <?php echo $donnes['prix']?>
+                        </p>
+                        <?php $user = $this->session->userdata('user');?>
+                        <?php if ( $user['droit']=='DROITadmin' || !empty($user)) :?>
+                            <p>dispo: <?php echo $donnes['dispo']?></p>
+                        <?php endif;?>
+                        <?php $user = $this->session->userdata('user');?>
+                        <?php if ( $user['droit']=='DROITadmin' ):?>
+                            <p>stock:<?php echo $donnes['stock']?></p>
+                        <?php endif;?>
+            </a>
+            <br/>
             <?php $user = $this->session->userdata('user');?>
-            <?php if ( $user['droit']=='DROITadmin' || !empty($user)) :?>
-                <p>dispo: <?php echo $donnes['dispo']?></p>
-            <?php endif;?>
-            <?php $user = $this->session->userdata('user');?>
-            <?php if ( $user['droit']=='DROITadmin' ):?>
-                <p>stock:<?php echo $donnes['stock']?></p>
-            <?php endif;?>
-                    <br/>
-                    <?php $user = $this->session->userdata('user');?>
-                    <?php if ( $user['droit']!='DROITadmin' && !empty($user)) :?>
+            <?php if ( $user['droit']!='DROITadmin' && !empty($user)) :?>
                 <td>
                     <?php echo form_open('Affiche_Produit/addProduit'); ?>
                     <?php echo validation_errors(); ?>
-                    <select name="quantite" class="form-control" id="quantite" style="width: 50%">
+                    <select name="quantite" class="form-control" id="quantite<?php echo $donnes['id'];?>" style="width: 50%">
                         <?php for($i=1;$i<=$donnes['dispo'];$i++){ ?>
                             <option value="<?php  echo $i ; ?>"><?php echo $i; ?></option>
                         <?php } ?>
-                        </select>
+                    </select>
                     <input type="button" value="Ajouter" name="Ajouter" class="btn btn-xs" id="<?php echo $donnes['id'];?>" onclick="add_produit(this.id)" >
                     <?php $idA=$donnes['id']; ?>
                     <input type="hidden" name="idA"  id="idA" value=<?php echo $idA;?> >
                     <?php $dispo=$donnes['dispo']; ?>
-                <input type="hidden" name="dispo" id="dispo" value=<?php echo $dispo;?>>
+                    <input type="hidden" name="dispo" id="dispo<?php echo $donnes['id'];?>" value=<?php echo $dispo;?>>
                 </td>
                 </tr>
-            </form>
+                </form>
                 </td>
             <?php endif;?>
         </div>
-    </div>
-        </a>
-</div>
-            <?php endforeach; ?>
-</div>
-<?php echo $this->pagination->create_links(); ?>
-</div>
+        </div>
+
+        </div>
+    <?php endforeach; ?>
+
+
+    <?php echo $this->pagination->create_links(); ?>
+
 <?php endif;?>
+
+<span id="shopping-cart"><i class="fa fa-shopping-cart"></i></span>
 <!--        admin 的页面   -->
 <?php $user = $this->session->userdata('user');?>
 <?php if ( $user['droit']=='DROITadmin'):?>
@@ -140,15 +147,17 @@
 
 
 
-<div id="div1">111</div>
+<div id="div1"><?php echo lang('bytes');?></div>
 <script>
     //var rowid=document.getElementById("idA").value;
-    var quantite=document.getElementById("quantite").value;
-    var dispo=document.getElementById("dispo").value;
+   /* var quantite=document.getElementById("quantite").value;
+    var dispo=document.getElementById("dispo").value;*/
     function add_produit(rowid){
         document.getElementById("div1").innerHTML=rowid;
+        var quantite=document.getElementById("quantite"+rowid).value;
+        var dispo=document.getElementById("dispo"+rowid).value;
         $.ajax({
-            url: "../../Affiche_Produit/add_Produit_ajax/" + rowid + "/" + quantite + "/" + dispo, success: function (result) {
+            url: "../index.php/Affiche_Produit/add_Produit_ajax/" + rowid + "/" + quantite + "/" + dispo, success: function (result) {
             }
         });
     }

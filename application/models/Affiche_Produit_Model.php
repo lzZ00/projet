@@ -49,7 +49,8 @@ class Affiche_Produit_Model extends CI_Model {
             'prix' => $this->input->post('prix'),
             'dispo' => $this->input->post('dispo'),
             'stock' => $this->input->post('stock'),
-            'photo' => $this->input->post('photo')
+            'photo' => $this->input->post('photo'),
+            'produit_New' => $this->input->post('produit_New')
         );
 
         $this->db->insert('produits', $data);
@@ -140,6 +141,14 @@ class Affiche_Produit_Model extends CI_Model {
         else{
             return $query->result_array();
         }
+    }
+
+
+    public function get_produitNew(){
+        $this->db->select('*');
+        $this->db->from('produits');
+        $query=$this->db->get();
+        return $query->result_array();
     }
 
 

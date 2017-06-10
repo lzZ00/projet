@@ -17,6 +17,9 @@ class user extends CI_Controller
         $this->load->helper('url_helper');
         $this->load->helper('form');
         $this->load->library('form_validation');
+        $this->config->set_item('language', $_SESSION['language']);
+        $this->lang->load('menu');
+        $this->load->helper('language');
     }
 
     public function index()
@@ -73,6 +76,10 @@ class user extends CI_Controller
         if ($user = $this->Signup_Signin_Model->get_user($email,$password)) {
             #成功，将用户信息保存至session
             $this->session->set_userdata('user',$user);
+            $data = array(
+                'language' => 'chinese',
+            );
+            $this->session->set_userdata($data);
             redirect('Affiche_Produit');
         } else {
             # error

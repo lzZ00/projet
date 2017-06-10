@@ -15,6 +15,7 @@ body{
 
 .speical{
     background:#fff; border:1px solid #ddd; box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); margin: 15px 0; overflow:hidden;
+
 }
 
 .speical:hover {
@@ -63,13 +64,15 @@ body{
     width: 100px;
     height: 100px;
 }
-
-.col-xs-12{
-    width: 350px;
-    height: 350px;
-}
-
 .btn-xs:hover{
     background: rgba(183, 199, 234, 0.81);
     padding: 10px;
+}
+.container{
+    margin:0 auto;
+
+}
+.col-sm-4{
+
+    left: -1.5%;
 }

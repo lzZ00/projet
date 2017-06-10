@@ -79,6 +79,8 @@ $route['Affiche_Produit/ajouterProduitPanier'] = 'Affiche_Produit/ajouterProduit
 $route['Affiche_Produit/deleteProduitPanier'] = 'Affiche_Produit/deleteProduitPanier';
 $route['Affiche_Produit/pagination'] = 'Affiche_Produit/pagination';
 $route['Affiche_Produit/ajaxAdd'] = 'Affiche_Produit/ajaxAdd';
+$route['Affiche_Produit/lang_english'] = 'Affiche_Produit/lang_english';
+$route['Affiche_Produit/lang_chinese'] = 'Affiche_Produit/lang_chinese';
 $route['Affiche_Produit/index'] = 'Affiche_Produit/index';
 $route['Affiche_Produit/(:any)'] = 'Affiche_Produit/view/$1';
 $route['Affiche_Produit'] = 'Affiche_Produit';
@@ -98,6 +100,7 @@ $route['commande/creerCommande'] = 'commande/creerCommande';
 $route['commande/allCommande'] = 'commande/allCommande';
 $route['commande/valideCommande'] = 'commande/valideCommande';
 $route['commande/test'] = 'commande/test';
+$route['commande/pay'] = 'commande/pay';
 $route['commande/detail'] = 'commande/detail';
 $route['commande/(:any)'] = 'commande/view/$1';
 $route['commande'] = 'commande';
@@ -108,6 +111,7 @@ $route['Affiche_Panier'] = 'panier';
 
 $route['UniqueLogin/testEmail'] = 'UniqueLogin/testEmail';
 $route['UniqueLogin/test'] = 'UniqueLogin/test';
+$route['UniqueLogin/test2'] = 'UniqueLogin/test2';
 $route['UniqueLogin/(:any)'] = 'UniqueLogin/view/$1';
 $route['UniqueLogin'] = 'UniqueLogin';
 

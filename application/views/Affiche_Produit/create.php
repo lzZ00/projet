@@ -51,6 +51,15 @@ $uptypes=array(
            value="<?php echo set_value('stock'); ?>">
 </div>
 
+
+    <div class="form-group">
+        <label for="produit_New">produit_New</label>
+            <select class="btn btn-default dropdown-toggle"name="produit_New" button class="btn btn-default dropdown-toggle">
+                <option value="New" >New</option>
+                <option value="Normal" >Normal</option>
+            </select>
+    </div>
+
 <!--<div class="form-group">
     <label for="type">Photo</label>
     <input type="file" class="form-control" id="photo" placeholder="Photo" name="photo"  style="width: 20%">

@@ -21,6 +21,11 @@ class Affiche_Produit extends CI_Controller
         $this->load->library('form_validation');
         $this->load->helper(array('form', 'url'));
         $this->load->helper('url_helper');
+
+        $this->config->set_item('language', $_SESSION['language']);
+        $this->lang->load('menu');
+        $this->load->helper('language');
+
     }
 
     public function index()
@@ -106,6 +111,7 @@ class Affiche_Produit extends CI_Controller
         }
         $data['title'] = 'Create a news item';
         $data['typeProduits'] = $this->Affiche_Produit_Model->get_typeProduits();
+        $data['Produit'] = $this->Affiche_Produit_Model->get_produitNew();
         $this->form_validation->set_rules('nom', 'Name', 'required|is_unique[produits.nom]');
         $this->form_validation->set_rules('type', 'Type', 'required');
         $this->form_validation->set_rules('prix', 'Price', 'required');
@@ -237,10 +243,10 @@ class Affiche_Produit extends CI_Controller
         }
     }
 
-    /*function addProduit(){
+    function addProduit(){
         $this->load->helper('form');
         $this->load->library('form_validation');
-        if (isset($_POST['Ajouter'])) {
+        if (isset($_POST['Ajouter1'])) {
             echo $_POST['idA'];
             $user = $this->session->userdata('user');
             $quantite=$_POST['quantite'];
@@ -267,7 +273,7 @@ class Affiche_Produit extends CI_Controller
             $this->load->view('Affiche_Produit/index');
             $this->load->view('templates/footer');
         }
-    }*/
+    }
 
     function add_Produit_ajax($idA,$quantite=null,$dispo=null){
         $this->load->helper('form');
@@ -366,6 +372,19 @@ class Affiche_Produit extends CI_Controller
     public function ajaxAdd(){
         $this->load->helper(array('form', 'url'));
 
+    }
+
+
+    public function lang_english(){
+        $url=$_GET["url"];
+        $_SESSION['language'] = 'english';
+        redirect($url);
+    }
+
+    public function lang_chinese(){
+        $url=$_GET["url"];
+        $_SESSION['language'] = 'chinese';
+        redirect($url);
     }
 
 

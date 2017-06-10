@@ -13,9 +13,9 @@ $("#loginbtn").click(function(){
     //登录相关后台处理，例如: Ajax请求
 });
 
-$(document).ready(function() {
-    $("#plus").hide();
-});
+
+
+
 function onclick(){
     $("#plus").show();
     setTimeout(  $("#plus").hide(),3000)

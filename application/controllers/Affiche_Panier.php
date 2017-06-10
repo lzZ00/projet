@@ -15,14 +15,16 @@ class Affiche_Painer extends CI_Controller
         $this->load->model('Affiche_Panier_Model');
         $this->load->model('Affiche_Commande_Model');
         $this->load->helper('url_helper');
+        $this->config->set_item('language', $_SESSION['language']);
+        $this->lang->load('menu');
+        $this->load->helper('language');
     }
     public function index() {
         $this->load->helper('form');
         $this->load->library('form_validation');
         $user = $this->session->userdata('user');
         $data['paniers'] = $this->Affiche_Panier_Model->getAllPanier($user);
-        $this->load->view('templates/header', $data);
-        $this->load->view('templates/footer');
+
     }
 
 }

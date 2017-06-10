@@ -21,17 +21,17 @@
 </style>
 <div align="center">
     <table class="table" style="width: 30%">
-        <caption style="text-align: center"> Orders </caption>
+        <caption style="text-align: center"> <?php echo lang('Orders')?> </caption>
         <thead>
         <tr class="biaoti">   <?php $user = $this->session->userdata('user');?>
             <?php if ( $user['droit']=='DROITadmin') :?>
             <th>Order</th>
-            <?php endif;?></th><th>price</th><th>date</th><th>state</th>
+            <?php endif;?></th><th><?php echo lang('price')?></th><th><?php echo lang('date Added')?></th><th><?php echo lang('state')?></th>
             <?php $user = $this->session->userdata('user');?>
             <?php if ( $user['droit']=='DROITadmin') :?>
             <th>Operation</th>
             <?php endif;?>
-            <th>Detail</th>
+            <th><?php echo lang('Detail')?></th>
 
         </tr>
         </thead>
