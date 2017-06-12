@@ -33,6 +33,7 @@ $lang['Orders'] = 'Commandes';
 $lang['state'] = 'etat';
 $lang['Detail'] = 'Detail';
 $lang['see'] = 'voir';
+$lang['confirm'] = 'valider';
 
 //proflie
 $lang['edituser'] = 'Modifier adresse et tel';

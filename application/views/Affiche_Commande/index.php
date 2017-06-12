@@ -48,8 +48,8 @@
             <td><?php echo $donnes['date_achat']?></td>
             <td><?php echo $donnes['libelle']?> </td>
             <?php $user = $this->session->userdata('user');?>
-            <?php if ( $user['droit']=='DROITadmin') :?><td>  <a href="<?php echo site_url('commande/valideCommande');?>?id=<?php echo $donnes['id'];?>">confirm</a></td><?php endif;?>
-            <td>  <a href="<?php echo site_url('commande/detail');?>?id=<?php echo $donnes['id'];?>">see</a></td>
+            <?php if ( $user['droit']=='DROITadmin') :?><td>  <a href="<?php echo site_url('commande/valideCommande');?>?id=<?php echo $donnes['id'];?>"><?php echo lang('confirm')?></a></td><?php endif;?>
+            <td>  <a href="<?php echo site_url('commande/detail');?>?id=<?php echo $donnes['id'];?>"><?php echo lang('see')?></a></td>
         </tr><!-- {% endfor %}-->
         <?php endforeach; ?>
         </tbody>

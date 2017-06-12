@@ -38,7 +38,10 @@ class Affiche_Produit extends CI_Controller
         $this->load->library('pagination');
         $config['base_url'] = base_url().'index.php/Affiche_Produit/index';
         $config['total_rows'] = $this->Affiche_Produit_Model->count_produit();
-        $config['per_page'] = 6;
+        $user = $this->session->userdata('user');
+        if ( $user['droit']=='DROITadmin'){    $config['per_page'] = 8;
+        }
+        else{ $config['per_page'] = 6;}
         // Bootstrap for CodeIgniter pagination.
         $config['full_tag_open'] = '<ul class="pagination">';
         $config['full_tag_close'] = '</ul>';
@@ -61,7 +64,7 @@ class Affiche_Produit extends CI_Controller
         // *************
         $this->pagination->initialize($config);
         $data['produits'] = $this->Affiche_Produit_Model->fetch_produit($config['per_page'],$this->uri->segment(3));
-        $user = $this->session->userdata('user');
+
         $data['paniers'] = $this->Affiche_Panier_Model->getAllPanier($user);
         $data['prix'] = $this->Affiche_Commande_Model->getPrixTotal($user);
 
@@ -201,7 +204,7 @@ class Affiche_Produit extends CI_Controller
         //}
         $data['title'] = 'Information de Client';
         $this->load->view('templates/header', $data);
-        $this->load->view('Affiche_Produit/type1', $data);
+        $this->load->view('Affiche_Produit/test', $data);
         $this->load->view('templates/footer');
     }
 
@@ -216,7 +219,7 @@ class Affiche_Produit extends CI_Controller
         //}
         $data['title'] = 'Information de Client';
         $this->load->view('templates/header', $data);
-        $this->load->view('Affiche_Produit/type1', $data);
+        $this->load->view('Affiche_Produit/test', $data);
         $this->load->view('templates/footer');
     }
 
@@ -386,6 +389,8 @@ class Affiche_Produit extends CI_Controller
         $_SESSION['language'] = 'chinese';
         redirect($url);
     }
+
+
 
 
 }

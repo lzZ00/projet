@@ -15,7 +15,7 @@
         <h6><?php echo $produit['email']?></h6>
         <h6><?php echo $produit['adresse']?></h6>
         <h6><?php echo $produit['tel']?></h6>
-        <h6><a class="btn btn-default btn-md"  href="<?php echo site_url('user/editProfil')?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>Edit address and tel</a></h6>
-        <h6><a class="btn btn-default btn-md" href="<?php echo site_url('user/changerMdp')?>"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Change password</a></h6></div>
+        <h6><a class="btn btn-default btn-md"  href="<?php echo site_url('user/editProfil')?>"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span><?php echo lang('edituser')?></a></h6>
+        <h6><a class="btn btn-default btn-md" href="<?php echo site_url('user/changerMdp')?>"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> <?php echo lang('changpwd')?></a></h6></div>
     <div class="col-md-4">  </div>
 </div>

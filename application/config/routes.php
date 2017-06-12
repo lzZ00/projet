@@ -109,6 +109,9 @@ $route['commande'] = 'commande';
 $route['Affiche_Panier/(:any)'] = 'Affiche_Panier/view/$1';
 $route['Affiche_Panier'] = 'panier';
 
+$route['contact/(:any)'] = 'contact/view/$1';
+$route['contact'] = 'contact';
+
 $route['UniqueLogin/testEmail'] = 'UniqueLogin/testEmail';
 $route['UniqueLogin/test'] = 'UniqueLogin/test';
 $route['UniqueLogin/test2'] = 'UniqueLogin/test2';

@@ -1,0 +1,31 @@
+.D{
+    text-align:center;
+    margin: 0 auto;
+    font-size: 150%;
+
+}
+.select{
+    width: 55%;
+}
+.xiangqing,.buyy{
+    margin-top: 10px;
+}
+
+.photo{
+    margin: 0 auto;
+    border: 1px solid #d9534f;
+    border-radius:10px;
+    width: 65%;
+
+    padding: 20px;
+}
+.photo img{
+    width: 180px;
+    height: 180px;
+}
+.prix{
+
+
+    padding: 30px;
+    margin: 0 auto;
+}

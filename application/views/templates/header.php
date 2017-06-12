@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" media="screen" href="<?php echo base_url()?>assets/css/css3.css"">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>Chez Lei</title>
+    <title>BZSM</title>
     <!-- jquery -->
     <script src="<?php echo base_url()?>assets/jquery-3.2.0.min.js"></script>
     <script type="text/javascript" src="<?php echo base_url()?>assets/js/login.js"></script>
-    <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery3.js"></script>
+    <script type="text/javascript" src="<?php echo base_url()?>assets/js/jquery4.js"></script>
     <script src="http://static.runoob.com/assets/jquery-validation-1.14.0/dist/jquery.validate.min.js"></script>
     <!-- Bootstrap -->
     <link href="<?php echo base_url()?>assets/css/bootstrap.min.css" rel="stylesheet">
@@ -74,12 +74,12 @@
                         <?php $user = $this->session->userdata('user');?>
                         <?php if (empty($user)) :?>
                             <p>    &nbsp&nbsp <?php echo lang('Hello')?>,<?php echo lang('Welcome')?><!--<b>Chez Lei商城</b>--></p>
-                            <li><a href="<?php /*echo site_url('user/signup');*/?>"  type="button"  data-toggle="modal" data-target="#signup"  >sign up</a></li>
+                            <li><a href="<?php /*echo site_url('user/signup');*/?>"  type="button"  data-toggle="modal" data-target="#signup"  ><?php echo lang('signup')?></a></li>
 
-                            <li><a href="#" type="button" data-toggle="modal" data-target="#signin" >sign in</a></li>
+                            <li><a href="#" type="button" data-toggle="modal" data-target="#signin" ><?php echo lang('signin')?></a></li>
 
                         <?php else :?>
-                            <p>&nbsp&nbsp&nbsp&nbsp<?php echo $user['nom'];?>, <?php echo lang('Hello')?>,<?php echo lang('Welcome')?><!--<b>Chez Lei</b>--> [<a href="<?php echo site_url('user/logout');?>">Logout</a>]</p>
+                            <p>&nbsp&nbsp&nbsp&nbsp<?php echo $user['nom'];?>, <?php echo lang('Hello')?>,<?php echo lang('Welcome')?><!--<b>Chez Lei</b>--> [<a href="<?php echo site_url('user/logout');?>"><?php echo lang('logout')?></a>]</p>
                             <?php if ( $user['droit']!='DROITadmin' && (!empty($user) )):?>
 
                                 <li style="position:relative" ><a href="<?php echo site_url('Affiche_Panier');?>" id="cart"><?php echo lang('Cart')?></a>

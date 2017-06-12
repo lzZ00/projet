@@ -1,12 +1,12 @@
 
-<link rel="stylesheet" media="screen" href="<?php echo base_url()?>assets/css/test.css"">
+<link rel="stylesheet" media="screen" href="<?php echo base_url()?>assets/css/User1.css"">
 
 
 
-<div class="container">
-    <div class="row">
+<div class="container" align="center">
+
         <?php foreach ($produits as $donnes): ?>
-        <div class="col-xs-12 col-sm-6 col-md-8 col-lg-3" style="width: 30%">
+        <div class="col-sm-4" >
             <div class="speical speical-default speical-radius">
            <!--     <div class="shape">
                     <div class="shape-text">

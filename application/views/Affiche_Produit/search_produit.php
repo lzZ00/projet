@@ -3,7 +3,7 @@
 <?php if (empty($user)) :?>
     <link rel="stylesheet" media="screen" href="<?php echo base_url()?>assets/css/emptyUser.css"">
 <?php else :?>
-    <link rel="stylesheet" media="screen" href="<?php echo base_url()?>assets/css/User.css"">
+    <link rel="stylesheet" media="screen" href="<?php echo base_url()?>assets/css/User1.css"">
 <?php endif;?>
 <?php $user = $this->session->userdata('user');?>
 <?php if ( $user['droit']!='DROITadmin'):?>

@@ -1,0 +1,53 @@
+.contact{
+    height:800px;
+    width:100%;
+    text-align:center;
+}
+#h13{
+    margin-top:100px;
+    font-family:Lobster;
+    font-size:450%;
+    color:#33CCFF;
+}
+.mail-tell{
+    font-size:200%;
+    color:#33CCFF;
+}
+#h14{
+    margin-top:-15px;
+    font-family:Lobster;
+    font-size:450%;
+    color:#33CCFF;
+}
+#lianxi{
+    margin-top:100px;
+}
+#contactanniu{
+    margin-top:15px;
+    height:60px;
+    width:170px;
+    border-radius: 15px;
+    background-color:#33CCFF;
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.5);
+    padding:0px;
+}
+#pweibo,#pqq,#pwechat{
+    position:absolute;
+    margin-top:7px;
+    color:#FFFFFF;
+    height:60px;
+    width:170px;
+    font-size:220%;
+}
+#contactanniu:hover{
+    background-color:rgba(0,0,0,0.7);
+    transform:scale(1.1,1.1);
+}
+.tooltip-inner{
+    max-width:500px;
+    padding:10px 10px;
+    background-color:#33CCFF;
+    text-align:center;
+    font-size:150%;
+    border-radius:5px;
+}

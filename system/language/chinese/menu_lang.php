@@ -34,6 +34,7 @@ $lang['Orders'] = '订单';
 $lang['state'] = '状态';
 $lang['Detail'] = '详情';
 $lang['see'] = '查看';
+$lang['confirm'] = '确认';
 
 
 //proflie
